@@ -1,0 +1,32 @@
+.apexcharts-tooltip-box>div {
+    color: $theme1;
+    font-size: 12px;
+}
+
+.apexcharts-xaxistooltip, .apexcharts-yaxistooltip{
+    font-size: 12px;
+}
+
+.apexcharts-grid .apexcharts-gridlines-horizontal .apexcharts-gridline{
+    stroke: #ffffff26;
+}
+
+.apexcharts-title-text {
+    fill: $white;
+}
+.apexcharts-text tspan {
+    fill: rgba($white, 0.5);
+}
+
+.apexcharts-menu-item {
+    color: $black;
+}
+
+
+.apexcharts-grid-borders line:last-child{
+    display: none;
+}
+
+.apexcharts-graphical .apexcharts-xaxis-tick {
+    display: none;
+}

@@ -1,0 +1,51 @@
+.header {
+    background-color: $theme1;
+    & .navbar-brand {
+        height: 45px;
+        @include md{
+            height: 50px;
+        }
+    }
+    & .navbar-nav {
+        & .nav-item{
+            & .nav-link {
+                font-size: 12px;
+                font-weight: normal;
+                line-height: 14px;
+                color: $white;
+                transition: all ease-in-out 0.3s;
+                & span {
+                    height: 20px;
+                    width: 20px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                &:hover, &.active{
+                    color: $theme2;
+                }
+                &.deposit {
+                    padding: 0.3rem 0.75rem;
+                    background-image: linear-gradient(to right, $theme2, $theme3);
+                    border-radius: 4px;
+                }
+            }
+        }
+    }
+    & .offcanvas {
+        width: 320px !important;
+        border: none;
+        & .offcanvas-header {
+            border-bottom: 1px solid rgba($theme2, 0.3);
+            & .offcanvas-title {
+                height: 40px;
+            }
+        }
+    }
+}
+
+.navbar-toggler-icon {
+    box-shadow: none;
+    border: none;
+    filter: invert(1);
+}

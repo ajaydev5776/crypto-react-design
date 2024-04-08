@@ -1,0 +1,63 @@
+@charset "UTF-8";
+@import "mixing";
+.themebtn, .themebtn.btn {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 14px;
+    color: $white;
+    transition: all ease-in-out 0.3s;
+    &:hover{
+        color: $white;
+    }
+}
+
+.refreshBtnBtn{
+    background: transparent;
+    text-transform: capitalize !important;
+    font-weight: 600 !important;
+    line-height: 120%;
+    color: #cda954 !important;
+    &:hover{
+        color: $white !important;
+    }
+}
+.refreshSvg{
+    height: 15px;
+    width: 15px;
+}
+.criptoFilter {
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem 0.75rem;
+    gap: 10px;
+    font-size: 14px;
+    text-transform: capitalize;
+    background-color: lighten($theme1, 20);
+    & img {
+        width: 16px;
+        height: 16px;
+    }
+    &.small-fs {
+        display: inline-flex;
+        font-size: 12px;
+        gap: 6px;
+        & img {
+            width: 14px;
+            height: 14px;
+        }
+    }
+}
+
+.voucherBtn{
+    padding-block: 12px;
+    color: $black;
+    font-size: 12px;
+    font-weight: 400 !important;
+    padding-inline: 20px;
+    width: 100%;
+    @include lg{
+        font-size: 14px;
+    }
+}

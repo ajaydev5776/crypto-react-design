@@ -1,0 +1,983 @@
+@charset "UTF-8";
+@import "mixing";
+
+// trending cripto list css
+.trendingcripto {
+    & .trendingcripto-list {
+        display: flex;
+        overflow: auto hidden;
+        & .list-item {
+            font-size: 12px;
+            line-height: normal;
+            color: $white;
+            padding-left: 10px;
+            position: relative;
+            text-transform: uppercase;
+            &::before{
+                content: '';
+                width: 4px;
+                height: 4px;
+                border-radius: 50%;
+                background-color: $white;
+                position: absolute;
+                left: 0px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+    & .losercripto{
+        display: none;
+    }
+    &.losers-cripto{
+        & .losercripto{
+            display: flex;
+        }
+        & .topcripto{
+            display: none;
+        }
+    }
+}
+
+
+
+// criptotiming-high
+.criptotiming-high {
+    & .carditem {
+        padding: 0rem 0.5rem;
+        @include lg{
+            padding: 0.5rem 0.75rem;
+        }
+        & .leftside {
+            & .criptoname {
+                font-size: 10px;
+                @include lg{
+                    font-size: 12px;
+                }
+                @include xl{
+                    font-size: 14px;
+                }
+                & img {
+                    width: 16px;
+                }
+            }
+            & .prich {
+                font-size: 12px;
+                @include lg{
+                    font-size: 12px;
+                }
+                @include xl{
+                    font-size: 14px;
+                }
+                & span {
+                    font-size: 12px;
+                }
+            }
+        }
+        & .rightside {
+            & img {
+                width: 16px;
+                object-fit: contain;
+            }
+        }
+        &.active{
+            & .rightside {
+                & img {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+        &.miditems {
+            & .leftside {
+                border-right: 1px solid lighten($theme1, 20);
+                align-items: center;
+            }
+        }
+    }
+}
+
+.chartHeight{
+    height: unset !important;
+    @include lg{
+        height: 100%;
+    }
+}
+
+// left-chart-crtpto
+.left-chart-crtpto {
+    transition: all 0.3s;
+    width: 100%;
+    @include sm{
+        width: 220px;
+    }
+    &.active {
+        display: none;
+    }
+    & .topheader {
+        background-color: $theme1;
+        & .navs {
+            & .star-fill {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 20px;
+                height: 20px;
+                & img {
+                    width: 100%;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+}
+
+.searchbar {
+    background-color: transparent !important;
+    font-size: 14px;
+    color: $white !important;
+    &::placeholder{
+        color: $theme6 !important;
+    }
+}
+
+
+// =======================
+
+img {
+    width: 100%;
+    max-width: 100%;
+}
+
+
+.coincard{
+    background-color: transparent;
+    position: relative;
+    transition: all ease-in-out 0.3s;
+    &::before{
+        content: '';
+        height: 1px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: lighten($theme1, 20);
+        transition: all ease-in-out 0.3s;
+    }
+    &:last-child{
+        &::before{
+            display: none;
+        }
+    }
+    &.active, &:hover{
+        background-color: rgba($theme2, 0.3);
+        &::before{
+        background-color: rgba($theme2, 0.3);
+        }
+    }
+    & .card-body{
+        & .cryptoside{
+            & .starimg {
+                width: 16px;
+                height: 16px;
+            }
+            & .coinname {
+                & .coinimg {
+                    height: 24px;
+                    width: 24px;
+                }
+                & .coins {
+                    & .exchange {
+                        border-radius: 2px;
+                        width: 12px;
+                        height: 12px;
+                        background-color: darken($theme2, 20);
+                        transform: rotate(90deg);
+                    }
+                    & .partyname {
+                        color: $white;
+                        opacity: 0.75;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.portfolioSection{
+    & .header{
+        background-color: #1d202c;
+        padding: 0px 10px;
+        border-radius: 10px 10px 0 0 ;
+        & .heading{
+            font-size: 17px;
+            font-weight: 900;
+        }
+    }
+    & .carditem {
+        padding: 0rem 0.5rem;
+        @include lg{
+            padding: 0.5rem 0.75rem;
+        }
+        & .leftside {
+            align-items: center;
+            & .criptoname {
+                font-size: 12px;
+                color: darken($white, 10) ;
+                font-weight: 500 ;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                @include lg{
+                    font-size: 16px;
+                }
+                @include xl{
+                    font-size: 16px;
+                }
+                & img {
+                    width: 14px;
+                    @include lg{
+                        width: 16px;
+                    }
+                }
+            }
+            & .prich {
+                font-size: 12px;
+                @include lg{
+                    font-size: 12px;
+                }
+                @include xl{
+                    font-size: 14px;
+                }
+                & span {
+                    font-size: 12px;
+                }
+            }
+        }
+        & .rightside {
+            & img {
+                width: 16px;
+                object-fit: contain;
+            }
+        }
+        &.active{
+            & .rightside {
+                & img {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+        &.miditems {
+            & .leftside {
+                border-right: 1px solid lighten($theme1, 20);
+            }
+        }
+    }
+    & .portfoliotable{
+        margin-top: 15px;
+        & table{
+            & tr{
+                & th{
+                    background-color: #1d202c;
+                    padding: 14px 10px;
+                    font-size: 12px;
+                    color: #a0aec0;
+                    width: fit-content;
+                }
+            }
+            & tbody{
+                background-color: $theme1;
+                & tr{
+                    & td{
+                        padding: 10px !important;
+                    }
+                }
+            }
+        }
+        & .arrowSize{
+            height: 12px;
+            width: 10px;
+        }
+        & .coinName{
+            & .bracket{
+                font-size: 10px;
+            }
+        }
+    }
+    & .portfolioResponsive{
+        margin-top: 10px;
+        & .coinsTxt{
+            font-size: 12px;
+            color: #a0aec0;
+        }
+        & .menubtn{
+            height: 40px;
+            width: 40px;
+            border: 1px solid #cda954;
+            border-radius: 5px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent !important;
+            &::after{
+                display: none !important;
+            }
+        }
+        & .dropdownMenu{
+            background-color: #1d202c !important;
+            & .dropdownItem{
+                color: #a0aec0;
+                font-size: 12px;
+                text-align: right;
+            }
+        }
+    }
+    & table{
+        margin-top: 20px;
+        & tr{
+            & th{
+                background-color: #1d202c;
+                padding: 14px 10px;
+                font-size: 12px;
+                color: #a0aec0;
+                width: fit-content;
+            }
+        }
+        & tbody{
+            background-color: $theme1;
+            & tr{
+                & td{
+                    padding: 10px !important;
+                }
+            }
+        }
+    }
+    & .arrowSize{
+        height: 12px;
+        width: 10px;
+    }
+    & .portfolioWallet {
+        &>div>div{
+            &:last-child{
+                & .carditem  {
+                    & .leftside  {
+                        border: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.referSection{
+    & .referSectionOne{
+        & .earntxt{
+            font-size: 55px;
+            background: linear-gradient(to right, #cda954, 
+                    #ff6b08, #f14366); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            line-height: 120%;
+            @include xl{
+                font-size: 60px;
+            }
+            @include xxl{
+                font-size: 72px;
+            }
+        }
+        & .subtxt{
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 120%;
+            @include xl{
+                font-size: 30px;
+            }
+            @include xxl{
+                font-size: 36px;
+            }
+        }
+        & .moretxt{
+            font-size: 16px;
+            font-weight: normal;
+            color: $theme5;
+            @include xl{
+                font-size: 18px;
+            }
+            @include xxl{
+                font-size: 20px;
+            }
+        }
+        & .gradinetBorder{
+            background: linear-gradient(#f14366, #cda954);
+            padding: 2px;
+            border-radius: 8px;
+            & .referLink{
+                border-radius: 8px;
+                padding: 16px 20px;
+                background-color: $theme1;
+                & .textMain{
+                    font-size: 20px;
+                    line-height: 120%;
+                    color: $theme5;
+                }
+                & .referLinktxt{
+                    padding-block: 10px;
+                    font-size: 14px;
+                    font-weight: normal;
+                    line-height: 120%;
+                }
+                & .referImg{
+                    height: 30px;
+                    width: 30px;
+                }
+                & .lineAnimation{
+                    border-top: 1px solid $theme5;
+                    opacity: 0.5;
+                    & .animationDots{
+                        height: 10px;
+                        width: 10px;
+                        border-radius: 50%;
+                        color: $white;
+                        animation: dots 1.4s 0s infinite;
+                        transition-delay: 75ms;
+                    }
+                }
+            }
+        }
+    }
+}
+@keyframes dots {
+    0%   {animation-timing-function: cubic-bezier(.8,0,1,1);
+        transform: scale(0);}
+    50%  {nimation-timing-function: cubic-bezier(0,0,.2,1);
+        transform: scale(1);}
+    100% {animation-timing-function: cubic-bezier(.8,0,1,1);
+        transform: scale(0);}
+}
+
+// table section start
+.tableSection{
+    & .mainCard{
+        & .cardImg{
+            height: 40px;
+        }
+        & .cardtxt{
+            font-size: 16px;
+            line-height: 120%;
+            font-weight: normal;
+            color: $theme5;
+            text-align: center;
+            padding: 15px 0 20px 0;
+        }
+        & .number{
+            text-align: center;
+            font-size: 16px;
+            height: 30px;
+            width: 30px;
+            color: $black;
+            background-color: $theme2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-inline: auto;
+        }
+    }
+}
+// table section ends
+
+// voucher section start
+    .voucherSection{
+        & .fluidVoucher{
+            // padding: 10px 15px;
+            background: $theme1;
+            // border-radius: 8px;
+            // @include md{
+            //     padding: 10px 32px;
+            // }
+        }
+        & .marginDiv{
+            // @include xxl{
+            //     margin-block: 40px;
+            // }
+            & .text{
+                font-size: 22px;
+                @include sm{
+                    font-size: 28px;
+                }
+                @include lg{
+                    font-size: 30px;
+                }
+            }
+            & .footertext {
+                font-size: 14px;
+                @include sm{
+                    font-size: 16px;
+                }
+                @include md{
+                    font-size: 18px;
+                }
+                @include xl{
+                    font-size: 20px;
+                }
+            }
+            & .subtext{
+                font-size: 16px;
+                line-height: 120%;
+                color: $theme6;
+                @include lg{
+                    font-size: 18px;
+                }
+            }
+        }
+        & .voucherForm{
+            &.formLabel{
+                color: $theme6 !important;
+            }
+            & .formControl{
+                background: $theme1 !important;
+                &::placeholder{
+                    color: $theme6 !important;
+                }
+            }
+        }
+    }
+// voucher section ends
+
+// keyhight section start
+    .keyHighLightsSection{
+        & .heading{
+            font-size: 32px;
+            font-weight: 700;
+            @include sm{
+                font-size: 36px;
+            }
+        }
+        & .mainCard{
+            padding: 20px;
+            background: $theme1;
+            height: 100%;
+            border-radius: 8px;
+            transition: all ease-in-out 0.3s;
+            border: 1px solid transparent;
+            &:hover{
+                transform: translateY(-10px);
+                border-color: rgba($theme2, 0.5);
+                & .cardtxt {
+                    color: $white;
+                }
+            }
+            @include xl{
+            }
+            & .cardImg{
+                // height: 70px;
+                max-width: 100px;
+                margin-inline: auto;
+                & img {
+                    aspect-ratio: 30/15;
+                }
+            }
+            & .cardtxt{
+                font-size: 16px;
+                font-weight: normal;
+                text-align: center;
+                color: $theming5;
+                transition: all ease-in-out 0.3s;
+            }
+        }
+    }
+// keyhight section ends
+
+
+// wallet Section start
+    .walletSection{
+        & .navTabs{
+            background-color: $theme1 !important;
+            border-bottom: 1px solid $theme6;
+            & .navLink{
+                padding-block: 12px;
+                color: $white ;
+                border: none;
+                border-radius: 0%;
+                padding-inline: 45px;
+                font-size: 14px;
+                @include sm{
+                    padding-inline: 60px;
+                    font-size: 16px;
+                }
+                &.active{
+                    background-color: #1d202c;
+                    color: $theme2 ;
+                    border-bottom: 1px solid $theme2;
+                    border-radius: 0;
+                }
+            }
+        }
+        & .tabContent{
+            .carditem {
+                padding: 0rem 0.5rem;
+                @include lg{
+                    padding: 0.5rem 0.75rem;
+                }
+                & .leftside {
+                    & .criptoname {
+                        font-size: 12px;
+                        color: $theme6 ;
+                        font-weight: 500 ;
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        @include lg{
+                            font-size: 16px;
+                        }
+                        @include xl{
+                            font-size: 16px;
+                        }
+                        & img {
+                            width: 14px;
+                            @include lg{
+                                width: 16px;
+                            }
+                        }
+                    }
+                    & .prich {
+                        font-size: 12px;
+                        @include lg{
+                            font-size: 12px;
+                        }
+                        @include xl{
+                            font-size: 16px;
+                        }
+                        & span {
+                            font-size: 12px;
+                        }
+                    }
+                }
+                & .rightside {
+                    & img {
+                        width: 16px;
+                        object-fit: contain;
+                    }
+                }
+                &.active{
+                    & .rightside {
+                        & img {
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+                &.miditems {
+                    & .leftside {
+                        align-items: center;
+                        border-right: 1px solid lighten($theme1, 20);
+                    }
+                }
+            }
+            & .pnlDiv{
+                background-color: rgb(45 55 72);
+                padding: 13px 1rem;
+                @include lg{
+                    padding: 13px 1.75rem;
+                }
+                & .pnltxt{
+                    font-size: 13px;
+                }
+                & .mainCArd{
+                    @include sm{
+                        padding-left: 10px;
+                        border-left: 2px solid $theme6;
+                    }
+                    & .pnlimg{
+                        height: 18px;
+                        width: 18px;
+                        display: flex;
+                    }
+                    & .txt{
+                        color: $theme2;
+                        line-height: 100%;
+                        font-size: 13px;
+                    }
+                    & .arrowimg{
+                        height: 10px;
+                        width: 10px;
+                        display: flex;
+                    }
+                }
+            }
+            & .walletTable{
+                margin-top: 20px;
+                background-color: $theme1;
+                
+                & .mainCard{
+                    padding: 40px 20px;
+                    & .heading{
+                        font-size: 18px;
+                        font-weight: 700;
+                        padding: 20px 0 5px 0;
+                        @include md{
+                            font-size: 20px;
+                        }
+                    }
+                    & .subHEad{
+                        font-size: 12px;
+                        font-weight: 500;
+                        color: $theme6;
+                        @include md{
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+// wallet Section ends
+
+
+.table{
+    margin: 0px;
+    & tr {
+        & th, & td {
+            padding: 0.5rem 1rem;
+            white-space: nowrap;
+            font-size: 12px;
+            font-weight: 400;
+            @include lg{
+                font-size: 14px;
+                padding: 0.7rem 1.5rem;
+            }
+        }
+    }
+    & thead{
+        background-color:  lighten($theme1, 10);
+        border-color: $theme6 ;
+        & tr{
+            font-weight: normal ;
+            & th{
+                background-color: lighten($theme1, 5);
+                color: rgba($white, 0.8);
+            }
+        }
+    }
+    & tbody{
+        & tr{
+            & td {
+                color: $white;
+            }
+            &:last-child{
+                & td{
+                    border: none;
+                }
+            }
+            
+            & .coinName{
+                font-size: 13px;
+                font-weight: 700;
+                white-space: nowrap;
+                @include lg{
+                    font-size: 15px;
+                }
+                & .bracket{
+                    font-size: 12px;
+                    @include lg{
+                        font-size: 10px;
+                    }
+                }
+            }
+            & .coinImg{
+                height: 24px;
+                width: 24px;
+                min-width: 24px;
+                border-radius: 100%;
+                overflow: hidden;
+                @include lg{
+                    min-width: 30px;
+                    height: 30px;
+                    width: 30px;
+                }
+            }
+        }
+    }
+    &>:not(caption)>*>*{
+        border-color: lighten($theme1, 5);
+    }
+}
+
+
+// plans Section start
+
+.sectionHeading{
+    font-size: 38px;
+    font-weight: 800;
+    text-align: center;
+    color: #fff;
+    padding-block: 20px;
+    font-family: Roboto;
+    @include lg{
+        font-size: 55px;
+    }
+    @include sm{
+        font-size: 45px;
+    }
+}
+
+.planSection {
+    // min-height: 100vh;
+    // background: url("../img/backgroundCards.jfif");
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // color: white;
+    // font-family: Roboto;
+    font-size: 16px;
+}
+
+
+
+
+.main-card {
+    padding: 30px;
+    background: $black;
+    border: 2px solid lighten($black, 8);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    & .main-card_title {
+        font-weight: normal;
+        font-size: 16px;
+        margin-bottom: 20px;
+        padding: 4px 20px;
+        border-radius: 40px;
+        background: $theme1;
+        display: inline-block;
+        margin-left: auto;
+    }
+    &.active{
+        & .main-card_title{
+            background-color: $theme2;
+        }
+    }
+}
+
+
+.pricing {
+    font-weight: normal;
+    font-size: 60px;
+    line-height: 1;
+}
+
+.saveamount {
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.pricing .small {
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+.border-div {
+    margin-top: 70px;
+    border-top: 1px solid #ffffff43;
+    backdrop-filter: blur(10px);
+}
+
+.features {
+    margin: 40px 0;
+    list-style-position: inside;
+}
+
+.features li {
+    padding-bottom: 10px;
+}
+
+a.cta_btn {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    background: $theme1;
+    border-radius: 50px;
+    padding: 13px 0;
+    color: $white;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: all .3s ease-in-out;
+    font-size: 16px;
+    @include lg{
+        padding: 20px 0;
+    }
+    @include md{
+        padding: 15px 0;
+    }
+}
+
+a.cta_btn:hover {
+    background: lighten($theme1, 5);
+}
+.active a.cta_btn{
+    background: $theme2;
+    transition: all .3s ease-in-out;
+}
+.active a.cta_btn:hover{
+    background: lighten($theme2, 5);
+}
+.active.main-card{
+    border: 1px solid $theme2;
+}
+.link {
+    position: fixed;
+    background-color: #D12322;
+    padding: 23px 40px;
+    right: -99px;
+    border-radius: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    transform: rotate(-90deg);
+    font-size: 18px;
+    font-weight: 500;
+    color: #FFF;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: all .1s ease-in-out;
+}
+
+.link i {
+    padding-left: 7px;
+}
+
+.link:hover {
+    text-decoration: underline;
+    background-color: black;
+}
+@media only screen and (max-width: 1024px) {
+    
+}
+@media only screen and (max-width: 768px) {
+    .main-card{
+        padding: 30px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .planSection {
+        font-size: 14px;
+    }
+
+    .main-card {
+        padding: 20px;
+    }
+
+    .main-card_title {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+
+    .pricing {
+        font-size: 52px;
+    }
+
+    .border-div {
+        margin-top: 50px;
+        border-top: 1px solid;
+        backdrop-filter: blur(10px);
+    }
+}
