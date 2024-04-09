@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{ useState } from 'react'
 import Chart from '../../component/Chart/Candlestick';
 import Topbar from '../../component/Topbar/Topbar';
 import Heighlowcryptogroup from '../../component/Heighlowcryptogroup/Heighlowcryptogroup';
@@ -8,6 +8,12 @@ import Lasttradegroup from '../../component/Lasttradegroup/Lasttradegroup';
 import Coinbysell from '../../component/Coinbysell/Coinbysell';
 
 const Home = () => {
+
+  const [selectedCoin, setSelectedCoin] = useState('')
+const onCoinSelect = (coin) => {
+    setSelectedCoin(coin);
+    console.log( "Coin selected",coin);
+}
   return (
     <>
       <div className="container-fluid maindashboard overflow-hidden">
@@ -29,14 +35,14 @@ const Home = () => {
                       <div className="h-100 overflow-y-auto overflow-x-hidden">
                         <div className="row h100 row-gap-2 cryptocoinspart chartpart gx-2 overflow-xhidden">
                           {/* cripto Side */}
-                          <Asidebar/>
+                          <Asidebar onCoinSelect= {onCoinSelect}/>
                           {/* cripto Side End */}
                           {/* chart side */}
                           <div className="col-12 col-sm h-100 overflow-y-auto chartHeight">
                             <div className="candelChart">
                               {/* <div className="chart bg-theme1 d-flex align-items-center overflow-hidden" id="chart" /> */}
                               <div className="chart bg-theme1  overflow-hidden">
-                                <Chart/>
+                                <Chart CoinDetails={selectedCoin}/>
                               </div>
                             </div>
                           </div>

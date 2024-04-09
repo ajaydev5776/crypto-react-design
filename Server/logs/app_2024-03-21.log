@@ -1,0 +1,59 @@
+2024/03/20 19:16:22 server.go:23: Init Crypto Server
+2024/03/20 19:16:22 server.go:24: Starting Server....
+2024/03/20 19:16:22 server.go:40: Listing on port :4480
+2024/03/20 19:18:43 requestRoute.go:22: Error : CoinName should not be empty
+2024/03/20 19:20:11 mongohelper.go:36: Error while ping mongo client reson:  server selection error: server selection timeout, current topology: { Type: Unknown, Servers: [{ Addr: 127.0.0.1:27017, Type: Unknown, Last error: connection() error occured during connection handshake: dial tcp 127.0.0.1:27017: connectex: No connection could be made because the target machine actively refused it. }, ] }
+2024/03/20 19:20:11 mongohelper.go:37: server selection error: server selection timeout, current topology: { Type: Unknown, Servers: [{ Addr: 127.0.0.1:27017, Type: Unknown, Last error: connection() error occured during connection handshake: dial tcp 127.0.0.1:27017: connectex: No connection could be made because the target machine actively refused it. }, ] }
+2024/03/21 06:16:43 server.go:23: Init Crypto Server
+2024/03/21 06:16:43 server.go:24: Starting Server....
+2024/03/21 06:16:43 server.go:40: Listing on port :4480
+2024/03/21 06:17:25 mongohelper.go:39: Connected to mongoDB!!!
+2024/03/21 06:17:25 requestDAO.go:40: 
+result type: primitive.M
+2024/03/21 06:17:25 requestDAO.go:41: result: map[APIDocLink:https://min-api.cryptocompare.com/documentation APIFor:Min API_Key: AllowedHitPerMin:5 LastHitTime: LastMinHitCount:0 Method:Get Payload: QueryParams: TotalHitTilNow:0 Url:https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=USD&limit=1000&tryConversion=true _id:ObjectID("65f6a554421662dc98ba1391")]
+2024/03/21 06:19:23 requestDAO.go:40: 
+result type: primitive.M
+2024/03/21 06:19:23 requestDAO.go:41: result: map[APIDocLink:https://min-api.cryptocompare.com/documentation APIFor:Min API_Key: AllowedHitPerMin:5 CoinName:BTC LastHitTime: LastMinHitCount:0 Method:Get Payload: QueryParams: TotalHitTilNow:0 Url:https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=USD&limit=1000&tryConversion=true _id:ObjectID("65f6a554421662dc98ba1391")]
+2024/03/21 06:19:23 requestDAO.go:40: 
+result type: primitive.M
+2024/03/21 06:19:23 requestDAO.go:41: result: map[APIDocLink:https://min-api.cryptocompare.com/documentation APIFor:Min API_Key: AllowedHitPerMin:5 CoinName:ETH LastHitTime: LastMinHitCount:0 Method:Get Payload: QueryParams: TotalHitTilNow:0 Url:https://min-api.cryptocompare.com/data/v2/histominute?fsym=ETH&tsym=USD&limit=1000&tryConversion=true _id:ObjectID("65fbd164b57e81d4d1fed666")]
+2024/03/21 06:35:59 server.go:58: Shutting down server...
+2024/03/21 06:36:07 server.go:23: Init Crypto Server
+2024/03/21 06:36:07 server.go:24: Starting Server....
+2024/03/21 06:36:07 server.go:40: Listing on port :4480
+2024/03/21 06:36:32 mongohelper.go:39: Connected to mongoDB!!!
+2024/03/21 06:36:32 requestDAO.go:42: 
+result type: primitive.M
+2024/03/21 06:36:32 requestDAO.go:43: result: map[_id:ObjectID("65f6a554421662dc98ba1391") allowedHitPerMin:5 apiDocLink:https://min-api.cryptocompare.com/documentation apiFor:Min api_Key: coinName:BTC lastHitTime: lastMinHitCount:0 method:Get payload: queryParams: totalHitTilNow:0 url:https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=USD&limit=1000&tryConversion=true]
+2024/03/21 06:38:08 requestDAO.go:42: 
+result type: primitive.M
+2024/03/21 06:38:08 requestDAO.go:43: result: map[_id:ObjectID("65f6a554421662dc98ba1391") allowedHitPerMin:5 apiDocLink:https://min-api.cryptocompare.com/documentation apiFor:Min api_Key: coinName:BTC lastHitTime: lastMinHitCount:0 method:Get payload: queryParams: totalHitTilNow:0 url:https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=USD&limit=1000&tryConversion=true]
+2024/03/21 06:39:36 requestDAO.go:42: 
+result type: primitive.M
+2024/03/21 06:39:36 requestDAO.go:43: result: map[_id:ObjectID("65fbd61cb57e81d4d1fed7e8") allowedHitPerMin:5 apiDocLink:https://min-api.cryptocompare.com/documentation apiFor:Min api_Key: coinName:ETH lastHitTime: lastMinHitCount:0 method:Get payload: queryParams: totalHitTilNow:0 url:https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=USD&limit=1000&tryConversion=true]
+2024/03/21 06:55:16 server.go:58: Shutting down server...
+2024/03/21 06:55:23 server.go:23: Init Crypto Server
+2024/03/21 06:55:23 server.go:24: Starting Server....
+2024/03/21 06:55:23 server.go:40: Listing on port :4480
+2024/03/21 06:55:39 mongohelper.go:39: Connected to mongoDB!!!
+2024/03/21 07:24:36 server.go:58: Shutting down server...
+2024/03/21 07:24:41 server.go:23: Init Crypto Server
+2024/03/21 07:24:41 server.go:24: Starting Server....
+2024/03/21 07:24:41 server.go:40: Listing on port :4480
+2024/03/21 07:25:17 mongohelper.go:39: Connected to mongoDB!!!
+2024/03/21 07:25:17 requestDAO.go:58: IN GetCoinDataFromAPIDAO
+2024/03/21 17:01:48 server.go:58: Shutting down server...
+2024/03/21 17:02:01 server.go:23: Init Crypto Server
+2024/03/21 17:02:01 server.go:24: Starting Server....
+2024/03/21 17:02:01 server.go:40: Listing on port :4480
+2024/03/21 17:02:30 mongohelper.go:39: Connected to mongoDB!!!
+2024/03/21 17:02:30 requestDAO.go:59: IN GetCoinDataFromAPIDAO
+2024/03/21 17:02:52 requestDAO.go:72: Error in HTTP request Get "https://min-api.cryptocompare.com/data/v2/histominute?fsym=BTC&tsym=USD&limit=1000&tryConversion=true": dial tcp 20.4.130.154:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+2024/03/21 17:13:17 requestDAO.go:59: IN GetCoinDataFromAPIDAO
+2024/03/21 18:20:07 server.go:58: Shutting down server...
+2024/03/21 18:20:14 server.go:23: Init Crypto Server
+2024/03/21 18:20:14 server.go:24: Starting Server....
+2024/03/21 18:20:14 server.go:40: Listing on port :4480
+2024/03/21 18:20:33 mongohelper.go:39: Connected to mongoDB!!!
+2024/03/21 18:20:33 requestDAO.go:59: IN GetCoinDataFromAPIDAO
+2024/03/21 18:35:38 server.go:58: Shutting down server...

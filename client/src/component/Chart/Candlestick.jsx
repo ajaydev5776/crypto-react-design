@@ -1,9 +1,8 @@
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import ReactApexChart from 'react-apexcharts';
 
 
-const Candlestick = () => {
-
+const Candlestick = ({CoinDetails}) => {
   const [options, setObject] = useState(
     {
       chart: {
@@ -11,7 +10,7 @@ const Candlestick = () => {
         height: 450,
       },
       title: {
-        text: "BTC/INR",
+        text: CoinDetails+"/INR",
         align: "left",
       },
       xaxis: {
@@ -56,6 +55,14 @@ const Candlestick = () => {
       }
     }
   )
+
+  useEffect(()=>{
+    setObject((prevState) => ({
+      ...prevState,
+      title:{text: CoinDetails + "/INR"},
+    }));
+    // options.title.text = 
+  },[CoinDetails])
 
   const [series, setSeries] = useState(
     [{

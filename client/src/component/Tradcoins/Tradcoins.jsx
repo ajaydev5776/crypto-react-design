@@ -3,10 +3,10 @@ import Stargray from '../../assets/img/icon/star-gray.svg'
 import Switchsvg from '../../assets/img/icon/Switchsvg.svg'
 import Bitcoin from '../../assets/img/btc.png'
 
-const Tradcoins = ({coinName, coincurrency, coinplatform, coinprich, coinheightLow, isHighlighted}) => {
+const Tradcoins = ({coinName, coincurrency, coinplatform, coinprich, coinheightLow, isHighlighted, onCoinSelect}) => {
   return (
     <>
-     <div className="card coincard border-0 rounded-0">
+     <div className="card coincard border-0 rounded-0" onClick={()=> onCoinSelect(coinName)}>
         <div className="card-body d-flex align-items-center justify-content-between">
             <div className="cryptoside d-flex align-items-center gap-2">
             <div className="starimg d-inline-flex"><img src={Stargray} alt="star" /></div>
