@@ -1,0 +1,226 @@
+@include media-breakpoint(basic) {
+}
+@include media-breakpoint-up(sm) {}
+
+@include media-breakpoint-up(md) {}
+
+@include media-breakpoint-up(lg) {}
+
+@include media-breakpoint-up(xl) {}
+
+@include media-breakpoint-up(xxl) {}
+
+
+@include media-breakpoint-down(xxl) {}
+
+@include media-breakpoint-down(xl) {}
+
+@include media-breakpoint-down(lg) {
+    
+    .asidemenu{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 3;
+        //transform: translateX(-102%);
+        transform: translateX(-234px);
+        width: 0;
+        transition: all ease-in-out .5s;
+        -webkit-transition: all ease-in-out .5s;
+        &.active{
+            transform: unset;
+            width: 280px;
+            opacity: 1;
+            visibility: visible;
+            padding: 0px 1rem;   
+            transition: all ease-in-out .5s;
+            -webkit-transition: all ease-in-out .5s; 
+        }
+    } 
+    .rightside{
+        & .card{
+            &  .form-select{
+                font-size: 12px;
+            }
+            & span{
+                font-size: 12px;
+            }
+            & .input-group {
+                & i{
+                    font-size: 12px;
+                }
+                & input{
+                    padding: 0px;
+                    font-size: 12px;
+                }
+            }
+            & table{
+                & thead{
+                    vertical-align: middle;
+                }
+            }
+        }
+        & .profile-section{
+            & .navbar-vertical{
+                padding: 0;
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(md) {
+ 
+}
+
+@include media-breakpoint-down(sm) {
+    .logo{
+        height: 35px;
+        display: flex;
+        & img{
+            height: 100%;
+        }
+    }
+    .asidemenu{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        z-index: 3;
+        // transform: translateX(-102%);
+        transform: translateX(-234px);
+        width: 0;
+        transition: all ease-in-out .5s;
+        -webkit-transition: all ease-in-out .5s; 
+        &.active{
+            transform: unset;
+            width: 215px;
+            opacity: 1;
+            visibility: visible;
+            padding: 0px;
+            transition: all ease-in-out .5s; 
+        }
+    } 
+    .rightside{
+        & .card{ 
+            & .dataTables_wrapper{
+                & .dataTables_length{
+                    & label{
+                        margin: 0;
+                        font-size: 12px;
+                    }
+                }
+                & .dataTables_paginate{
+                    font-size: 12px;
+                    padding-top: 10px !important;
+                }
+            }
+            & table {
+                & .avatar{
+                    height: 20px;
+                    width: 20px;
+                }
+                & thead,tbody {
+                    & tr{
+                        & th,td{
+                            font-size: 12px;
+                            & span{
+                                font-size: 9px;
+                            }
+                            & img{
+                                height: 20px;
+                                width: 20px;
+                            }
+                            & .text-inherit{
+                                font-size: 12px;
+                            }
+                            & .btn-group{
+                                & .btn{
+                                    font-size: 12px;
+                                }
+                            }
+                        } 
+                    }
+                }
+            }
+            & .dropdown{
+                & .btn{
+                    font-size: 12px;
+                }
+            }
+        }
+        & .page-header-tabs{
+            & .nav-item {
+                & .nav-link{
+                    padding: 10px;
+                    font-size: 12px;
+                }
+            }
+        }
+        & .dashboard {
+            & .info-card {
+                & .card-body {
+                    & .card-title{
+                        font-size: 12px;
+                    }
+                    & .numb{
+                        font-size: 20px;
+                    }
+                    & .avatar-sm{
+                        height: 2.5rem;
+                        width: 2.5rem; 
+                        & svg{
+                            height: 20px;
+                            width: 20px;
+                        }
+                    }
+                }
+            }
+        }
+        & .profile-section{
+            & .navbar-vertical{
+                padding: 0;
+            }
+        }
+    } 
+    .dataTables_wrapper .dataTables_paginate {
+        margin-top: 0 !important;
+    }
+    .form-label{
+        font-size: 12px;
+    }
+    .form-control{
+        font-size: 12px !important;
+    }
+    .form-check-label{
+        font-size: 12px;
+    }
+    .content{
+        font-size: 12px;
+    }
+    .btn{
+        font-size: 12px;
+    }
+    .btn-close{
+        font-size: 12px;
+    }
+    .modal{
+        & .modal-content{ 
+            & .nav-pills {
+                & .nav-link{
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    .register{
+        & .card{
+            & .card-body{
+                & .card-title{
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+

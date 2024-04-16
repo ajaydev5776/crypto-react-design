@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PFW || User Wallet</title>
+    <!-- *Bootstrap Css* -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- *Custom Css* -->
+    <link rel="stylesheet" href="assets/css/custom.min.css">
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <!-- DataTables Select CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.4/css/select.dataTables.min.css">
+    <!-- *Fontawesome 5* -->   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body >
+    <!-- *Admin Structure Start* -->
+    <div class="container-fluid vh-100 overflow-hidden">
+        <div class="row h-100">
+          <div class="col-auto h-100 asidemenu"  id="asidebar">
+              <!-- Aside Bar Start -->
+              <aside class="asidebar bg-white h-100 row flex-nowrap flex-column">
+                <div class="col-12 logopart">
+                    <a href="admin.html" class="logo mx-3"><img src="assets/img/logo.svg" alt="log"></a>
+                    <button class="switch-icn bg-white border-0 ms-auto d-lg-none d-block" id="switchcancle"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="col-12 h-100 flex-fill overflow-y-auto overflow-x-hidden">
+                    <div class="asideitem p-3">
+                      <ul class="navlist list-unstyled m-0 p-0">
+                          <li><a href="admin.html" class="navitems"><i class="fas fa-home"></i> Dashboard</a></li>
+                          <li><a href="new-user.html" class="navitems"><i class="far fa-user"></i> Add New User</a></li>
+                          <li><a href="user-wallet.html" class="navitems active"><i class="fas fa-wallet"></i> User Wallet</a></li>
+                          <li><a href="user-history.html" class="navitems"><i class="fas fa-shopping-bag"></i> User History</a></li>
+                      </ul>
+                    </div>
+                </div>
+              </aside>
+              <!-- Aside Bar End -->
+          </div>
+          <div class="col h-100 rightside">
+              <div class="row h-100 flex-column flex-nowrap">
+                <div class="col-12 header d-flex align-items-center bg-white">
+                    <div class=" logopart d-lg-none d-block">
+                      <a href="admin.html" class="logo mx-3"><img src="assets/img/logo.svg" alt="log"></a> 
+                    </div>
+                    <button class="switch-icn bg-white border-0" id="switch"><i class="fas fa-bars"></i></button>
+                    <div class="search-bar d-lg-block d-none">
+                      <form class="search-form d-flex align-items-center w-100" method="POST" action="#">
+                          <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+                          <button type="button" title="Search"><i class="fas fa-search"></i></button>
+                      </form>
+                    </div>
+                    <!-- End Search Bar -->
+                    <nav class="header-nav ms-auto">
+                      <ul class="d-flex align-items-center">
+                          <li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile position-relative text-dark d-inline-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                            </a><!-- End Profile Iamge Icon -->
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile  overflow-hidden bg-white border-0">
+                                
+                                <li>
+                                  <a class="dropdown-item position-relative text-dark d-inline-flex align-items-center" href="index.html">
+                                                <span class="profile-icn d-flex align-items-center justify-content-center"><i class="fas fa-sign-out-alt"></i></span>
+                                                <span>Sign Out</span>
+                                            </a>
+                                </li>
+                            </ul>
+                            <!-- End Profile Dropdown Items -->
+                          </li>
+                          <!-- End Profile Nav -->
+                      </ul>
+                    </nav>
+                    <!-- End Icons Navigation -->
+                </div>
+                <div class="col-12 h-100 flex-fill overflow-y-auto">
+                    <div class="innerbody_part h-100">
+                      <div class="card h100 border-0 bg-transparent shadow-0">
+                          <div class="card-body h-100 px-0">
+                            <main id="content" role="main" class="main">
+                                <!-- Content -->
+                                <div class="content container-fluid profile-section">
+                                  <!-- Page Header -->
+                                  <div class="page-header">
+                                      <div class="row align-items-center mb-3">
+                                        <div class="col-sm">
+                                            <h3 class="page-header-title">User Wallet</h3>
+                                        </div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-xl-3 col-lg-4">
+                                        <!-- Navbar -->
+                                        <div class="navbar-expand-lg navbar-vertical mb-3 mb-lg-5 bg-white">
+                                            <!-- Navbar Toggle --> 
+                                            <div class="d-grid">
+                                              <button type="button" class="navbar-toggler btn btn-theme1 " data-bs-toggle="collapse" data-bs-target="#navbarVerticalNavMenu" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbarVerticalNavMenu">
+                                              <span class="d-flex justify-content-between align-items-center">
+                                              <span class="text-dark">Menu</span>
+                                              <span class="navbar-toggler-default">
+                                              <i class="fas fa-bars"></i>
+                                              </span>
+                                              <span class="navbar-toggler-toggled">
+                                              <i class="fas fa-times"></i>
+                                              </span>
+                                              </span>
+                                              </button>
+                                            </div>
+                                            <!-- End Navbar Toggle -->
+                                            <!-- Navbar Collapse -->
+                                            <div class="nav navtabs flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                              <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fas fa-wallet"></i> Add User Wallet</button>
+                                              <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="fas fa-question-circle"></i> Support Telegram</button>
+                                              <button class="nav-link" id="v-pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#v-pills-disabled" type="button" role="tab" aria-controls="v-pills-disabled" aria-selected="false"><i class="fab fa-telegram"></i> Plan Telegram</button>
+                                              <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fas fa-upload"></i> Upgrate Plan</button>
+                                            </div>
+                                            <!-- End Navbar Collapse -->
+                                        </div>
+                                        <!-- End Navbar -->
+                                      </div>
+                                      <div class="col-xl-9 col-lg-8">
+                                        <div class="tab-content" id="v-pills-tabContent">
+                                            <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+                                              <div class="card overflow-hidden">
+                                                  <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                                                    <div class="col">
+                                                        <h5 class="card-title my-2">Add Amount</h5>
+                                                    </div>
+                                                  </div>
+                                                  <div class="card-body">
+                                                    <form>
+                                                        <div class="row mb-4">
+                                                          <label for="phoneLabel" class="col-sm-3 col-form-label form-label">Phone Number</label>
+                                                          <div class="col-sm-9">
+                                                              <input type="tel" class="form-control" name="phone" id="phoneLabel" placeholder="Enter phone number" aria-label="Enter phone number">
+                                                          </div>
+                                                        </div>
+                                                        <div class="row mb-4">
+                                                          <label for="organizationLabel" class="col-sm-3 col-form-label form-label">Total Amount</label>
+                                                          <div class="col-sm-9">
+                                                              <input type="text" class="form-control" name="organization" id="organizationLabel" placeholder="Total amount" aria-label="Create password">
+                                                          </div>
+                                                        </div>
+                                                        <div class="d-flex justify-content-end">
+                                                          <button type="button" class="btn btn-theme2" data-bs-toggle="modal" data-bs-target="#adduser">Submit</button>
+                                                        </div>
+                                                    </form>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab" tabindex="0">
+                                              <div class="card overflow-hidden">
+                                                  <div class="card-header bg-white">
+                                                    <h5 class="card-title my-2">Change Support Telegram Link</h5>
+                                                  </div>
+                                                  <div class="card-body">
+                                                    <form id="changePasswordForm">
+                                                        <div class="row mb-4">
+                                                          <label for="currentPasswordLabel" class="col-sm-3 col-form-label form-label">Add Telegram Link</label>
+                                                          <div class="col-sm-9">
+                                                              <input type="tel" class="form-control" name="currentPassword" id="currentPasswordLabel" placeholder="Enter telegram link" aria-label="Enter telegram link">
+                                                          </div>
+                                                        </div>
+                                                        <div class="d-flex justify-content-end">
+                                                          <button type="button" class="btn btn-theme2" data-bs-toggle="modal" data-bs-target="#supporttelegram">Change Link</button>
+                                                        </div>
+                                                    </form>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-disabled" role="tabpanel" aria-labelledby="v-pills-disabled-tab" tabindex="0">
+                                              <div class="card overflow-hidden">
+                                                  <div class="card-header bg-white">
+                                                    <h5 class="card-title my-2">Change Palns Telegram Account</h5>
+                                                  </div>
+                                                  <div class="card-body">
+                                                    <form id="changePasswordForm">
+                                                        <div class="row mb-4">
+                                                          <label for="referasmount" class="col-sm-3 col-form-label form-label"> Add Telegram Links</label>
+                                                          <div class="col-sm-9">
+                                                              <input type="text" class="form-control" name="currentPassword" id="referasmount" placeholder="Enter telegram link" aria-label="Enter link quantity">
+                                                          </div>
+                                                        </div>
+                                                        <div class="d-flex justify-content-end">
+                                                          <button type="button" class="btn btn-theme2" data-bs-toggle="modal" data-bs-target="#plantelegramlink">Change Links</button>
+                                                        </div>
+                                                    </form>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab" tabindex="0">
+                                              <div  class="card overflow-hidden">
+                                                  <div class="card-header bg-white">
+                                                    <h5 class="card-header-title my-2"> Upgrate User Plans</h5>
+                                                  </div>
+                                                  <div class="card-body">
+                                                    <form>
+                                                        <div class="row mb-4">
+                                                          <label for="phoneLabel1" class="col-sm-3 col-form-label form-label">Phone Number</label>
+                                                          <div class="col-sm-9">
+                                                              <input type="tel" class="form-control" name="phone" id="phoneLabel1" placeholder="Enter phone number" aria-label="Enter phone number">
+                                                          </div>
+                                                        </div>
+                                                        <div class="row mb-4">
+                                                          <label for="organizationLabel1" class="col-sm-3 col-form-label form-label">Upgrate Plan Amount</label>
+                                                          <div class="col-sm-9">
+                                                              <input type="text" class="form-control" name="organization" id="organizationLabel1" placeholder="Upgrate plan amount" aria-label="Upgrate plan Amount">
+                                                          </div>
+                                                        </div>
+                                                        <div class="d-flex justify-content-end">
+                                                          <button type="button" class="btn btn-theme2" data-bs-toggle="modal" data-bs-target="#adduser">Submit</button>
+                                                        </div>
+                                                    </form>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                        </div>
+                                        <!-- Sticky Block End Point -->
+                                        <div id="stickyBlockEndPoint"></div>
+                                      </div>
+                                  </div>
+                                </div>
+                            </main>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+          </div>
+        </div>
+    </div>
+    <!-- Modal User Login Details -->
+
+    <!-- Modal User Login Details -->
+    <div class="modal fade" id="userresetpassword" tabindex="-1" aria-labelledby="userresetpasswordLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <form class="modal-content">
+              <!-- Header -->
+              <div class="modal-header">
+                <h5 class="modal-title" id="accountEditCardModalLabel">User Reset Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <!-- End Header -->
+              <div class="modal-body">
+                <div class="mb-4">
+                    <label for="editCardNumberLabel" class="form-label">User New Password</label>
+                    <input type="text" class="js-input-mask form-control" name="cardNumber" id="editCardNumberLabel" placeholder="Maria@123456" aria-label="Maria@123456" value="Maria@123456">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <div class="d-flex justify-content-end gap-3">
+                    <button type="button" class="btn btn-theme1" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-theme2">Copy Details</button>
+                </div>
+              </div>
+          </form>
+        </div>
+    </div>
+    <!-- modal plan telegram link change -->
+    <div class="modal fade" id="supporttelegram" tabindex="-1" aria-labelledby="supporttelegramLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <!-- Body -->
+        <div class="modal-body py-4">
+            <div class="row row-gap-4">
+            <div class="col-auto mx-auto"><div class=""><i class="fas fa-exclamation-circle fs-80 text-success"></i></div></div>
+            <div class="col-12 text-center"><h3 class="m-0">Are You Sure?</h3></div>
+            <p class="fs-6 text-center m-0">Telegram link will be changed in the support. Do you confirm this?</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-theme1" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-theme2">Confirm</button>
+        </div>
+        <!-- End Body -->
+        </div>
+    </div>
+    </div>
+    <!-- modal plan telegram link change -->
+    <div class="modal fade" id="plantelegramlink" tabindex="-1" aria-labelledby="plantelegramlinkLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+        <!-- Body -->
+        <div class="modal-body py-4">
+            <div class="row row-gap-4">
+            <div class="col-auto mx-auto"><div class=""><i class="fas fa-exclamation-circle fs-80 text-success"></i></div></div>
+            <div class="col-12 text-center"><h3 class="m-0">Are You Sure?</h3></div>
+            <p class="fs-6 text-center m-0">Telegram link will be changed in the plans. Do you confirm this?</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-theme1" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-theme2">Confirm</button>
+        </div>
+        <!-- End Body -->
+        </div>
+    </div>
+    </div>
+    <!-- Modal -->
+      <!-- modal Payment -->
+      <div class="modal fade" id="adduser" tabindex="-1" aria-labelledby="adduserLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <!-- Body -->
+            <div class="modal-body py-4">
+                <div class="row row-gap-4">
+                <div class="col-auto mx-auto"><div class=""><i class="fas fa-exclamation-circle fs-80 text-success"></i></div></div>
+                <div class="col-12 text-center"><h3 class="m-0">Are You Sure?</h3></div>
+                <p class="fs-6 text-center m-0">Role Users will be payment. Do you confirm that?</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-theme1" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-theme2">Confirm</button>
+            </div>
+            <!-- End Body -->
+            </div>
+        </div>
+    </div>
+    <!-- Admin Structure End -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- DataTables -->
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script> 
+    <!-- DataTables Select JS -->
+    <script src="https://cdn.datatables.net/select/1.3.4/js/dataTables.select.min.js"></script>
+    <!-- *Bootstrap Js* -->
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- *Custom Js* -->
+    <script src="assets/js/main.js"></script> 
+    <script>
+        $(document).ready(function(){
+        $('#navbarSettings .nav-link').click(function(){
+        // Remove active class from all nav-links
+        $('#navbarSettings .nav-link').removeClass('active');
+        // Add active class to the clicked nav-link
+        $(this).addClass('active');
+        });
+        });
+    </script>
+  </body>
+</html>
