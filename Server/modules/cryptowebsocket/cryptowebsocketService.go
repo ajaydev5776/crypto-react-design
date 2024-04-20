@@ -7,16 +7,19 @@ import (
 	"os"
 	"practice/project/crypto-react-design/Server/models/request"
 	"practice/project/crypto-react-design/Server/modules/database"
+	"sync"
 
 	"strconv"
 	"time"
 
 	websocket "github.com/gorilla/websocket"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 	"gopkg.in/mgo.v2/bson"
 )
 
 var isStreamingOn = false
+var Mux = &sync.RWMutex{}
 
 func WebsocketReaderService(conn *websocket.Conn) {
 	for {
@@ -34,7 +37,7 @@ func WebsocketReaderService(conn *websocket.Conn) {
 	}
 }
 
-func ServeWs(pool *Pool, conn *websocket.Conn, userId string) {
+func ServeWs(pool *Pool, conn *websocket.Conn, userId, coinName string) {
 	fmt.Println("WebSocket Endpoint hit")
 
 	// conn, err := Upgrade(w, r)
@@ -62,7 +65,7 @@ func ServeWs(pool *Pool, conn *websocket.Conn, userId string) {
 		fmt.Println("New Client is registerd for pool")
 		pool.Register <- client
 		// client.Read()
-		SendMsgToBrodcast(pool)
+		// SendMsgToBrodcast(pool, coinName)
 	}
 
 }
@@ -72,15 +75,17 @@ func ServeWs(pool *Pool, conn *websocket.Conn, userId string) {
 
 // }
 
-func SendMsgToBrodcast(pool *Pool) {
+//TODO: Add below function in cron job
+
+func SendMsgToBrodcast(pool *Pool, coinName string) {
 	if !isStreamingOn {
-		go GetBitCoinPrice(pool)
+		go GetBitCoinPrice(pool, coinName)
 		isStreamingOn = true
 	}
 
 }
 
-func GetBitCoinPrice(pool *Pool) (request.BitCoinTimeWiseData, error) {
+func GetBitCoinPrice(pool *Pool, coinName string) (request.BitCoinTimeWiseData, error) {
 
 	BitCoinData := request.BitCoinTimeWiseData{}
 	currentTime := time.Now()
@@ -92,8 +97,9 @@ func GetBitCoinPrice(pool *Pool) (request.BitCoinTimeWiseData, error) {
 		log.Println("Error creating a db connection", err)
 		return BitCoinData, err
 	}
-
+	fmt.Println("Coinname", coinName, inInt)
 	filter := bson.M{
+		"coinName": coinName,
 		"TimeFrom": bson.M{"$lt": inInt},
 		// "TimeTo": bson.M{"$gt": inInt - (3600 * int64(time.Second))},
 		"TimeTo": bson.M{"$gt": inInt},
@@ -122,6 +128,92 @@ func GetBitCoinPrice(pool *Pool) (request.BitCoinTimeWiseData, error) {
 	return BitCoinData, nil
 }
 
+var LastHourData = make(map[string][]request.BitCoinTimeWiseData)
+
+func SendDataToBroadcast(pool *Pool, coinName string) {
+	Data, ok := GetDataFromLastHourData(coinName)
+	minutIndex := time.Now().Minute()
+	if !ok {
+		log.Println("No Data found in cache for ", coinName)
+		Data, err := setCoinDataToMap(coinName)
+		if err != nil {
+			log.Println("ERRror in Seting Data to Map ", err)
+			return
+		}
+
+		pool, ok := PoolMap[coinName]
+		if ok {
+			message := Message{Type: 1, Body: strconv.Itoa(minutIndex), BitCoinPrice: Data[minutIndex]}
+			pool.Broadcast <- message
+		}
+	} else {
+		pool, ok := PoolMap[coinName]
+		if ok {
+			message := Message{Type: 1, Body: strconv.Itoa(minutIndex), BitCoinPrice: Data[minutIndex]}
+			pool.Broadcast <- message
+		}
+		fmt.Println("bitCoinValue mintet", minutIndex, " bitCaoinValue ", Data[minutIndex])
+	}
+
+}
+func TruncateToMin(t time.Time) time.Time {
+	return time.Date(t.Year(), t.Month(), t.Day(), t.Hour(), 0, 0, 0, t.Location())
+}
+func setCoinDataToMap(coinName string) ([]request.BitCoinTimeWiseData, error) {
+	var resultArr []request.BitCoinTimeWiseData
+	currHour := TruncateToMin(time.Now()).Unix()
+	ctx := context.Background()
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+	if err != nil {
+		log.Println("Error creating a db connection", err)
+		return []request.BitCoinTimeWiseData{}, err
+		// return BitCoinData, err
+	}
+	fmt.Println("Coinname", coinName, currHour)
+	// Pipeline := []bson.M{
+	// 	bson.M{"$match": bson.M{"coinName": coinName}},
+	// 	bson.M{"$match": bson.M{"$and": []bson.M{
+	// 		bson.M{"time": bson.M{"gte": currHour}},
+	// 		bson.M{"time": bson.M{"lt": currHour + 3600}},
+	// 	},
+	// 	},
+	// 	},
+	// }
+
+	filter := bson.M{
+		"coinName": coinName,
+		"time": bson.M{
+			"$gte": currHour,
+			"$lte": currHour + 3600,
+		},
+	}
+	options := options.Find().SetSort(bson.M{"time": 1})
+
+	res, err := conn.Database("cryptoServer").Collection("BitCoinData").Find(ctx, filter, options)
+
+	if err != nil {
+		log.Printf("no documents found for the params :", err)
+		return []request.BitCoinTimeWiseData{}, err
+		// return BitCoinData, res.Err()
+	}
+	if err := res.All(ctx, &resultArr); err != nil {
+		log.Println("Error in DAta binding", err)
+		return []request.BitCoinTimeWiseData{}, err
+	}
+	_, ok := GetDataFromLastHourData(coinName)
+	if !ok {
+		UpdateLastHourMap(coinName, resultArr)
+		log.Println("Data inserted for ", coinName, " on ", time.Now().String(), "count", len(resultArr))
+		return resultArr, nil
+	}
+	UpdateLastHourMap(coinName, resultArr)
+
+	log.Println("Data updated for ", coinName, " on ", time.Now().String(), "count", len(resultArr))
+	fmt.Println("reessss", resultArr)
+	return resultArr, nil
+}
+
 func (c *Client) Read() {
 	defer func() {
 		c.Pool.Unregister <- c
@@ -139,4 +231,18 @@ func (c *Client) Read() {
 		// c.Pool.Broadcast <- message
 		fmt.Println("MEssage Recived ", message)
 	}
+}
+
+func UpdateLastHourMap(coinName string, Data []request.BitCoinTimeWiseData) {
+	Mux.Lock()
+	LastHourData[coinName] = Data
+	Mux.Unlock()
+}
+
+func GetDataFromLastHourData(coinName string) ([]request.BitCoinTimeWiseData, bool) {
+	Mux.RLock()
+	Data, ok := LastHourData[coinName]
+	defer Mux.RUnlock()
+	return Data, ok
+
 }

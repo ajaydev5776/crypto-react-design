@@ -16,7 +16,7 @@ import (
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 func GetBitCoinPriceDAO(BitCoinReq request.Request) ([]request.ApiDetails, error) {
@@ -135,7 +135,38 @@ func InsertDataInMongo(BitcoinData request.BitCoinData) (int, error) {
 
 }
 
+func InsertHourlyDataInMongo(BitcoinData request.BitCoinData) ([]request.BitCoinTimeWiseData, error) {
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+
+	if err != nil {
+		log.Println("Error in Monog Connnection in insertDataInMongo", err)
+		return []request.BitCoinTimeWiseData{}, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+
+	next24HourData := []request.BitCoinTimeWiseData{}
+	docs := bson.A{}
+	for i, _ := range BitcoinData.Data {
+		BitcoinData.Data[i].CoinName = BitcoinData.CoinName
+		BitcoinData.Data[i].Time += 3600
+
+		docs = append(docs, BitcoinData.Data[i])
+	}
+	next24HourData = append(next24HourData, BitcoinData.Data...)
+	_, err = conn.Database("cryptoServer").Collection("BitCoinData").InsertMany(ctx, docs)
+
+	if err != nil {
+		log.Println("ERrror in Insert opration", err)
+		return []request.BitCoinTimeWiseData{}, err
+	}
+
+	return next24HourData, err
+
+}
+
 func GetAPIdetails(CoinName string) (request.ApiDetails, error) {
+
 	dsn := os.Getenv("MONGODSN")
 	conn, err := database.GetMongoConnection(dsn)
 	if err != nil {
@@ -184,13 +215,68 @@ func GetNext24HoursPriceDAO(BitCoinReq request.Request) (int, error) {
 	return noofrow, nil
 }
 
+func GetNextHourDataDAO(BitCoinReq request.Request) ([]request.BitCoinTimeWiseData, error) {
+	log.Println("IN : GetNextHourDataDAO")
+	log.Println("IN GetCoinDataFromAPIDAO")
+	var BitCoinResponse request.BitCoinDataFromApi
+
+	ApiDetails, err := GetAPIdetails(BitCoinReq.CoinName)
+
+	if err != nil {
+		log.Println("ERROR in fatching API Data")
+		return []request.BitCoinTimeWiseData{}, err
+	}
+	Request, ReqErr := http.NewRequest(http.MethodGet, ApiDetails.Url, bytes.NewBuffer([]byte{}))
+
+	if ReqErr != nil {
+		log.Println("Error in API Call :", ReqErr)
+		return []request.BitCoinTimeWiseData{}, ReqErr
+	}
+	Client := &http.Client{Timeout: 60 * time.Second}
+
+	responce, resErr := Client.Do(Request)
+
+	if resErr != nil {
+		log.Println("Error in HTTP request", resErr)
+		return []request.BitCoinTimeWiseData{}, resErr
+	}
+	defer responce.Body.Close()
+
+	ResBody, resBodyError := ioutil.ReadAll(responce.Body)
+	if resBodyError != nil {
+		log.Println(" ERROR : CheckLocalEligibiltyDAO  -", resBodyError)
+		return []request.BitCoinTimeWiseData{}, resBodyError
+	}
+
+	// fmt.Println("REponce from API", string(ResBody))
+
+	UnmarshalErr := json.Unmarshal(ResBody, &BitCoinResponse)
+
+	if UnmarshalErr != nil {
+		log.Println("ERROR : GetCoinDataFromAPIDAO unmarshal Error ", UnmarshalErr)
+
+		return []request.BitCoinTimeWiseData{}, nil
+	}
+	if responce.StatusCode == 200 {
+		// fmt.Println(BitCoinResponse)
+		BitCoinResponse.Data.CoinName = ApiDetails.CoinName
+
+		respData, err := InsertHourlyDataInMongo(BitCoinResponse.Data)
+		if err != nil {
+			return []request.BitCoinTimeWiseData{}, err
+		}
+		return respData, nil
+	} else {
+		return []request.BitCoinTimeWiseData{}, errors.New("Errrorr")
+	}
+}
+
 type resp struct {
 	Data request.BitCoinTimeWiseData `bson:"data"`
 }
 
 func GetPreviousDataDAO(payload request.PreviousDataRequest) ([]request.BitCoinTimeWiseData, error) {
 
-	var responseData []request.BitCoinTimeWiseData
 	fmt.Println("payload", payload)
 	dsn := os.Getenv("MONGODSN")
 	conn, err := database.GetMongoConnection(dsn)
@@ -201,38 +287,50 @@ func GetPreviousDataDAO(payload request.PreviousDataRequest) ([]request.BitCoinT
 	}
 
 	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
-
-	collection := conn.Database("cryptoServer").Collection("CoinsData")
+	var resultArr []request.BitCoinTimeWiseData
+	collection := conn.Database("cryptoServer").Collection("BitCoinData")
 	timeFrom := payload.CurrentTime - int64(3600*payload.BeforeTimeInHour)
 
-	fileter1 := bson.M{
-		"coinName": payload.CoinName,
-		"TimeFrom": bson.M{
-			"$lte": payload.CurrentTime,
-		},
-		"TimeTo": bson.M{
-			"$gte": payload.CurrentTime,
-		},
-	}
-
 	filter := bson.M{
-		"Data.time": bson.M{
-			"$gte": timeFrom,
+		"coinName": payload.CoinName,
+		"time": bson.M{
 			"$lte": payload.CurrentTime,
+			"$gte": timeFrom,
 		},
 	}
 
-	projection := bson.M{
-		"Data": 1,
-	}
-	fmt.Println("Filter ", fileter1)
-	fmt.Println("Filter2 ", filter)
-	cursor, err := collection.Aggregate(ctx, mongo.Pipeline{
-		{{"$match", fileter1}},
-		{{"$unwind", "$Data"}},
-		{{"$match", filter}},
-		{{"$project", projection}},
-	})
+	options := options.Find().SetSort(bson.M{"time": 1})
+
+	// fileter1 := bson.M{
+	// 	"coinName": payload.CoinName,
+	// 	"TimeFrom": bson.M{
+	// 		"$lte": payload.CurrentTime,
+	// 	},
+	// 	"TimeTo": bson.M{
+	// 		"$gte": payload.CurrentTime,
+	// 	},
+	// }
+
+	// filter := bson.M{
+	// 	"Data.time": bson.M{
+	// 		"$gte": timeFrom,
+	// 		"$lte": payload.CurrentTime,
+	// 	},
+	// }
+
+	// projection := bson.M{
+	// 	"Data": 1,
+	// }
+	// fmt.Println("Filter ", fileter1)
+	// fmt.Println("Filter2 ", filter)
+
+	cursor, err := collection.Find(ctx, filter, options)
+	// cursor, err := collection.Aggregate(ctx, mongo.Pipeline{
+	// 	{{"$match", fileter1}},
+	// 	{{"$unwind", "$Data"}},
+	// 	{{"$match", filter}},
+	// 	{{"$project", projection}},
+	// })
 
 	if err != nil {
 		log.Fatalln("Erron in Aggregate quesry ", err)
@@ -245,19 +343,13 @@ func GetPreviousDataDAO(payload request.PreviousDataRequest) ([]request.BitCoinT
 	// 	log.Fatal(err)
 	// }
 	// fmt.Println("respmds", responseDatad)
-	for cursor.Next(ctx) {
-		var result resp
 
-		if err := cursor.Decode(&result); err != nil {
-			log.Println("Error in Decoidng ", err)
-			return responseData, err
-		}
-		// fmt.Println("Data", result)
-		responseData = append(responseData, result.Data)
-
+	if err := cursor.All(ctx, &resultArr); err != nil {
+		log.Println("Error in DAta binding", err)
+		return resultArr, err
 	}
-	// fmt.Println("tenght", len(responseData))
+	fmt.Println("tenght", len(resultArr))
 
-	return responseData, nil
+	return resultArr, nil
 
 }

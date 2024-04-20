@@ -9,7 +9,13 @@ import Coinbysell from '../../component/Coinbysell/Coinbysell';
 
 const Home = () => {
 
-  const [selectedCoin, setSelectedCoin] = useState('')
+  const queryParameters = new URLSearchParams(window.location.search)
+  const type = queryParameters.get("type")
+  const name = queryParameters.get("name")
+
+  console.log("trypp",type, " mname",name)
+
+  const [selectedCoin, setSelectedCoin] = useState('BTC')
 const onCoinSelect = (coin) => {
     setSelectedCoin(coin);
     console.log( "Coin selected",coin);

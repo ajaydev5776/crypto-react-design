@@ -2,6 +2,7 @@ package api
 
 import (
 	"os"
+	"practice/project/crypto-react-design/Server/modules/admin"
 	"practice/project/crypto-react-design/Server/modules/cryptowebsocket"
 	"practice/project/crypto-react-design/Server/modules/request"
 
@@ -16,4 +17,13 @@ func Init(router *gin.Engine) {
 	o := router.Group("/o")
 	request.Init(o, r)
 	cryptowebsocket.Init(o, r)
+	admin.Init(o, r)
+
+	// config := cors.Config{
+	// 	AllowAllOrigins: true,
+	// 	// AllowOrigins:    []string{"http://localhost", "http://localhost:3000"},
+	// 	AllowMethods: []string{"POST", "GET", "PUT", "DELETE"},
+	// 	AllowHeaders: []string{"Content-Type", "Authorization", "Access-Control-Allow-Origin"},
+	// }
+	// router.Use(cors.New(config))
 }

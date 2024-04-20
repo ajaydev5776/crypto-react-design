@@ -1,0 +1,78 @@
+2024/04/17 18:48:07 server.go:24: Init Crypto Server
+2024/04/17 18:48:07 server.go:25: Starting Server....
+2024/04/17 18:48:07 server.go:48: Listing on port :4480
+2024/04/17 18:48:19 requestRoute.go:96: In GetPreviousData
+2024/04/17 18:48:19 requestRoute.go:96: In GetPreviousData
+2024/04/17 18:48:19 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/17 18:48:28 cron.go:24: in StartCronForCoin
+2024/04/17 18:48:58 cryptowebsocketService.go:137: No Data found in cache for  BTC
+2024/04/17 18:48:58 cryptowebsocketService.go:207: Data inserted for  BTC  on  2024-04-18 00:18:58.0154618 +0530 IST m=+50.065656001 count 50
+2024/04/17 18:49:34 requestRoute.go:96: In GetPreviousData
+2024/04/17 18:49:34 requestRoute.go:96: In GetPreviousData
+2024/04/17 18:51:35 requestRoute.go:96: In GetPreviousData
+2024/04/17 18:51:35 requestRoute.go:96: In GetPreviousData
+2024/04/17 18:55:37 requestRoute.go:96: In GetPreviousData
+2024/04/17 18:55:37 requestRoute.go:96: In GetPreviousData
+2024/04/17 18:58:16 requestRoute.go:96: In GetPreviousData
+2024/04/17 18:58:16 requestRoute.go:96: In GetPreviousData
+2024/04/17 18:58:36 requestRoute.go:96: In GetPreviousData
+2024/04/17 18:58:36 requestRoute.go:96: In GetPreviousData
+2024/04/17 18:58:47 requestRoute.go:96: In GetPreviousData
+2024/04/17 19:27:05 server.go:24: Init Crypto Server
+2024/04/17 19:27:05 server.go:25: Starting Server....
+2024/04/17 19:27:05 server.go:48: Listing on port :4480
+2024/04/17 19:27:44 requestDAO.go:219: IN : GetNextHourDataDAO
+2024/04/17 19:27:44 requestDAO.go:220: IN GetCoinDataFromAPIDAO
+2024/04/17 19:27:44 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/17 19:28:16 requestRoute.go:96: In GetPreviousData
+2024/04/17 19:28:16 requestRoute.go:96: In GetPreviousData
+2024/04/17 19:36:19 server.go:66: Shutting down server...
+2024/04/17 20:32:54 server.go:24: Init Crypto Server
+2024/04/17 20:32:54 server.go:25: Starting Server....
+2024/04/17 20:32:54 server.go:48: Listing on port :4480
+2024/04/17 20:33:48 adminRoute.go:22: IN AddNewUSer
+2024/04/17 20:34:09 adminRoute.go:22: IN AddNewUSer
+2024/04/17 20:35:34 server.go:66: Shutting down server...
+2024/04/17 20:35:34 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/17 20:35:38 server.go:24: Init Crypto Server
+2024/04/17 20:35:38 server.go:25: Starting Server....
+2024/04/17 20:35:38 server.go:48: Listing on port :4480
+2024/04/17 20:35:51 adminRoute.go:23: IN AddNewUSer
+2024/04/17 20:37:48 server.go:66: Shutting down server...
+2024/04/17 20:37:48 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/17 20:37:52 server.go:24: Init Crypto Server
+2024/04/17 20:37:52 server.go:25: Starting Server....
+2024/04/17 20:37:52 server.go:48: Listing on port :4480
+2024/04/17 20:38:05 adminRoute.go:23: IN AddNewUSer
+2024/04/17 20:39:48 server.go:66: Shutting down server...
+2024/04/17 20:39:48 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/17 20:39:53 server.go:24: Init Crypto Server
+2024/04/17 20:39:53 server.go:25: Starting Server....
+2024/04/17 20:39:53 server.go:48: Listing on port :4480
+2024/04/17 20:40:20 adminRoute.go:22: IN AddNewUSer
+2024/04/17 20:41:47 adminRoute.go:22: IN AddNewUSer
+2024/04/17 20:41:53 adminRoute.go:22: IN AddNewUSer
+2024/04/17 20:41:53 adminService.go:10: IN addNewUserService
+2024/04/17 20:41:53 adminDAO.go:20: IN Add USER DAO
+2024/04/17 20:41:53 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/17 20:41:53 adminRoute.go:53: Error in addNewUserService mongo: no documents in result
+2024/04/17 20:43:18 server.go:66: Shutting down server...
+2024/04/17 20:43:21 server.go:24: Init Crypto Server
+2024/04/17 20:43:21 server.go:25: Starting Server....
+2024/04/17 20:43:21 server.go:48: Listing on port :4480
+2024/04/17 20:43:55 adminRoute.go:22: IN AddNewUSer
+2024/04/17 20:43:55 adminService.go:10: IN addNewUserService
+2024/04/17 20:43:55 adminDAO.go:20: IN Add USER DAO
+2024/04/17 20:43:55 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/17 20:48:27 server.go:66: Shutting down server...
+2024/04/17 20:48:31 server.go:24: Init Crypto Server
+2024/04/17 20:48:31 server.go:25: Starting Server....
+2024/04/17 20:48:31 server.go:48: Listing on port :4480
+2024/04/17 20:48:45 adminRoute.go:22: IN AddNewUSer
+2024/04/17 20:48:45 adminService.go:10: IN addNewUserService
+2024/04/17 20:48:45 adminDAO.go:20: IN Add USER DAO
+2024/04/17 20:48:45 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/17 20:48:45 adminRoute.go:53: Error in addNewUserService phone number already exists
+2024/04/17 20:49:09 adminRoute.go:22: IN AddNewUSer
+2024/04/17 20:49:09 adminService.go:10: IN addNewUserService
+2024/04/17 20:49:09 adminDAO.go:20: IN Add USER DAO

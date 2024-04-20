@@ -35,6 +35,7 @@ type BitCoinData struct {
 }
 
 type BitCoinTimeWiseData struct {
+	CoinName         string  `json:"coinName" bson:"coinName"`
 	Time             int64   `json:"time" bson:"time"`
 	High             float64 `json:"high" bson:"high"`
 	Low              float64 `json:"low" bson:"low"`

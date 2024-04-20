@@ -15,6 +15,7 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
@@ -24,6 +25,13 @@ func main() {
 	log.Println("Starting Server....")
 
 	router := gin.Default()
+	config := cors.Config{
+		AllowAllOrigins: true,
+		// AllowOrigins:    []string{"http://localhost", "http://localhost:3000"},
+		AllowMethods: []string{"POST", "GET", "PUT", "DELETE"},
+		AllowHeaders: []string{"Content-Type", "Authorization", "Access-Control-Allow-Origin"},
+	}
+	router.Use(cors.New(config))
 	api.Init(router)
 
 	srv := &http.Server{

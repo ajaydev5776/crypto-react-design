@@ -16,16 +16,20 @@ import Refer from './pages/Refer/Refer';
 import Wallet from './pages/Wallet/Wallet';
 import OrderList from './pages/OrderList/OrderList';
 import Plans from './pages/Plans/Plans';
+import { ContextProvider } from './context/Auth.context.js';
+import LoginForm from './pages/Login/index.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<Layout/>}>
+  
+    <Route  path='/' element={<Layout/>} >
       <Route path='' element={<Home/>}/>
       <Route path='/orderlist' element={<OrderList/>}/>
       <Route path='/wallet' element={<Wallet/>}/>
       <Route path='/portfolio' element={<Portfolio/>}/>
       <Route path='/refer' element={<Refer/>}/>
-      <Route path='/plans' element={<Plans/>}/>
+      <Route path='/plans' element={<Plans/>} />
+      <Route path='/login' element={<LoginForm/>}/>
     </Route>
   )
 )
@@ -33,8 +37,10 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+     <ContextProvider value={500}>
     {/* <App /> */}
     <RouterProvider router={router}/>
+    </ContextProvider>
   </React.StrictMode>
 );
 

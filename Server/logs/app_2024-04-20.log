@@ -1,0 +1,36 @@
+2024/04/19 19:27:50 server.go:24: Init Crypto Server
+2024/04/19 19:27:50 server.go:25: Starting Server....
+2024/04/19 19:27:50 server.go:48: Listing on port :4480
+2024/04/19 19:28:03 requestDAO.go:219: IN : GetNextHourDataDAO
+2024/04/19 19:28:03 requestDAO.go:220: IN GetCoinDataFromAPIDAO
+2024/04/19 19:28:03 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/19 19:29:39 requestRoute.go:96: In GetPreviousData
+2024/04/19 19:29:39 requestRoute.go:96: In GetPreviousData
+2024/04/19 19:30:18 requestRoute.go:96: In GetPreviousData
+2024/04/19 19:30:18 requestRoute.go:96: In GetPreviousData
+2024/04/19 20:07:47 requestRoute.go:96: In GetPreviousData
+2024/04/19 20:07:47 requestRoute.go:96: In GetPreviousData
+2024/04/19 20:10:16 requestRoute.go:96: In GetPreviousData
+2024/04/19 20:10:16 requestRoute.go:96: In GetPreviousData
+2024/04/19 20:17:15 requestRoute.go:96: In GetPreviousData
+2024/04/19 20:17:15 requestRoute.go:96: In GetPreviousData
+2024/04/20 06:09:48 requestRoute.go:96: In GetPreviousData
+2024/04/20 06:09:48 requestRoute.go:96: In GetPreviousData
+2024/04/20 06:09:57 requestDAO.go:219: IN : GetNextHourDataDAO
+2024/04/20 06:09:57 requestDAO.go:220: IN GetCoinDataFromAPIDAO
+2024/04/20 06:10:13 requestRoute.go:96: In GetPreviousData
+2024/04/20 06:10:13 requestRoute.go:96: In GetPreviousData
+2024/04/20 06:10:51 requestRoute.go:96: In GetPreviousData
+2024/04/20 06:10:51 requestRoute.go:96: In GetPreviousData
+2024/04/20 06:11:46 requestRoute.go:96: In GetPreviousData
+2024/04/20 06:11:46 requestRoute.go:96: In GetPreviousData
+2024/04/20 06:12:36 requestRoute.go:96: In GetPreviousData
+2024/04/20 06:12:36 requestRoute.go:96: In GetPreviousData
+2024/04/20 06:12:57 requestRoute.go:96: In GetPreviousData
+2024/04/20 06:12:57 requestRoute.go:96: In GetPreviousData
+2024/04/20 10:01:59 requestRoute.go:96: In GetPreviousData
+2024/04/20 10:01:59 requestRoute.go:96: In GetPreviousData
+2024/04/20 10:02:11 requestDAO.go:219: IN : GetNextHourDataDAO
+2024/04/20 10:02:11 requestDAO.go:220: IN GetCoinDataFromAPIDAO
+2024/04/20 10:02:23 requestRoute.go:96: In GetPreviousData
+2024/04/20 10:02:24 requestRoute.go:96: In GetPreviousData

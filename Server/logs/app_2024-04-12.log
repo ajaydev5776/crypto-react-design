@@ -1,0 +1,97 @@
+2024/04/11 18:33:02 server.go:23: Init Crypto Server
+2024/04/11 18:33:02 server.go:24: Starting Server....
+2024/04/11 18:33:02 server.go:40: Listing on port :4480
+2024/04/11 18:33:47 cron.go:24: in StartCronForCoin
+2024/04/11 18:34:21 cron.go:24: in StartCronForCoin
+2024/04/11 18:34:48 cron.go:24: in StartCronForCoin
+2024/04/11 18:34:54 server.go:58: Shutting down server...
+2024/04/11 18:34:54 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/11 18:35:01 server.go:23: Init Crypto Server
+2024/04/11 18:35:01 server.go:24: Starting Server....
+2024/04/11 18:35:01 server.go:40: Listing on port :4480
+2024/04/11 18:35:20 cron.go:24: in StartCronForCoin
+2024/04/11 18:35:29 cron.go:24: in StartCronForCoin
+2024/04/11 18:36:08 server.go:58: Shutting down server...
+2024/04/11 18:36:08 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/11 18:36:11 server.go:23: Init Crypto Server
+2024/04/11 18:36:11 server.go:24: Starting Server....
+2024/04/11 18:36:11 server.go:40: Listing on port :4480
+2024/04/11 18:36:22 cron.go:24: in StartCronForCoin
+2024/04/11 18:40:03 server.go:58: Shutting down server...
+2024/04/11 18:40:03 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/11 18:40:06 server.go:23: Init Crypto Server
+2024/04/11 18:40:06 server.go:24: Starting Server....
+2024/04/11 18:40:06 server.go:40: Listing on port :4480
+2024/04/11 18:40:20 cron.go:24: in StartCronForCoin
+2024/04/11 18:41:17 server.go:58: Shutting down server...
+2024/04/11 18:41:17 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/11 18:41:21 server.go:23: Init Crypto Server
+2024/04/11 18:41:21 server.go:24: Starting Server....
+2024/04/11 18:41:21 server.go:40: Listing on port :4480
+2024/04/11 18:41:29 cron.go:24: in StartCronForCoin
+2024/04/11 18:41:32 requestRoute.go:91: Corn For BTCis Already running
+2024/04/11 19:42:06 server.go:58: Shutting down server...
+2024/04/11 19:42:06 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/11 19:42:46 server.go:23: Init Crypto Server
+2024/04/11 19:42:46 server.go:24: Starting Server....
+2024/04/11 19:42:46 server.go:40: Listing on port :4480
+2024/04/11 19:43:32 requestRoute.go:25: Error : GetBitCoinRoute  EOF
+2024/04/11 19:43:32 requestRoute.go:28: Error : CoinName should not be empty
+2024/04/11 19:43:43 requestRoute.go:28: Error : CoinName should not be empty
+2024/04/11 19:44:01 requestDAO.go:216: IN : GetNextHourDataDAO
+2024/04/11 19:44:01 requestDAO.go:217: IN GetCoinDataFromAPIDAO
+2024/04/11 19:44:01 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/11 19:44:02 requestDAO.go:157: ERrror in Insert opration cannot transform type []request.BitCoinTimeWiseData to a BSON Document: WriteArray can only write a Array while positioned on a Element or Value but is positioned on a TopLevel
+2024/04/11 19:44:02 requestRoute.go:35: Erron in get hourly data cannot transform type []request.BitCoinTimeWiseData to a BSON Document: WriteArray can only write a Array while positioned on a Element or Value but is positioned on a TopLevel
+2024/04/11 20:31:29 server.go:58: Shutting down server...
+2024/04/11 20:31:33 server.go:23: Init Crypto Server
+2024/04/11 20:31:33 server.go:24: Starting Server....
+2024/04/11 20:31:33 server.go:40: Listing on port :4480
+2024/04/11 20:32:28 requestDAO.go:219: IN : GetNextHourDataDAO
+2024/04/11 20:32:28 requestDAO.go:220: IN GetCoinDataFromAPIDAO
+2024/04/11 20:32:28 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/11 20:33:40 server.go:58: Shutting down server...
+2024/04/11 20:33:44 server.go:23: Init Crypto Server
+2024/04/11 20:33:44 server.go:24: Starting Server....
+2024/04/11 20:33:44 server.go:40: Listing on port :4480
+2024/04/11 20:34:09 requestDAO.go:219: IN : GetNextHourDataDAO
+2024/04/11 20:34:09 requestDAO.go:220: IN GetCoinDataFromAPIDAO
+2024/04/11 20:34:09 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/11 20:42:13 cron.go:24: in StartCronForCoin
+2024/04/11 21:49:05 server.go:58: Shutting down server...
+2024/04/11 21:49:08 server.go:23: Init Crypto Server
+2024/04/11 21:49:08 server.go:24: Starting Server....
+2024/04/11 21:49:08 server.go:40: Listing on port :4480
+2024/04/11 21:49:49 cryptowebsocketService.go:134: No Data found in cache for  BTC
+2024/04/11 21:49:49 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/11 21:49:49 cryptowebsocketService.go:166: no documents found for the params examId :
+2024/04/11 21:51:22 server.go:58: Shutting down server...
+2024/04/11 21:51:27 server.go:23: Init Crypto Server
+2024/04/11 21:51:27 server.go:24: Starting Server....
+2024/04/11 21:51:27 server.go:40: Listing on port :4480
+2024/04/11 21:51:37 cryptowebsocketService.go:134: No Data found in cache for  BTC
+2024/04/11 21:51:37 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/11 21:51:37 cryptowebsocketService.go:166: no documents found for the params :%!(EXTRA mongo.CommandError=(Location40324) Unrecognized pipeline stage name: 'coinName')
+2024/04/11 21:53:44 server.go:58: Shutting down server...
+2024/04/11 21:53:47 server.go:23: Init Crypto Server
+2024/04/11 21:53:47 server.go:24: Starting Server....
+2024/04/11 21:53:47 server.go:40: Listing on port :4480
+2024/04/11 21:53:59 cryptowebsocketService.go:134: No Data found in cache for  BTC
+2024/04/11 21:53:59 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/11 21:55:24 requestDAO.go:219: IN : GetNextHourDataDAO
+2024/04/11 21:55:24 requestDAO.go:220: IN GetCoinDataFromAPIDAO
+2024/04/11 21:55:32 cryptowebsocketService.go:134: No Data found in cache for  BTC
+2024/04/11 21:55:38 server.go:58: Shutting down server...
+2024/04/11 22:09:58 server.go:23: Init Crypto Server
+2024/04/11 22:09:58 server.go:24: Starting Server....
+2024/04/11 22:09:58 server.go:40: Listing on port :4480
+2024/04/11 22:10:29 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/11 22:10:29 cryptowebsocketService.go:107: no documents found for the params examId :
+2024/04/11 22:12:25 requestDAO.go:203: IN GetNext24HoursPriceDAO
+2024/04/11 22:12:25 requestDAO.go:62: IN GetCoinDataFromAPIDAO
+2024/04/11 22:12:43 server.go:58: Shutting down server...
+2024/04/11 22:12:47 server.go:23: Init Crypto Server
+2024/04/11 22:12:47 server.go:24: Starting Server....
+2024/04/11 22:12:47 server.go:40: Listing on port :4480
+2024/04/11 22:13:05 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/11 22:19:51 cryptowebsocketRoute.go:67: Error in Reding message init websocket: close 1006 (abnormal closure): unexpected EOF

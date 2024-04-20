@@ -1,0 +1,38 @@
+2024/04/18 19:16:51 server.go:24: Init Crypto Server
+2024/04/18 19:16:51 server.go:25: Starting Server....
+2024/04/18 19:16:51 server.go:48: Listing on port :4480
+2024/04/18 20:01:29 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:01:29 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:01:29 mongohelper.go:40: Connected to mongoDB!!!
+2024/04/18 20:01:51 requestDAO.go:219: IN : GetNextHourDataDAO
+2024/04/18 20:01:51 requestDAO.go:220: IN GetCoinDataFromAPIDAO
+2024/04/18 20:01:57 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:01:57 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:05:04 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:05:04 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:05:27 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:05:27 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:07:05 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:07:05 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:08:04 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:08:04 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:09:14 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:09:14 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:10:22 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:10:22 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:14:03 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:14:03 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:14:31 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:14:31 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:15:59 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:15:59 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:17:44 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:17:44 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:56:25 requestRoute.go:96: In GetPreviousData
+2024/04/18 20:56:25 requestRoute.go:96: In GetPreviousData
+2024/04/18 21:03:12 requestRoute.go:96: In GetPreviousData
+2024/04/18 21:03:12 requestRoute.go:96: In GetPreviousData
+2024/04/18 21:17:09 requestRoute.go:96: In GetPreviousData
+2024/04/18 21:17:09 requestRoute.go:96: In GetPreviousData
+2024/04/18 21:17:28 requestRoute.go:96: In GetPreviousData
+2024/04/18 21:17:28 requestRoute.go:96: In GetPreviousData

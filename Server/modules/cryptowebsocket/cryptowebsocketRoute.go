@@ -18,12 +18,15 @@ type Client struct {
 
 var BTCpool = &Pool{}
 var USDTpool = &Pool{}
+var PoolMap = make(map[string]*Pool)
 
 func Init(o, r *gin.RouterGroup) {
 	BTCpool = NewPool()
 	USDTpool = NewPool()
 	go USDTpool.Start()
 	go BTCpool.Start()
+	PoolMap["BTC"] = BTCpool
+	PoolMap["USDT"] = USDTpool
 	o.GET("ws/getbitcoinvalue", GetBitCoinValueRoute)
 }
 
@@ -76,9 +79,9 @@ func GetBitCoinValueRoute(c *gin.Context) {
 	fmt.Println("CoinfNAMe", msg.Coin)
 	// log.Println("Client Connected")
 	if msg.Coin == "BTC" {
-		ServeWs(BTCpool, conn, msg.UserId)
+		ServeWs(BTCpool, conn, msg.UserId, msg.Coin)
 	} else if msg.Coin == "USDT" {
-		ServeWs(USDTpool, conn, msg.UserId)
+		ServeWs(USDTpool, conn, msg.UserId, msg.Coin)
 	}
 	// WebsocketReaderService(ws)
 }
