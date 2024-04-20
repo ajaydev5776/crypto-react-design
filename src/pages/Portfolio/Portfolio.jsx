@@ -7,11 +7,11 @@ import Referce from '../../assets/img/refresh.svg'
 
 const Portfolio = () => {
 
-    const columns = ["Coin/Asset", "Availble Balance", "Locked Balance", "Total Holding", "Invested Value (INR)", "Current Value (INR)", "Total P&L (INR)", "Total P&L (%)"];
+    const columns = ["Coin/Asset", "Availble Balance", "Locked Balance", "Total P&L (%)"];
     const data = [
-        ["Dogy", "₹100.00", "₹0.00", "₹0.00", "₹0.00", "₹0.00", "₹0.00", "0.00%"],
-        ["Dogy1", "₹200.00", "₹0.00", "₹0.00", "₹0.00", "₹0.00", "₹0.00", "0.00%"],
-        ["Dogy2", "₹300.00", "₹0.00", "₹0.00", "₹0.00", "₹0.00", "₹0.00", "0.00%"],
+        ["Dogy", "₹100.00", "₹0.00", "0.00%"],
+        ["Dogy1", "₹200.00", "₹0.00", "0.00%"],
+        ["Dogy2", "₹300.00", "₹0.00", "0.00%"],
     ];
 
 

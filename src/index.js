@@ -3,24 +3,24 @@ import ReactDOM from 'react-dom/client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Chart from "react-apexcharts";
 import './index.css';
-// import 'bootstrap/dist/css/bootstrap.css';
 import './custom.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import Home from './pages/Home/Index';
-import Main from './pages/Main/index'
 import Portfolio from './pages/Portfolio/Portfolio';
 import Layout from './Layout/Layout'
 import Refer from './pages/Refer/Refer';
 import Wallet from './pages/Wallet/Wallet';
 import OrderList from './pages/OrderList/OrderList';
 import Plans from './pages/Plans/Plans';
+import Login from './pages/Login/Login';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout/>}>
-      <Route path='' element={<Home/>}/>
+      <Route path='' element={<Login/>}/>
+      <Route path='/index' element={<Home/>}/>
       <Route path='/orderlist' element={<OrderList/>}/>
       <Route path='/wallet' element={<Wallet/>}/>
       <Route path='/portfolio' element={<Portfolio/>}/>

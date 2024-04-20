@@ -1,0 +1,110 @@
+
+::-webkit-scrollbar-track {
+  background-color: rgba($black, 0);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  background-color: rgba($black, 0);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba($black, 0.2);
+}
+
+body{
+  font-family: 'Roboto';
+  overflow: hidden auto;
+  background: #f6f9ff;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none; 
+}
+
+.form-control:focus{
+  box-shadow: none;
+  border-color: $theme2;
+}
+.form-select:focus{
+  box-shadow: none;
+}
+
+.fs-80{
+  font-size: 80px;
+}
+button, .btn{
+  box-shadow: none !important;
+}
+.form-check-input[type=checkbox] {
+  border-radius: 2px;
+  width: 18px;
+  height: 18px;
+  overflow: hidden;
+  &:checked{
+    background-color: $theme2;
+    border-color: $theme2;
+  }
+  &:focus{
+    border-color: $theme2;
+  }
+}
+.modal-content{
+  border: none;
+}
+
+label{
+  font-weight: 500;
+}
+
+
+
+.pagination {
+  & .page-item {
+    & .page-link{
+      padding: 5px 15px;
+      border: 0px !important;
+      box-sizing: border-box;
+      display: inline-block;
+      min-width: 1.5em;
+      margin-left: 2px;
+      text-align: center;
+      text-decoration: none !important;
+      cursor: pointer;
+      color: inherit !important;
+      border: none;
+      border-radius: 2px;
+      background: transparent;
+      box-shadow: none;
+      &.active{
+        background: #6610f2;
+        color: #fff !important;
+      }
+    }
+  }
+}
+
+div#root> div.header {
+  display: none !important;
+}
+
+@media screen and (max-width:767px) {
+  .pagination {
+    & .page-item {
+      & .page-link{
+        padding: 5px 12px;
+      }
+    }
+  }
+  
+}

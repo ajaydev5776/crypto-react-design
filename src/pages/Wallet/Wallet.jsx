@@ -62,28 +62,6 @@ const Wallet = () => {
                                                     Your Tax P&L statement is available. Kindly click to download.
                                                 </div>
                                             </div>
-                                            <div className="col-sm-auto">
-                                                <div className="mainCArd position-relative">
-                                                    <a href="javascript:;" className="stretched-link"></a>
-                                                    <div className="row align-items-center gx-2">
-                                                        <div className="col-auto">
-                                                            <div className="pnlimg">
-                                                                <img src={Pnlimg} alt="pnlImg" className="h-100 w-100" />
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-auto">
-                                                            <div className="txt">
-                                                                P&L Report
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-auto">
-                                                            <div className="arrowimg">
-                                                                <img src={ArrowIMg} alt="pnlImg" className="h-100 w-100" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

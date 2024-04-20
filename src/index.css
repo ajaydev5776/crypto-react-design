@@ -25,6 +25,29 @@
     filter: brightness(100);
 }
 
+.form-control:focus {
+    color: #ffffff !important;
+    background-color: var(--bs-theme1) !important;
+}
+
+.loginpage {
+    display: flex;
+    align-items: center;
+    height: 100vh !important;
+    background: url(./assets/img/loginBg1.jpg) no-repeat center;
+    background-size: cover;
+}
+
+.loginpage .loginmodal {
+    margin: 20px auto;
+    height: calc(100% - 40px);
+    display: flex;
+    padding: 0px 10px;
+}
+.loginpage .loginmodal .modal-content {
+    margin: auto;
+}
+
 @media screen and (max-width: 768px) {
     .carditemparent>div>div:nth-last-child(3) .carditem  .leftside {
         border: none !important;

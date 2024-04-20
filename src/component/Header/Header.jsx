@@ -8,39 +8,39 @@ import Otp from '../Modals/Otp';
 
 
 const Header = () => {
-    const [showLoginModal, setShowLoginModal] = useState(false);
-    const [showSecondModal, setShowSecondModal] = useState(false);
-    const [showOtpModal, setShowOtpModal] = useState(false);
+    // const [showLoginModal, setShowLoginModal] = useState(true);
+    // const [showSecondModal, setShowSecondModal] = useState(false);
+    // const [showOtpModal, setShowOtpModal] = useState(false);
 
-    const handleLoginModalOpen = () => {
-        setShowLoginModal(true);
-        setShowSecondModal(false);
-    };
-    const handleSecondModalOpen = () => {
-        setShowSecondModal(true);
-        setShowLoginModal(false);
-    };
-    const handleOtpModalOpen = () => {
-        setShowOtpModal(true);
-        setShowLoginModal(false);
-        setShowSecondModal(false);
-    };
+    // const handleLoginModalOpen = () => {
+    //     setShowLoginModal(true);
+    //     setShowSecondModal(false);
+    // };
+    // const handleSecondModalOpen = () => {
+    //     setShowSecondModal(true);
+    //     setShowLoginModal(false);
+    // };
+    // const handleOtpModalOpen = () => {
+    //     setShowOtpModal(true);
+    //     setShowLoginModal(false);
+    //     setShowSecondModal(false);
+    // };
 
-    const handleCloseLoginModal = () => {
-        setShowLoginModal(false);
-    };
-    const handleCloseSecondModal = () => {
-        setShowSecondModal(false);
-    };
-    const handleCloseOtpModal = () => {
-        setShowOtpModal(false);
-    };
+    // const handleCloseLoginModal = () => {
+    //     setShowLoginModal(false);
+    // };
+    // const handleCloseSecondModal = () => {
+    //     setShowSecondModal(false);
+    // };
+    // const handleCloseOtpModal = () => {
+    //     setShowOtpModal(false);
+    // };
 
     return (
         <>
         <div className="col-12 px-0 sticky-top mb-2">
             <nav className="navbar header navbar-expand-lg px-3">
-                <Link to="/" className="navbar-brand d-flex"><img src={Logo} className="object-contain h-100" alt="logo"/></Link>
+                <Link to="/index" className="navbar-brand d-flex"><img src={Logo} className="object-contain h-100" alt="logo"/></Link>
                 <button className="navbar-toggler shadow-none p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar2" aria-controls="offcanvasNavbar2" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -60,20 +60,20 @@ const Header = () => {
                         <ul className="navbar-nav gap-3 align-items-lg-center">
                             <li className="nav-item"><NavLink to="/refer" className="nav-link">Refer & Earn</NavLink></li>
                             <li className="nav-item"><NavLink to="https://telegram.org/" className="nav-link d-flex align-items-center gap-3">Help Center<span><img src={Contact} alt="contact" className="object-contain w-100" /></span></NavLink></li>
-                            <li className="nav-item"><NavLink to="#" onClick={handleLoginModalOpen} className="text-uppercase fw-medium btn btn-theme2 themebtn text-white">Login / Sign up</NavLink></li>
+                            <li className="nav-item"><NavLink to="/" className="text-uppercase fw-medium btn btn-theme2 themebtn text-white">Log Out</NavLink></li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </div>
         {/* Login Modal */}
-        <Login show={showLoginModal} handleClose={handleCloseLoginModal} handleSecondModalOpen={handleSecondModalOpen} />
+        {/* <Login show={showLoginModal} handleClose={handleCloseLoginModal} handleSecondModalOpen={handleSecondModalOpen} /> */}
             
         {/* Second Modal */}
-        <Ragister show={showSecondModal} handleClose={handleCloseSecondModal} handleLoginModalOpen={handleLoginModalOpen} />
+        {/* <Ragister show={showSecondModal} handleClose={handleCloseSecondModal} handleLoginModalOpen={handleLoginModalOpen} /> */}
 
         {/* Second Modal */}
-        <Otp show={showOtpModal} handleClose={handleCloseOtpModal} handleOtpModalOpen={handleOtpModalOpen} />
+        {/* <Otp show={showOtpModal} handleClose={handleCloseOtpModal} handleOtpModalOpen={handleOtpModalOpen} /> */}
         </>
     )
 }
