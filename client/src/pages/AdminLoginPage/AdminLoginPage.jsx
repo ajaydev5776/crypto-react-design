@@ -1,7 +1,7 @@
 import React, { useState,useContext, useEffect } from 'react'
 import Logo from '../../assets/img/logo.svg'
 // import { Link, Navigate } from 'react-router-dom'
-import { AuthContext } from '../../Auth.context.js';
+import { AuthContext } from '../../context/Auth.context.js';
 import { useSetState } from 'react-use';
 import { useNavigate } from "react-router-dom";
 

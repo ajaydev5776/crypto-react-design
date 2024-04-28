@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSetState } from 'react-use';
+import { UserLogin } from '../BackendApiCalls/ApiCall';
 
 export const AuthContext = React.createContext(null);
 
@@ -16,12 +17,17 @@ export const ContextProvider = props => {
   const setLoginSuccess = (isLoggedIn) => setState({isLoggedIn});
   const setLoginError = (loginError) => setState({loginError});
 
-  const login = (email, password) => {
+  const login = (id,userName, password,remember) => {
     setLoginPending(true);
     setLoginSuccess(false);
     setLoginError(null);
 
-    fetchLogin( email, password, error => {
+    fetchLogin(id, userName, password,remember, error => {
+      if (remember){
+        localStorage.setItem('isLoggedIn', JSON.stringify({"userName":userName,"isLoggedIn":true,"userId":id}));
+      }else{
+        localStorage.setItem('isLoggedIn', JSON.stringify({"userName":userName,"isLoggedIn":false,"userId":id}));
+      }
       setLoginPending(false);
 
       if (!error) {
@@ -52,12 +58,19 @@ export const ContextProvider = props => {
 };
 
 // fake login
-const fetchLogin = (email, password, callback) => 
-  setTimeout(() => {
-    if (email === 'admin' && password === 'admin') {
-      sessionStorage.setItem('myKey', 'myValue');
-      return callback(null);
-    } else {
-      return callback(new Error('Invalid email and password'));
-    }
-  }, 1000);
+const fetchLogin = (userId,userName, password,remember,callback) => 
+    UserLogin(userId,userName,password).then(res =>{
+      console.log("responce From loogin", res)
+      callback(null)
+    }).catch(err =>{
+      console.log("Error from APIIIIIIII", err)
+      return callback(new Error("Unable to login "))
+    })
+  // setTimeout(() => {
+  //   if (email === 'admin' && password === 'admin') {
+  //     sessionStorage.setItem('myKey', 'myValue');
+  //     return callback(null);
+  //   } else {
+  //     return callback(new Error('Invalid email and password'));
+  //   }
+  // }, 1000);

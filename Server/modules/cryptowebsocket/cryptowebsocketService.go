@@ -201,6 +201,9 @@ func setCoinDataToMap(coinName string) ([]request.BitCoinTimeWiseData, error) {
 		log.Println("Error in DAta binding", err)
 		return []request.BitCoinTimeWiseData{}, err
 	}
+
+	lenOfarr := len(resultArr)
+	fmt.Println("Array length ", lenOfarr)
 	_, ok := GetDataFromLastHourData(coinName)
 	if !ok {
 		UpdateLastHourMap(coinName, resultArr)

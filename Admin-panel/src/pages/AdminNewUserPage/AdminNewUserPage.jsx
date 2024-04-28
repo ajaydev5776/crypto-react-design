@@ -9,6 +9,7 @@ import FormUser from '../../component/FormUser/FormUser';
 import DeletePopup from '../../component/Modal/DeletePopup';
 import FormModal from '../../component/Modal/RagisterNewUserModal';
 import ResetPasswordodal from '../../component/Modal/ResetPasswordModal';
+import { AddUserToDb } from '../../AdminFunction/ApiCalls';
 
 const AdminNewUserPage = () => {  
     // Toggle Class In Aside Bar
@@ -20,34 +21,47 @@ const AdminNewUserPage = () => {
     
     // Fields for the "Register New User" tab
     const registerUserFields = [
-      { type: 'text', placeholder: 'Enter Your name', label: 'Full name' },
-      { type: 'tel', placeholder: 'Enter phone number', label: 'Phone Number' },
-      { type: 'password', placeholder: 'Create password', label: 'Create Password' },
+      { type: 'text', placeholder: 'Enter Your name', label: 'Full name' ,key:'userName' , value:""},
+      { type: 'tel', placeholder: 'Enter phone number', label: 'Phone Number',key:'phoneNo' , value:0 },
+      { type: 'password', placeholder: 'Create password', label: 'Create Password',key:'password' , value:'' },
+      { 
+        type: 'password',
+        placeholder: 'Confirm password',
+        label: 'Confirm Password',
+        description: [
+          'Minimum 8 characters long - the more, the better',
+          'At least one lowercase character',
+          'At least one uppercase character',
+          'At least one number, symbol, or whitespace character',
+        ],
+        descriptionTitle: 'Password requirements:',
+        key:'cPassword' , value:''
+      }
     ];
-
-    const registerUserLastField = { 
-      type: 'password',
-      placeholder: 'Confirm password',
-      label: 'Confirm Password',
-      description: [
-        'Minimum 8 characters long - the more, the better',
-        'At least one lowercase character',
-        'At least one uppercase character',
-        'At least one number, symbol, or whitespace character',
-      ],
-      descriptionTitle: 'Password requirements:',
-    };
 
     // Fields for the "Change User Password" tab
     const changePasswordFields = [
-      { type: 'tel', placeholder: 'Enter phone number', label: 'Phone Number' },
-      { type: 'password', placeholder: 'Enter new password', label: 'New password' },
-      { type: 'password', placeholder: 'Confirm your new password', label: 'Confirm new password' },
+      { type: 'tel', placeholder: 'Enter phone number', label: 'Phone Number',key:'phoneNo' , value:0 },
+      { type: 'password', placeholder: 'Enter new password', label: 'New password',key:'password' , value:"" },
+      { 
+        type: 'password',
+        placeholder: 'Confirm password',
+        label: 'Confirm Password',
+        description: [
+          'Minimum 8 characters long - the more, the better',
+          'At least one lowercase character',
+          'At least one uppercase character',
+          'At least one number, symbol, or whitespace character',
+        ],
+        descriptionTitle: 'Password requirements:',
+        key:'cPassword' ,
+        value:""
+      }
     ];
 
     // Fields for the "Delete User Account" tab
     const deleteUserFields = [
-      { type: 'tel', placeholder: 'Enter user number', label: 'Enter User Number' },
+      { type: 'tel', placeholder: 'Enter user number', label: 'Enter User Number', key:"phone" ,value:0},
     ];
 
     // Modals
@@ -61,9 +75,34 @@ const AdminNewUserPage = () => {
       setShowDeletePopup(false);
     };
     
-  const handleShowFormModal = () => setShowFormModal(true);
-  const handleShowResetPasswordodal = () => setShowResetPasswordodal(true);
+    //function for register new user
+  const handleShowRegisterFormModal = (data) => {
+    console.log("data From handleShowResetPasswordodal form", data) 
+    var userPayload = {
+      userName: data[0].value,
+      phoneNo: data[1].value,
+      password: data[2].value
+    }
+    AddUserToDb(userPayload).then(res => {
+      alert(JSON.stringify(res))
+    }).catch(err =>{
+      alert("errr" + err)
+    })
+    setShowFormModal(true)
+  };
+
+
+  const handleShowResetPasswordodal = (data) =>{
+    console.log("data From handleShowResetPasswordodal form", data) 
+    var userPayload = {
+      userName: data[0].value,
+      phoneNo: data[1].value,
+      password: data[2].value
+    }
+       console.log("Data For payload", userPayload)  
+    setShowResetPasswordodal(true)} ;
   const handleShowDeletePopup = () => setShowDeletePopup(true);
+
   
 
   return (
@@ -101,10 +140,10 @@ const AdminNewUserPage = () => {
                                                 <Col className="col-xxl-9 col-xl-8 col-12">
                                                   <Tab.Content>
                                                     <Tab.Pane eventKey="first">
-                                                        <FormUser tabHeading="Ragister New User" btnColorClass="btn-theme2" fields={registerUserFields} onClickOpenModal={handleShowFormModal} lastField={registerUserLastField} />
+                                                        <FormUser tabHeading="Ragister New User" btnColorClass="btn-theme2" fields={registerUserFields} onClickOpenModal={handleShowRegisterFormModal} />
                                                     </Tab.Pane>
                                                     <Tab.Pane eventKey="second">
-                                                        <FormUser tabHeading="Change User Password" btnColorClass="btn-theme1" formBtnName="Reset Password" onClickOpenModal={handleShowResetPasswordodal} fields={changePasswordFields} lastField={registerUserLastField} />
+                                                        <FormUser tabHeading="Change User Password" btnColorClass="btn-theme1" formBtnName="Reset Password" onClickOpenModal={handleShowResetPasswordodal} fields={changePasswordFields}  />
                                                     </Tab.Pane>
                                                     <Tab.Pane eventKey="thred">
                                                         <FormUser tabHeading="Delete User Account" btnColorClass="btn-danger" formBtnName="Delete Acoount" onClickOpenModal={handleShowDeletePopup} fields={deleteUserFields} />

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 
-const PopupModal = ({ show, handleClose, modalIcon, submitBtnClass="btn-theme2", modalheading="Are You Sure?", modalMessage, modalCloseBtn="Close", modalSubmitBtn="Confirm" }) => {
+const PopupModal = ({ show, handleClose, modalIcon,submitFunctio, submitBtnClass="btn-theme2", modalheading="Done", modalMessage, modalCloseBtn="Close", modalSubmitBtn="Confirm" }) => {
     return (
         <>
             <Modal show={show} onHide={handleClose}  backdrop="static" keyboard={false} centered>
@@ -14,7 +14,7 @@ const PopupModal = ({ show, handleClose, modalIcon, submitBtnClass="btn-theme2",
                 </Modal.Body>
                 <Modal.Footer>
                         <button type="button" className="btn btn-theme1" onClick={handleClose}>{modalCloseBtn}</button>
-                        <button type="button" className={`btn ${submitBtnClass}`}>{modalSubmitBtn}</button>
+                        <button type="button" onClick={submitFunctio} className={`btn ${submitBtnClass}`}>{modalSubmitBtn}</button>
                 </Modal.Footer>
             </Modal>
         </>

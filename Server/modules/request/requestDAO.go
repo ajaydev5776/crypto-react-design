@@ -8,16 +8,144 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"math"
 	"net/http"
 	"os"
+	"practice/project/crypto-react-design/Server/models/admin"
 	"practice/project/crypto-react-design/Server/models/request"
 	"practice/project/crypto-react-design/Server/modules/database"
-
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
+
+func GetAllTransitionOfUserDAO(user User) ([]admin.UserTransitions, error) {
+	dsn := os.Getenv("MONGODSN")
+
+	conn, err := database.GetMongoConnection(dsn)
+	if err != nil {
+		log.Println("Error creating a db connection", err)
+		// return config, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+	collection := conn.Database("cryptoServer").Collection("TransitionDetails")
+	filter := bson.M{
+		"userId":   user.UserId,
+		"userName": user.UserName,
+	}
+
+	options := options.Find().SetSort(bson.M{"investedDate": 1})
+	userTrans := []admin.UserTransitions{}
+
+	curser, err := collection.Find(ctx, filter, options)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			log.Println("no data found", err)
+			return userTrans, nil
+		}
+		log.Println("Error in getting all data ", err)
+		return userTrans, err
+	}
+	// for curser.Next(ctx) {
+	// 	fmt.Println("hiii")
+	// 	tran := admin.UserTransitions{}
+	// 	err = curser.Decode(&tran)
+	// 	if err != nil {
+	// 		log.Println("Error in Decoding", err)
+	// 		return []admin.UserTransitions{}, err
+	// 	}
+	// 	userTrans = append(userTrans, tran)
+	// }
+	err = curser.All(ctx, &userTrans)
+	if err != nil {
+		log.Println("Error in getting all data ", err)
+		return userTrans, err
+	}
+	return userTrans, nil
+}
+
+func ValidateIdDAO(userId string) (bool, error) {
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+	if err != nil {
+		log.Println("Error creating a db connection", err)
+		// return config, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+	collection := conn.Database("cryptoServer").Collection("userDetails")
+	filter := bson.M{
+		"userId": userId,
+	}
+
+	userDetials := admin.UserDetailswithoutPass{}
+
+	err = collection.FindOne(ctx, filter).Decode(&userDetials)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			return false, err
+		}
+		return false, err
+	}
+	return true, err
+}
+
+func UserLoginDAO(user request.UserLoginDetails) (admin.UserDetailswithoutPass, error) {
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+	if err != nil {
+		log.Println("Error creating a db connection", err)
+		// return config, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+	collection := conn.Database("cryptoServer").Collection("userDetails")
+	filter := bson.M{
+		"userId":   user.UserId,
+		"userName": user.UserName,
+		"password": user.Password,
+	}
+
+	userDetials := admin.UserDetailswithoutPass{}
+
+	err = collection.FindOne(ctx, filter).Decode(&userDetials)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			return userDetials, err
+		}
+		return userDetials, err
+	}
+	return userDetials, err
+}
+
+func GetCoinCurrentValueDAO(coinName string, CurrentTime int64) (float64, error) {
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+	if err != nil {
+		log.Println("Error creating a db connection", err)
+		// return config, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+	collection := conn.Database("cryptoServer").Collection("BitCoinData")
+	filter := bson.M{
+		"coinName": coinName,
+		"time": bson.M{
+			"$gte": CurrentTime,
+		},
+	}
+	bitcoinDetails := request.BitCoinTimeWiseData{}
+	err = collection.FindOne(ctx, filter).Decode(&bitcoinDetails)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			fmt.Println("No data Found", err)
+			return float64(0), err
+		}
+		fmt.Println("Error ", err)
+		return float64(0), err
+	}
+	fmt.Println("DAta", bitcoinDetails)
+	return bitcoinDetails.High, nil
+}
 
 func GetBitCoinPriceDAO(BitCoinReq request.Request) ([]request.ApiDetails, error) {
 	dsn := os.Getenv("MONGODSN")
@@ -138,10 +266,17 @@ func InsertDataInMongo(BitcoinData request.BitCoinData) (int, error) {
 func InsertHourlyDataInMongo(BitcoinData request.BitCoinData) ([]request.BitCoinTimeWiseData, error) {
 	dsn := os.Getenv("MONGODSN")
 	conn, err := database.GetMongoConnection(dsn)
-
 	if err != nil {
 		log.Println("Error in Monog Connnection in insertDataInMongo", err)
 		return []request.BitCoinTimeWiseData{}, err
+	}
+	var usdValue = float64(1)
+	if BitcoinData.CoinName == "BTC" {
+		usdValue, err = GetUSDTValueInINR(os.Getenv("USDTValue"))
+		if err != nil {
+			log.Println("Error in GetUSDTValueInINR in insertDataInMongo setvalude to defalut 85.25", err)
+			usdValue = 85.25
+		}
 	}
 	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
 
@@ -150,7 +285,10 @@ func InsertHourlyDataInMongo(BitcoinData request.BitCoinData) ([]request.BitCoin
 	for i, _ := range BitcoinData.Data {
 		BitcoinData.Data[i].CoinName = BitcoinData.CoinName
 		BitcoinData.Data[i].Time += 3600
-
+		BitcoinData.Data[i].High = math.Floor(BitcoinData.Data[i].High*usdValue*100) / 100
+		BitcoinData.Data[i].Low = math.Floor(BitcoinData.Data[i].Low*usdValue*100) / 100
+		BitcoinData.Data[i].Close = math.Floor(BitcoinData.Data[i].Close*usdValue*100) / 100
+		BitcoinData.Data[i].Open = math.Floor(BitcoinData.Data[i].Open*usdValue*100) / 100
 		docs = append(docs, BitcoinData.Data[i])
 	}
 	next24HourData = append(next24HourData, BitcoinData.Data...)
@@ -213,6 +351,60 @@ func GetNext24HoursPriceDAO(BitCoinReq request.Request) (int, error) {
 		return 0, err
 	}
 	return noofrow, nil
+}
+
+// https://min-api.cryptocompare.com/data/price?fsym=USDT&tsyms=INR
+
+func GetUSDTValueInINR(url string) (float64, error) {
+	var usdValue float64
+	var BitCoinResponse request.USDTResponce
+	log.Println("IN GetUSDTValueInINR", url)
+	Request, ReqErr := http.NewRequest(http.MethodGet, url, bytes.NewBuffer([]byte{}))
+
+	if ReqErr != nil {
+		log.Println("Error in API Call :", ReqErr)
+		return usdValue, ReqErr
+	}
+	Client := &http.Client{Timeout: 60 * time.Second}
+
+	responce, resErr := Client.Do(Request)
+
+	if resErr != nil {
+		log.Println("Error in HTTP request", resErr)
+		return usdValue, resErr
+	}
+	defer responce.Body.Close()
+
+	ResBody, resBodyError := ioutil.ReadAll(responce.Body)
+	if resBodyError != nil {
+		log.Println(" ERROR : CheckLocalEligibiltyDAO  -", resBodyError)
+		return usdValue, resBodyError
+	}
+
+	fmt.Println("REponce from API", string(ResBody))
+
+	UnmarshalErr := json.Unmarshal(ResBody, &BitCoinResponse)
+
+	if UnmarshalErr != nil {
+		log.Println("ERROR : GetCoinDataFromAPIDAO unmarshal Error ", UnmarshalErr)
+
+		return usdValue, nil
+	}
+	if responce.StatusCode == 200 {
+		// fmt.Println(BitCoinResponse)
+		// BitCoinResponse.Data.CoinName = ApiDetails.CoinName
+		fmt.Println("responce from API", BitCoinResponse)
+		usdValue = BitCoinResponse.INR
+		// respData, err := InsertHourlyDataInMongo(BitCoinResponse.Data)
+		// if err != nil {
+		// 	return []request.BitCoinTimeWiseData{}, err
+		// }
+		// return respData, nil
+		return usdValue, nil
+
+	} else {
+		return usdValue, errors.New("Errrorr")
+	}
 }
 
 func GetNextHourDataDAO(BitCoinReq request.Request) ([]request.BitCoinTimeWiseData, error) {

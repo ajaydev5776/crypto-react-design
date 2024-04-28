@@ -1,20 +1,28 @@
 import React ,{ useState } from 'react'
 import Logo from '../../assets/img/logo.svg'
 import Contact from '../../assets/img/icon/contact.svg'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink,useNavigate,createSearchParams } from 'react-router-dom'
 import Login from '../Modals/Login';
 import Ragister from '../Modals/Ragister';
 import Otp from '../Modals/Otp';
 
+    
+
 
 const Header = () => {
+    const navigate = useNavigate()
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showSecondModal, setShowSecondModal] = useState(false);
     const [showOtpModal, setShowOtpModal] = useState(false);
 
     const handleLoginModalOpen = () => {
-        setShowLoginModal(true);
-        setShowSecondModal(false);
+        var loginStaus = JSON.parse(localStorage.getItem('isLoggedIn'))
+        localStorage.removeItem("isLoggedIn")
+        navigate(
+           "/"
+        )
+        // setShowLoginModal(true);
+        // setShowSecondModal(false);
     };
     const handleSecondModalOpen = () => {
         setShowSecondModal(true);
@@ -60,7 +68,7 @@ const Header = () => {
                         <ul className="navbar-nav gap-3 align-items-lg-center">
                             <li className="nav-item"><NavLink to="/refer" className="nav-link">Refer & Earn</NavLink></li>
                             <li className="nav-item"><NavLink to="https://telegram.org/" className="nav-link d-flex align-items-center gap-3">Help Center<span><img src={Contact} alt="contact" className="object-contain w-100" /></span></NavLink></li>
-                            <li className="nav-item"><NavLink to="#" onClick={handleLoginModalOpen} className="text-uppercase fw-medium btn btn-theme2 themebtn text-white">Login / Sign up</NavLink></li>
+                            <li className="nav-item"><NavLink to="#" onClick={handleLoginModalOpen} className="text-uppercase fw-medium btn btn-theme2 themebtn text-white">LogOut</NavLink></li>
                         </ul>
                     </div>
                 </div>

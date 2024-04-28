@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import PopupModal from './PopupModal';
 
-const ActivePopup = ({ show, handleClose, modalMessageDiscription="Role Users will be user account active. Do you confirm that?"}) => {
+const ActivePopup = ({ show, handleClose,submitFunctio, modalMessageDiscription="All Selected User will be Mark as Active. Do you confirm that?"}) => {
     return (
         <>
         <PopupModal  
             show={show}
             handleClose={handleClose}
             modalIcon={<i className="fas fa-exclamation-circle fs-80 text-success"></i>}
-            modalMessage={`${modalMessageDiscription}`}/>
+            submitFunctio={submitFunctio}
+            modalMessage={`${modalMessageDiscription}`}
+            />
         </>
     )
 }

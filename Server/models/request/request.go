@@ -26,6 +26,10 @@ type BitCoinDataFromApi struct {
 	Data       BitCoinData `json:"Data"`
 }
 
+type USDTResponce struct {
+	INR float64 `json:"INR"`
+}
+
 type BitCoinData struct {
 	Aggregated bool                  `json:"Aggregated" bson:"Aggregated"`
 	TimeFrom   int64                 `json:"TimeFrom" bson:"TimeFrom"`
@@ -51,4 +55,10 @@ type PreviousDataRequest struct {
 	CoinName         string  `json:"coinName"`
 	CurrentTime      int64   `json:"currentTime"`
 	BeforeTimeInHour float64 `json:"beforeTimeInHour"`
+}
+
+type UserLoginDetails struct {
+	UserId   string `json:"userId" bson:"userId"`
+	UserName string `json:"userName" bson:"userName"`
+	Password string `json:"password" bson:"password"`
 }

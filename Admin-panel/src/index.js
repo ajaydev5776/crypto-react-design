@@ -14,6 +14,7 @@ import AdminNewUserPage from './pages/AdminNewUserPage/AdminNewUserPage'
 import AdminUserHistoryPage from './pages/AdminUserHistoryPage/AdminUserHistoryPage'
 import AdminUserWalletPage from './pages/AdminUserWalletPage/AdminUserWalletPage'
 import MainLayout from './component/MainLayout/MainLayout';
+import { ContextProvider } from './Auth.context.js';
 
 
 
@@ -33,7 +34,9 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <ContextProvider value={500}>
     <RouterProvider router={router}/>
+    </ContextProvider>
   </React.StrictMode>
 );
 

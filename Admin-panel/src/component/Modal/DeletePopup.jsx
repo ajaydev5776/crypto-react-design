@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import PopupModal from './PopupModal';
 
 
-const DeletePopup = ({ show, handleClose }) => {
+const DeletePopup = ({ show, handleClose,onConfirm }) => {
     return (
         <>
         <PopupModal  
             show={show}
             handleClose={handleClose}
             modalIcon={<i className="far fa-times-circle fs-80 text-danger"></i>}
-            modalMessage="Role Users will be user deleted. Do you confirm that?"
-            submitBtnClass="btn-danger"/>
+            modalMessage="Selecte Users will be deleted. Do you confirm that?"
+            submitBtnClass="btn-danger"
+            submitFunctio={onConfirm}
+            />
         </>
     )
 }

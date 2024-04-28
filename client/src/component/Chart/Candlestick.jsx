@@ -3,7 +3,7 @@ import ReactApexChart from 'react-apexcharts';
 import instance from '../../Api';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
 
-const Candlestick = ({CoinDetails}) => {
+const Candlestick = ({CoinDetails,userId}) => {
   const [CoinData, setCoinData] = useState([])
   const WS_URL = "ws://localhost:4480/o/ws/getbitcoinvalue"
   const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(
@@ -23,8 +23,8 @@ const Candlestick = ({CoinDetails}) => {
     if (readyState === ReadyState.OPEN) {
       sendJsonMessage(
         {
-          "coin":"BTC",
-          "userId":"2" 
+          "coin":CoinDetails,
+          "userId":userId 
       }) 
     }
    
@@ -57,7 +57,8 @@ const Candlestick = ({CoinDetails}) => {
   }, [lastJsonMessage])
   
   useEffect(()=>{
-    if(series[0].data.length == 0){
+    console.log("calledddddd",CoinDetails)
+    // if(series[0].data.length == 0){
       CallApi(CoinDetails).then((res)=>{
         console.log("response from CallAPI", res)
         // setCoinData(res)
@@ -68,8 +69,8 @@ const Candlestick = ({CoinDetails}) => {
         console.log("error from CallAPI", e)
         
       })
-    }
-  },[])
+    // }
+  },[CoinDetails])
 
   // setTimeout(()=>{
   //   console.log("CoinData",series)
@@ -89,6 +90,9 @@ const Candlestick = ({CoinDetails}) => {
           method: "POST",
           data :payload
         }).then((res) => {
+          if (!res.data){
+            return resolve([])
+          }
           var processData = []
           console.log("res.status",res.status)
           if (res.status == 200 || res.statusText == "OK"){

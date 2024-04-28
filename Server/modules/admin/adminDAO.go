@@ -11,9 +11,123 @@ import (
 
 	"github.com/google/uuid"
 	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 
 	"gopkg.in/mgo.v2/bson"
 )
+
+func FreezAccountsDAO(Accounts AccountAction) (bool, error) {
+	log.Println("IN FreezAccountsDAO")
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+
+	if err != nil {
+		log.Println("Error in Monog Connnection in GetTelegramLinkDAO", err)
+		return false, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+	collection := conn.Database("cryptoServer").Collection("userDetails")
+	filter := bson.M{"phoneNo": bson.M{
+		"$in": Accounts.Accounts,
+	}}
+	update := bson.M{
+		"$set": bson.M{
+			"accountStatus": Accounts.Action,
+		},
+	}
+	_, err = collection.UpdateMany(ctx, filter, update)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			log.Println("No Doc Found to update")
+			return false, nil
+		}
+		return false, err
+	}
+	return true, nil
+}
+
+func GetTelegramLinkDAO(linkobj admin.TelegramLink) (admin.TelegramLink, error) {
+	log.Println("IN GetTelegramLinkDAO")
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+
+	if err != nil {
+		log.Println("Error in Monog Connnection in GetTelegramLinkDAO", err)
+		return linkobj, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+	collection := conn.Database("cryptoServer").Collection("TelegramLinks")
+	// _, err = collection.InsertOne(ctx, bson.M{"userName": userTran.UserName, "userId": userTran.UserId, "coinName": userTran.CoinName, "coinAvailable": userTran.CoinAvailable, "investedAmount": userTran.InvestedAmount, "investedDate": userTran.InvestedDate})
+	resobj := admin.TelegramLink{}
+	filter := bson.M{"key": linkobj.Key}
+	err = collection.FindOne(ctx, filter).Decode(&resobj)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			log.Println("No doc found ", err)
+			return resobj, nil
+		}
+		return resobj, err
+	}
+	return resobj, nil
+
+}
+
+func UpdateTelegramLinkDAO(linkObj admin.TelegramLink) (bool, error) {
+	log.Println("IN UpdateTelegramLinkDAO")
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+
+	if err != nil {
+		log.Println("Error in Monog Connnection in insertDataInMongo", err)
+		return false, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+	collection := conn.Database("cryptoServer").Collection("TelegramLinks")
+	// _, err = collection.InsertOne(ctx, bson.M{"userName": userTran.UserName, "userId": userTran.UserId, "coinName": userTran.CoinName, "coinAvailable": userTran.CoinAvailable, "investedAmount": userTran.InvestedAmount, "investedDate": userTran.InvestedDate})
+
+	filter := bson.M{"key": linkObj.Key}
+	update := bson.M{
+		"$set": bson.M{
+			"link": linkObj.Link,
+		},
+	}
+	// update := bson.D{{"$set", bson.D{{"link", linkObj.Link}}}}
+	opts := options.Update().SetUpsert(true)
+
+	_, err = collection.UpdateOne(ctx, filter, update, opts)
+
+	if err != nil {
+		log.Println("Error in Upserting data in collation", err)
+		return false, err
+	}
+	return true, nil
+}
+
+func AddCoinToUserAccountDAO(userTran admin.UserTransitions) (bool, error) {
+	log.Println("IN AddCoinToUserAccountDAO")
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+
+	if err != nil {
+		log.Println("Error in Monog Connnection in insertDataInMongo", err)
+		return false, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+	currTime := time.Now().Format("2006-01-02")
+	userTran.InvestedDate = currTime
+
+	collection := conn.Database("cryptoServer").Collection("TransitionDetails")
+	// _, err = collection.InsertOne(ctx, bson.M{"userName": userTran.UserName, "userId": userTran.UserId, "coinName": userTran.CoinName, "coinAvailable": userTran.CoinAvailable, "investedAmount": userTran.InvestedAmount, "investedDate": userTran.InvestedDate})
+	_, err = collection.InsertOne(ctx, userTran)
+
+	if err != nil {
+		log.Println("Error in instertinf data")
+		return false, err
+	}
+
+	return true, nil
+
+}
 
 func addNewUserDAO(userDetail admin.UserDetails) (string, error) {
 
@@ -42,6 +156,7 @@ func addNewUserDAO(userDetail admin.UserDetails) (string, error) {
 	Id := uuid.NewString()
 	userDetail.UserId = Id
 	userDetail.CreatedOn = time.Now().String()
+	userDetail.AccountStatus = "active"
 	_, err = collection.InsertOne(ctx, userDetail)
 
 	if err != nil {
@@ -49,4 +164,88 @@ func addNewUserDAO(userDetail admin.UserDetails) (string, error) {
 	}
 
 	return userDetail.UserId, nil
+}
+
+func AdminLoginDAO(loginDetails admin.LoginDetails) (bool, error) {
+	log.Println("IN AddminLoginDAO")
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+	if err != nil {
+		log.Println("Error in Monog Connnection in insertDataInMongo", err)
+		return false, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+
+	collection := conn.Database("cryptoServer").Collection("owner")
+
+	filter := bson.M{
+		"userName": loginDetails.UserName,
+		"passWord": loginDetails.PassWord,
+	}
+	testuser := admin.LoginDetails{}
+	err = collection.FindOne(ctx, filter).Decode(&testuser)
+
+	if err != nil || err == mongo.ErrNoDocuments {
+		return false, nil
+	}
+	return true, nil
+
+}
+
+func getUserDetailsByPhoneDAO(phoneNo string) (admin.UserDetailswithoutPass, error) {
+
+	log.Println("IN AddminLoginDAO")
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+	if err != nil {
+		log.Println("Error in Monog Connnection in insertDataInMongo", err)
+		return admin.UserDetailswithoutPass{}, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+
+	collection := conn.Database("cryptoServer").Collection("userDetails")
+	filter := bson.M{
+		"phoneNo": phoneNo,
+	}
+	userDetails := admin.UserDetailswithoutPass{}
+
+	err = collection.FindOne(ctx, filter).Decode(&userDetails)
+
+	if err != nil || err == mongo.ErrNoDocuments {
+		return userDetails, err
+	}
+	return userDetails, err
+}
+
+func GetTotalUserDAO() ([]admin.UserDetails, error) {
+	log.Println("IN GetTotalUserDAO")
+	dsn := os.Getenv("MONGODSN")
+
+	conn, err := database.GetMongoConnection(dsn)
+
+	if err != nil {
+		log.Println("Error in Monog Connnection in GetTotalUserDAO", err)
+		return []admin.UserDetails{}, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+
+	collection := conn.Database("cryptoServer").Collection("userDetails")
+
+	userDetails := []admin.UserDetails{}
+
+	curser, err := collection.Find(ctx, bson.M{})
+
+	if err != nil {
+		log.Println("Error in getting data from mongo db", err)
+		return []admin.UserDetails{}, err
+	}
+
+	err = curser.All(ctx, &userDetails)
+	if err != nil {
+		log.Println("Error in binding Data ", err)
+		return userDetails, err
+	}
+
+	return userDetails, nil
+
 }
