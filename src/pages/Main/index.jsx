@@ -40,27 +40,27 @@ const index = () => {
                           <div className="trendingcripto bg-theme1 d-flex align-items-center gap-3" id="trendingcripto">
                             <button className="criptoFilter shadow-none border-0 rounded-1 text-white" id="criptoFilter"><span className="contant text-nowrap">top losers</span><img src="assets/img/icon/Switchsvg.svg" alt="Switchsvg" /></button>
                             <ul className="trendingcripto-list gap-3 m-0 p-0 align-items-center px-2 topcripto">
-                              <li className="list-item d-flex align-items-center gap-2">POWR/INR <span className="prich">₹33.524</span> <span className="prich text-theme3">+21.90%</span></li>
-                              <li className="list-item d-flex align-items-center gap-2">UMA/INR <span className="prich">₹83.24</span> <span className="prich text-theme3">+51.90%</span></li>
-                              <li className="list-item d-flex align-items-center gap-2">IMX/INR <span className="prich">₹58.54</span> <span className="prich text-theme3">+52.70%</span></li>
-                              <li className="list-item d-flex align-items-center gap-2">BCH/INR <span className="prich">₹43.67</span> <span className="prich text-theme3">+41.60%</span></li>
-                              <li className="list-item d-flex align-items-center gap-2">POLYX/INR <span className="prich">₹55.504</span> <span className="prich text-theme3">+84.32%</span></li>
-                              <li className="list-item d-flex align-items-center gap-2">POWR/INR <span className="prich">₹33.524</span> <span className="prich text-theme3">+21.90%</span></li>
-                              <li className="list-item d-flex align-items-center gap-2">UMA/INR <span className="prich">₹83.24</span> <span className="prich text-theme3">+51.90%</span></li>
-                              <li className="list-item d-flex align-items-center gap-2">IMX/INR <span className="prich">₹58.54</span> <span className="prich text-theme3">+52.70%</span></li>
-                              <li className="list-item d-flex align-items-center gap-2">BCH/INR <span className="prich">₹43.67</span> <span className="prich text-theme3">+41.60%</span></li>
-                              <li className="list-item d-flex align-items-center gap-2">POLYX/INR <span className="prich">₹55.504</span> <span className="prich text-theme3">+84.32%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">POWR/INR <span className="Price">₹33.524</span> <span className="Price text-theme3">+21.90%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">UMA/INR <span className="Price">₹83.24</span> <span className="Price text-theme3">+51.90%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">IMX/INR <span className="Price">₹58.54</span> <span className="Price text-theme3">+52.70%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">BCH/INR <span className="Price">₹43.67</span> <span className="Price text-theme3">+41.60%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">POLYX/INR <span className="Price">₹55.504</span> <span className="Price text-theme3">+84.32%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">POWR/INR <span className="Price">₹33.524</span> <span className="Price text-theme3">+21.90%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">UMA/INR <span className="Price">₹83.24</span> <span className="Price text-theme3">+51.90%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">IMX/INR <span className="Price">₹58.54</span> <span className="Price text-theme3">+52.70%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">BCH/INR <span className="Price">₹43.67</span> <span className="Price text-theme3">+41.60%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">POLYX/INR <span className="Price">₹55.504</span> <span className="Price text-theme3">+84.32%</span></li>
                             </ul>
                             <ul className="trendingcripto-list gap-3 m-0 p-0 align-items-center px-2 losercripto">
-                              <li className="list-item d-flex align-items-center gap-2">REQ/INR <span className="prich">₹9.943</span> <span className="prich text-theme4">-10.90%</span></li>
-                              <li className="list-item d-flex align-items-center gap-2">BONK/INR <span className="prich">₹53.524</span> <span className="prich text-theme4">-5.50%</span></li>
-                              <li className="list-item d-flex align-items-center gap-2">ICP/INR <span className="prich">₹83.524</span> <span className="prich text-theme4">-21.57%</span></li>
-                              <li className="list-item d-flex align-items-center gap-2">JTO/INR <span className="prich">₹35.14</span> <span className="prich text-theme4">-50.18%</span></li>
-                              <li className="list-item d-flex align-items-center gap-2">POWR/INR <span className="prich">₹18.524</span> <span className="prich text-theme4">-14.88%</span></li>
-                              <li className="list-item d-flex align-items-center gap-2">BONK/INR <span className="prich">₹10.182</span> <span className="prich text-theme4">-25.70%</span></li>
-                              <li className="list-item d-flex align-items-center gap-2">ICP/INR <span className="prich">₹43.524</span> <span className="prich text-theme4">-43.40%</span></li>
-                              <li className="list-item d-flex align-items-center gap-2">JTO/INR <span className="prich">₹38.50</span> <span className="prich text-theme4">-21.90%</span></li>
-                              <li className="list-item d-flex align-items-center gap-2">BONK/INR <span className="prich">₹33.524</span> <span className="prich text-theme4">-12.55%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">REQ/INR <span className="Price">₹9.943</span> <span className="Price text-theme4">-10.90%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">BONK/INR <span className="Price">₹53.524</span> <span className="Price text-theme4">-5.50%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">ICP/INR <span className="Price">₹83.524</span> <span className="Price text-theme4">-21.57%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">JTO/INR <span className="Price">₹35.14</span> <span className="Price text-theme4">-50.18%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">POWR/INR <span className="Price">₹18.524</span> <span className="Price text-theme4">-14.88%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">BONK/INR <span className="Price">₹10.182</span> <span className="Price text-theme4">-25.70%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">ICP/INR <span className="Price">₹43.524</span> <span className="Price text-theme4">-43.40%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">JTO/INR <span className="Price">₹38.50</span> <span className="Price text-theme4">-21.90%</span></li>
+                              <li className="list-item d-flex align-items-center gap-2">BONK/INR <span className="Price">₹33.524</span> <span className="Price text-theme4">-12.55%</span></li>
                             </ul>
                           </div>
                           <div className="row criptotiming-high g-2">
@@ -68,7 +68,7 @@ const index = () => {
                               <div className="carditem bg-theme1 rounded-1 d-flex justify-content-between gap-3 clickable" id="chart-crypto-switch">
                                 <div className="leftside d-flex flex-column gap-1">
                                   <div className="criptoname text-theme2">BTC<span className="text-white-50">/INR</span> <img src="assets/img/icon/Star.svg" className="ms-2" alt="star" /></div>
-                                  <div className="prich d-flex align-items-center gap-2">₹41,33,600 <span className="text-theme4">-0.67%</span></div>
+                                  <div className="Price d-flex align-items-center gap-2">₹41,33,600 <span className="text-theme4">-0.67%</span></div>
                                 </div>
                                 <div className="rightside"><img src="assets/img/icon/right-arrow.svg" alt="arrow" /></div>
                               </div>
@@ -80,7 +80,7 @@ const index = () => {
                                     <div className="carditem miditems">
                                       <div className="leftside d-flex flex-column gap-1">
                                         <div className="criptoname text-white text-opacity-75">24h High</div>
-                                        <div className="prich d-flex align-items-center gap-2">₹41,99,999 </div>
+                                        <div className="Price d-flex align-items-center gap-2">₹41,99,999 </div>
                                       </div>
                                     </div>
                                   </div>
@@ -88,7 +88,7 @@ const index = () => {
                                     <div className="carditem miditems">
                                       <div className="leftside d-flex flex-column gap-1">
                                         <div className="criptoname text-white text-opacity-75">24h Low</div>
-                                        <div className="prich d-flex align-items-center gap-2">₹41,33,600 </div>
+                                        <div className="Price d-flex align-items-center gap-2">₹41,33,600 </div>
                                       </div>
                                     </div>
                                   </div>
@@ -96,7 +96,7 @@ const index = () => {
                                     <div className="carditem miditems">
                                       <div className="leftside d-flex flex-column gap-1">
                                         <div className="criptoname text-white text-opacity-75">24h Volume (BTC)</div>
-                                        <div className="prich d-flex align-items-center gap-2">4.25806 </div>
+                                        <div className="Price d-flex align-items-center gap-2">4.25806 </div>
                                       </div>
                                     </div>
                                   </div>
@@ -104,7 +104,7 @@ const index = () => {
                                     <div className="carditem miditems">
                                       <div className="leftside d-flex flex-column gap-1 ">
                                         <div className="criptoname text-white text-opacity-75">24h Volume (INR)</div>
-                                        <div className="prich d-flex align-items-center gap-2">₹1,80,03,483.39</div>
+                                        <div className="Price d-flex align-items-center gap-2">₹1,80,03,483.39</div>
                                       </div>
                                     </div>
                                   </div>
@@ -112,7 +112,7 @@ const index = () => {
                                     <div className="carditem miditems">
                                       <div className="leftside d-flex flex-column gap-1 border-0">
                                         <div className="criptoname text-white text-opacity-75">24h High</div>
-                                        <div className="prich d-flex align-items-center gap-2">₹41,33,600 </div>
+                                        <div className="Price d-flex align-items-center gap-2">₹41,33,600 </div>
                                       </div>
                                     </div>
                                   </div>
@@ -281,7 +281,7 @@ const index = () => {
                                         <table className="table table-borderless align-middle">
                                           <thead>
                                             <tr className="border-bottom-light">
-                                              <th className="text-white fw-normal fs-12">Prich</th>
+                                              <th className="text-white fw-normal fs-12">Price</th>
                                               <th className="text-white fw-normal fs-12 text-capitalize"><button className="criptoFilter small-fs shadow-none border-0 rounded-1 text-white text-opacity-75 bg-transparent p-0" id="lasttradeCripto"><span className="quantitycrypto text-nowrap">amount</span><img src="assets/img/icon/Switchsvg.svg" alt="Switchsvg" /></button></th>
                                               <th className="text-white fw-normal fs-12">Time</th>
                                             </tr>
@@ -382,7 +382,7 @@ const index = () => {
                               </li>
                             </ul>
                             <ul className="list-unstyled m-0 border-bottom-light px-2 py-1 d-flex align-items-center justify-content-between">
-                              <li><span className="fs-12 text-white text-opacity-75 d-flex">Prich</span></li>
+                              <li><span className="fs-12 text-white text-opacity-75 d-flex">Price</span></li>
                               <li><button className="criptoFilter small-fs shadow-none border-0 rounded-1 text-white text-opacity-75 bg-transparent p-0" id="criptoQuantity"><span className="quantitycrypto text-nowrap">amount</span><img src="assets/img/icon/Switchsvg.svg" alt="Switchsvg" /></button></li>
                             </ul>
                           </div>
@@ -390,10 +390,10 @@ const index = () => {
                         <div className="col-12 h-100 flex-fill overflow-y-auto">
                           <div className="tab-content bg-theme1 pb-3" id="pills-tabContent">
                             <div className="tab-pane fade show active" id="pills-home1" role="tabpanel" aria-labelledby="pills-home1-tab" tabIndex={0}>
-                              <ul className="list-unstyled m-0 cryptoprichGroup border-bottom-light py-2 d-flex flex-column gap-1">
+                              <ul className="list-unstyled m-0 cryptoPriceGroup border-bottom-light py-2 d-flex flex-column gap-1">
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={100} aria-valuemin={0} aria-valuemax={100}>
@@ -402,7 +402,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme4">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={80} aria-valuemin={0} aria-valuemax={100}>
@@ -411,7 +411,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={65} aria-valuemin={0} aria-valuemax={100}>
@@ -420,7 +420,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme4">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={60} aria-valuemin={0} aria-valuemax={100}>
@@ -429,7 +429,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹33,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹33,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,50,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={55} aria-valuemin={0} aria-valuemax={100}>
@@ -438,7 +438,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={50} aria-valuemin={0} aria-valuemax={100}>
@@ -447,7 +447,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme4">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={40} aria-valuemin={0} aria-valuemax={100}>
@@ -456,7 +456,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={25} aria-valuemin={0} aria-valuemax={100}>
@@ -465,7 +465,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme4">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={20} aria-valuemin={0} aria-valuemax={100}>
@@ -474,7 +474,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹33,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹33,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,50,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={10} aria-valuemin={0} aria-valuemax={100}>
@@ -486,10 +486,10 @@ const index = () => {
                                 <div className="fs-16 text-white fw-medium m-0">Spread</div>
                                 <div cclass="fs-16 text-white fw-medium m-0">0.61%</div>
                               </div>
-                              <ul className="list-unstyled m-0 cryptoprichGroup py-2 d-flex flex-column gap-1">
+                              <ul className="list-unstyled m-0 cryptoPriceGroup py-2 d-flex flex-column gap-1">
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={10} aria-valuemin={0} aria-valuemax={100}>
@@ -498,7 +498,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme3">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={20} aria-valuemin={0} aria-valuemax={100}>
@@ -507,7 +507,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹33,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹33,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,50,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={30} aria-valuemin={0} aria-valuemax={100}>
@@ -516,7 +516,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={40} aria-valuemin={0} aria-valuemax={100}>
@@ -525,7 +525,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme3">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={50} aria-valuemin={0} aria-valuemax={100}>
@@ -534,7 +534,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹33,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹33,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,50,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={60} aria-valuemin={0} aria-valuemax={100}>
@@ -543,7 +543,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={70} aria-valuemin={0} aria-valuemax={100}>
@@ -552,7 +552,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme3">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={80} aria-valuemin={0} aria-valuemax={100}>
@@ -561,7 +561,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={90} aria-valuemin={0} aria-valuemax={100}>
@@ -570,7 +570,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme3">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={100} aria-valuemin={0} aria-valuemax={100}>
@@ -584,10 +584,10 @@ const index = () => {
                                 <div className="fs-16 text-theme3 text-center fw-medium m-0">₹43,12,233</div>
                                 {/* <div class="fs-16 text-theme4 text-center fw-medium m-0">₹43,12,233</div> */}
                               </div>
-                              <ul className="list-unstyled m-0 cryptoprichGroup py-2 d-flex flex-column gap-1 border-bottom-light">
+                              <ul className="list-unstyled m-0 cryptoPriceGroup py-2 d-flex flex-column gap-1 border-bottom-light">
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={100} aria-valuemin={0} aria-valuemax={100}>
@@ -596,7 +596,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme4">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={95} aria-valuemin={0} aria-valuemax={100}>
@@ -605,7 +605,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={90} aria-valuemin={0} aria-valuemax={100}>
@@ -614,7 +614,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme4">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={85} aria-valuemin={0} aria-valuemax={100}>
@@ -623,7 +623,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹33,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹33,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,50,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={80} aria-valuemin={0} aria-valuemax={100}>
@@ -632,7 +632,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={75} aria-valuemin={0} aria-valuemax={100}>
@@ -641,7 +641,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme4">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={70} aria-valuemin={0} aria-valuemax={100}>
@@ -650,7 +650,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={65} aria-valuemin={0} aria-valuemax={100}>
@@ -659,7 +659,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme4">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={60} aria-valuemin={0} aria-valuemax={100}>
@@ -668,7 +668,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹33,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹33,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,50,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={55} aria-valuemin={0} aria-valuemax={100}>
@@ -677,7 +677,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={50} aria-valuemin={0} aria-valuemax={100}>
@@ -686,7 +686,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme4">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={45} aria-valuemin={0} aria-valuemax={100}>
@@ -695,7 +695,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={40} aria-valuemin={0} aria-valuemax={100}>
@@ -704,7 +704,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme4">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={35} aria-valuemin={0} aria-valuemax={100}>
@@ -713,7 +713,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹33,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹33,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,50,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={30} aria-valuemin={0} aria-valuemax={100}>
@@ -722,7 +722,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={25} aria-valuemin={0} aria-valuemax={100}>
@@ -731,7 +731,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme4">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={20} aria-valuemin={0} aria-valuemax={100}>
@@ -740,7 +740,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={15} aria-valuemin={0} aria-valuemax={100}>
@@ -749,7 +749,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme4">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={10} aria-valuemin={0} aria-valuemax={100}>
@@ -758,7 +758,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme4">₹33,47,878</span>
+                                    <span className="Price fs-12 text-theme4">₹33,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,50,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={5} aria-valuemin={0} aria-valuemax={100}>
@@ -772,10 +772,10 @@ const index = () => {
                                 <div className="fs-16 text-theme3 text-center fw-medium m-0">₹43,12,233</div>
                                 {/* <div class="fs-16 text-theme4 text-center fw-medium m-0">₹43,12,233</div> */}
                               </div>
-                              <ul className="list-unstyled m-0 cryptoprichGroup py-2 d-flex flex-column gap-1">
+                              <ul className="list-unstyled m-0 cryptoPriceGroup py-2 d-flex flex-column gap-1">
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={5} aria-valuemin={0} aria-valuemax={100}>
@@ -784,7 +784,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme3">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={10} aria-valuemin={0} aria-valuemax={100}>
@@ -793,7 +793,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹33,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹33,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,50,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={15} aria-valuemin={0} aria-valuemax={100}>
@@ -802,7 +802,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={20} aria-valuemin={0} aria-valuemax={100}>
@@ -811,7 +811,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme3">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={25} aria-valuemin={0} aria-valuemax={100}>
@@ -820,7 +820,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹33,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹33,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,50,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={30} aria-valuemin={0} aria-valuemax={100}>
@@ -829,7 +829,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={35} aria-valuemin={0} aria-valuemax={100}>
@@ -838,7 +838,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme3">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={40} aria-valuemin={0} aria-valuemax={100}>
@@ -847,7 +847,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={45} aria-valuemin={0} aria-valuemax={100}>
@@ -856,7 +856,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme3">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={50} aria-valuemin={0} aria-valuemax={100}>
@@ -865,7 +865,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={55} aria-valuemin={0} aria-valuemax={100}>
@@ -874,7 +874,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme3">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={60} aria-valuemin={0} aria-valuemax={100}>
@@ -883,7 +883,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹33,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹33,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,50,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={65} aria-valuemin={0} aria-valuemax={100}>
@@ -892,7 +892,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={70} aria-valuemin={0} aria-valuemax={100}>
@@ -901,7 +901,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme3">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={75} aria-valuemin={0} aria-valuemax={100}>
@@ -910,7 +910,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹33,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹33,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,50,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={80} aria-valuemin={0} aria-valuemax={100}>
@@ -919,7 +919,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={85} aria-valuemin={0} aria-valuemax={100}>
@@ -928,7 +928,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme3">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={90} aria-valuemin={0} aria-valuemax={100}>
@@ -937,7 +937,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹43,47,878</span>
+                                    <span className="Price fs-12 text-theme3">₹43,47,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={95} aria-valuemin={0} aria-valuemax={100}>
@@ -946,7 +946,7 @@ const index = () => {
                                 </li>
                                 <li className="cryptoamount">
                                   <div className="contantside d-flex justify-content-between align-items-center px-2">
-                                    <span className="prich fs-12 text-theme3">₹42,57,878</span>
+                                    <span className="Price fs-12 text-theme3">₹42,57,878</span>
                                     <span className="amount fs-12 text-white">₹6,30,443.01</span>
                                   </div>
                                   <div className="progress" role="progressbar" aria-label="Basic example" aria-valuenow={100} aria-valuemin={0} aria-valuemax={100}>
