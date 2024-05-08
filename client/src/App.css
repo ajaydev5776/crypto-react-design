@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+
+
+.blockdiv {
+  box-shadow: 0px 0px 10px 1px lightgrey;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.blockbutton {
+  background-color: blue;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.highlight {
+  position: relative;
+}
+
+.highlight::before {
+  --white-area: -25px;
+  content: '';
+  position: absolute;
+  left:   var(--white-area);
+  right:  var(--white-area);
+  top:    var(--white-area);
+  bottom: var(--white-area);
+  box-shadow: 
+    inset 0px 0px 10px 0px rgba(0, 0, 0, 0.5),
+    0px 0px 0px 9999px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
+  
+  border-radius: 2rem;
+}

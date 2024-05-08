@@ -2,33 +2,52 @@ import React, { Component, useEffect, useState } from "react";
 import ReactApexChart from 'react-apexcharts';
 import instance from '../../Api';
 import useWebSocket, { ReadyState } from 'react-use-websocket';
+import { GetCoinValue } from "../../BackendApiCalls/ApiCall";
 
-const Candlestick = ({CoinDetails,userId}) => {
+const Candlestick = ({CoinDetails,SetCoinValue}) => {
   const [CoinData, setCoinData] = useState([])
-  const WS_URL = "ws://localhost:4480/o/ws/getbitcoinvalue"
-  const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(
-    WS_URL,
-    {
-      share: false,
-      shouldReconnect: () => true,
-    },
-  )
+
+  // var WS_URL = "ws://216.225.197.171:4480/o/ws/getbitcoinvalue" 
+  // if (process.env.NODE_ENV !== 'production'){
+  //   WS_URL = "ws://localhost:4480/o/ws/getbitcoinvalue"
+  // }
+  // const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(
+  //   WS_URL,
+  //   {
+  //     share: false,
+  //     shouldReconnect: () => true,
+  //   },
+  // )
+
+  // useEffect(()=>{
+  //   // const socket = new WebSocket("ws://localhost:4480/o/ws/getbitcoinvalue")
+  //   console.log("Connection state changed")
+  //   // socket.addEventListener("open", (event) =>{
+  //   //   socket.send("Connection established")
+  //   // })
+  //   if (readyState === ReadyState.OPEN) {
+  //     sendJsonMessage(
+  //       {
+  //         "coin":CoinDetails,
+  //         "userId":userId 
+  //     }) 
+  //   }
+   
+  // },[readyState,CoinDetails])
+
+  const [currentData, setCurrentData] = useState({})
 
   useEffect(()=>{
-    // const socket = new WebSocket("ws://localhost:4480/o/ws/getbitcoinvalue")
-    console.log("Connection state changed")
-    // socket.addEventListener("open", (event) =>{
-    //   socket.send("Connection established")
-    // })
-    if (readyState === ReadyState.OPEN) {
-      sendJsonMessage(
-        {
-          "coin":CoinDetails,
-          "userId":userId 
-      }) 
-    }
-   
-  },[readyState])
+    const timeoutId = setInterval(() => {
+      GetCoinValue(CoinDetails).then(res =>{
+        setCurrentData(res)
+        SetCoinValue({coinname: CoinDetails,value : res.high})
+      })
+    }, 60000);
+
+    return () => clearTimeout(timeoutId);
+  },[])
+
   const [series, setSeries] = useState(
     [{
       name: 'candle',
@@ -37,30 +56,32 @@ const Candlestick = ({CoinDetails,userId}) => {
   )
 
   useEffect(() => {
-    if (lastJsonMessage){
+    if (currentData){
 
-      console.log(`Got a new message: ${lastJsonMessage}`, lastJsonMessage.bitCoinPrice)
+      console.log(`Got a new message:`, currentData)
       var obj = {
-        x: new Date(lastJsonMessage.bitCoinPrice.time * 1000),
-        y: [lastJsonMessage.bitCoinPrice.open,lastJsonMessage.bitCoinPrice.low,lastJsonMessage.bitCoinPrice.high,lastJsonMessage.bitCoinPrice.close]
+        x: new Date(currentData.time * 1000),
+        y: [currentData.open,currentData.low,currentData.high,currentData.close]
       }
       console.log("dsadsds",series[0])
       var updateCoinData = series[0].data
       updateCoinData.push(obj)
-      
+      if (series[0].data.length > 200){
+        series[0].data.shift()
+      }
       setSeries([{name:"candle",data:[...series[0].data,obj]}]) 
       // setSeries( [{
       //   name: 'candle',
       //   data: bitData
       // }])
     }
-  }, [lastJsonMessage])
+  }, [currentData])
   
   useEffect(()=>{
     console.log("calledddddd",CoinDetails)
     // if(series[0].data.length == 0){
       CallApi(CoinDetails).then((res)=>{
-        console.log("response from CallAPI", res)
+        // console.log("response from CallAPI", res)
         // setCoinData(res)
         // setCoinData((prev)=>[...prev,res])
         setSeries([{name:"candle",data:res}])
@@ -82,7 +103,7 @@ const Candlestick = ({CoinDetails,userId}) => {
         var payload = {
           "coinName": coin,
           "currentTime" : Math.ceil((new Date).getTime() / 1000),
-           "beforeTimeInHour": 5.0
+           "beforeTimeInHour": 3.0
         }
         console.log("Payload", payload)
         instance({

@@ -9,7 +9,7 @@ import FormUser from '../../component/FormUser/FormUser';
 import DeletePopup from '../../component/Modal/DeletePopup';
 import FormModal from '../../component/Modal/RagisterNewUserModal';
 import ResetPasswordodal from '../../component/Modal/ResetPasswordModal';
-import { AddUserToDb } from '../../AdminFunction/ApiCalls';
+import { AddUserToDb, UpdateAccountStatus, UpdateUserPassWord } from '../../AdminFunction/ApiCalls';
 
 const AdminNewUserPage = () => {  
     // Toggle Class In Aside Bar
@@ -23,40 +23,26 @@ const AdminNewUserPage = () => {
     const registerUserFields = [
       { type: 'text', placeholder: 'Enter Your name', label: 'Full name' ,key:'userName' , value:""},
       { type: 'tel', placeholder: 'Enter phone number', label: 'Phone Number',key:'phoneNo' , value:0 },
-      { type: 'password', placeholder: 'Create password', label: 'Create Password',key:'password' , value:'' },
-      { 
-        type: 'password',
-        placeholder: 'Confirm password',
-        label: 'Confirm Password',
-        description: [
-          'Minimum 8 characters long - the more, the better',
-          'At least one lowercase character',
-          'At least one uppercase character',
-          'At least one number, symbol, or whitespace character',
-        ],
-        descriptionTitle: 'Password requirements:',
-        key:'cPassword' , value:''
-      }
+      { type: 'password', placeholder: 'Create password', label: 'Create Password',key:'password' , value:'', description: [
+        'Minimum 8 characters long - the more, the better',
+        'At least one lowercase character',
+        'At least one uppercase character',
+        'At least one number, symbol, or whitespace character',
+      ],
+      descriptionTitle: 'Password requirements:'},
     ];
 
     // Fields for the "Change User Password" tab
     const changePasswordFields = [
       { type: 'tel', placeholder: 'Enter phone number', label: 'Phone Number',key:'phoneNo' , value:0 },
-      { type: 'password', placeholder: 'Enter new password', label: 'New password',key:'password' , value:"" },
-      { 
-        type: 'password',
-        placeholder: 'Confirm password',
-        label: 'Confirm Password',
-        description: [
-          'Minimum 8 characters long - the more, the better',
-          'At least one lowercase character',
-          'At least one uppercase character',
-          'At least one number, symbol, or whitespace character',
-        ],
-        descriptionTitle: 'Password requirements:',
-        key:'cPassword' ,
-        value:""
-      }
+      { type: 'password', placeholder: 'Enter new password', label: 'New password',key:'password' , value:"",
+      description: [
+        'Minimum 8 characters long - the more, the better',
+        'At least one lowercase character',
+        'At least one uppercase character',
+        'At least one number, symbol, or whitespace character',
+      ],
+      descriptionTitle: 'Password requirements:' }
     ];
 
     // Fields for the "Delete User Account" tab
@@ -77,31 +63,56 @@ const AdminNewUserPage = () => {
     
     //function for register new user
   const handleShowRegisterFormModal = (data) => {
-    console.log("data From handleShowResetPasswordodal form", data) 
+    console.log("data From  handleShowRegisterFormModal form", data) 
     var userPayload = {
       userName: data[0].value,
       phoneNo: data[1].value,
       password: data[2].value
     }
+    if (userPayload.userName == ""){
+      alert("Enter Username")
+      return
+    }
+    if (userPayload.phoneNo ==""|| userPayload.phoneNo.length < 10 || isNaN(userPayload.phoneNo.length)){
+    alert("Invalid Phone Number")
+    return
+    }
+    if (userPayload.password == "" || userPayload.password.length < 8 ){
+      alert("Pssword is weak password should be grater then 8 char")
+      return
+    }
     AddUserToDb(userPayload).then(res => {
-      alert(JSON.stringify(res))
+      alert("User Created SuccessFully UserId: ",res)
+      
     }).catch(err =>{
-      alert("errr" + err)
+      alert("errr " + err)
+      return
     })
-    setShowFormModal(true)
+    // setShowFormModal(true)
   };
 
 
   const handleShowResetPasswordodal = (data) =>{
-    console.log("data From handleShowResetPasswordodal form", data) 
     var userPayload = {
-      userName: data[0].value,
-      phoneNo: data[1].value,
-      password: data[2].value
+      phoneNo: data[0].value,
+      password: data[1].value
     }
-       console.log("Data For payload", userPayload)  
-    setShowResetPasswordodal(true)} ;
-  const handleShowDeletePopup = () => setShowDeletePopup(true);
+    // if(userPayload.)
+        
+       UpdateUserPassWord(userPayload).then(res=>{
+        alert("password updated")
+       }).catch(err=>{
+        alert(err)
+       })
+    } ;
+  const handleShowDeletePopup = (data) => {
+    console.log("Data For payload", data) 
+    // var Accounts = {
+    //   "accounts": [data[0].value],
+    //   "action":"delete"
+    // }
+    // UpdateAccountStatus(Accounts).then(res)
+    setShowDeletePopup(true)};
 
   
 
@@ -133,7 +144,7 @@ const AdminNewUserPage = () => {
                                                     <Nav  variant="pills" className="nav navtabs flex-xl-column flex-row justify-content-xl-start justify-content-between nav-pills py-3">
                                                       <Nav.Item><Nav.Link eventKey="first"><i className="far fa-user"></i> Ragister New User</Nav.Link></Nav.Item>
                                                       <Nav.Item><Nav.Link eventKey="second"><i className="fas fa-key"></i> Change User Password</Nav.Link></Nav.Item>
-                                                      <Nav.Item><Nav.Link eventKey="thred"><i className="fas fa-trash"></i> Delete User Account</Nav.Link></Nav.Item>
+                                                      {/* <Nav.Item><Nav.Link eventKey="thred"><i className="fas fa-trash"></i> Delete User Account</Nav.Link></Nav.Item> */}
                                                     </Nav>
                                                 </div>
                                                 </Col>

@@ -5,6 +5,15 @@ import (
 	"practice/project/crypto-react-design/Server/models/admin"
 )
 
+func UpdateUserPasswordService(UserDetails UpdateUserPass) (bool, error) {
+
+	log.Println("IN addNewUserService")
+
+	status, err := UpdateUserPasswordDAO(UserDetails)
+
+	return status, err
+}
+
 func addNewUserService(UserDetails admin.UserDetails) (string, error) {
 
 	log.Println("IN addNewUserService")

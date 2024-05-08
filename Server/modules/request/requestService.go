@@ -25,6 +25,17 @@ func UserLoginService(user request.UserLoginDetails) (admin.UserDetailswithoutPa
 	return userDetails, err
 }
 
+func GetCoinValueService(BitCoinReq request.Request) (request.BitCoinTimeWiseData, error) {
+	currentTime := time.Now().Unix()
+	coinValue, err := GetCoinValueDAO(BitCoinReq.CoinName, currentTime)
+
+	if err != nil {
+		return request.BitCoinTimeWiseData{}, err
+	}
+	return coinValue, err
+
+}
+
 func GetCoinCurrentValueService(BitCoinReq request.Request) (float64, error) {
 	currentTime := time.Now().Unix()
 	coinValue, err := GetCoinCurrentValueDAO(BitCoinReq.CoinName, currentTime)

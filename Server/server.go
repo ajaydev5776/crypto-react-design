@@ -2,7 +2,9 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"practice/project/crypto-react-design/Server/api"
+	"practice/project/crypto-react-design/Server/modules/cronjob"
 	"practice/project/crypto-react-design/Server/modules/database"
 
 	// "practice/TimePass/Server/api"
@@ -46,7 +48,7 @@ func main() {
 	}()
 
 	log.Println("Listing on port", srv.Addr)
-
+	StartCronJobs()
 	quit := make(chan os.Signal)
 
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGALRM)
@@ -75,6 +77,18 @@ func main() {
 		// return nil, err
 	}
 
+}
+
+func StartCronJobs() {
+	fmt.Println("Cron job called")
+	_, err := cronjob.StartCronForCoin("BTC")
+	if err != nil {
+		log.Println("Error in StartCronForCoin BTC", err)
+	}
+	_, err = cronjob.StartCronForCoin("USDT")
+	if err != nil {
+		log.Println("Error in StartCronForCoin USDT", err)
+	}
 }
 
 func killDBConnections() error {

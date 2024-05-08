@@ -3,7 +3,7 @@ import Searchbar from '../Search/Search'
 import Starfill from '../../assets/img/icon/Star-fill.svg'
 import Tradcoins from '../Tradcoins/Tradcoins'
 
-const Asidebar = ({onCoinSelect}) => {
+const Asidebar = ({onCoinSelect,bitcoinPrice,usdtPrice}) => {
   return (
     <>
      <div className="col-12 col-sm-auto h-100 left-chart-crtpto" id="left-chart-crtpto">
@@ -25,8 +25,8 @@ const Asidebar = ({onCoinSelect}) => {
             <div className="tab-content" id="pills-tabContent">
               <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabIndex={0}>
                 <div className="topheader">
-                  <Tradcoins coinName="BTC" coincurrency="/INR" coinplatform="CoinSwitchX + 1" coinprich="₹44,78,961" coinheightLow="+2.72%" isHighlighted="" onCoinSelect={onCoinSelect}/>
-                  <Tradcoins coinName="USDT" coincurrency="/INR" coinplatform="CoinSwitchX + 1" coinprich="₹44,78,961" coinheightLow="+2.72%" isHighlighted="false" onCoinSelect={onCoinSelect}/>
+                  <Tradcoins coinName="BTC" coincurrency="/INR" coinplatform="CoinSwitchX + 1" coinprich={"₹"+bitcoinPrice} coinheightLow="+2.72%" isHighlighted="" onCoinSelect={onCoinSelect}/>
+                  <Tradcoins coinName="USDT" coincurrency="/INR" coinplatform="CoinSwitchX + 1" coinprich={"₹"+usdtPrice} coinheightLow="+2.72%" isHighlighted="false" onCoinSelect={onCoinSelect}/>
                   
                 </div>
               </div>

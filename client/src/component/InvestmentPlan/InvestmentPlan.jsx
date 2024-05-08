@@ -1,6 +1,6 @@
 import React from 'react'
 
-const InvestmentPlan = ({plantime, plan_prich, totleplantime, saveprice, planfeature, buyplan="Buy Plan", isActive = false}) => {
+const InvestmentPlan = ({plantime, plan_prich, totleplantime, saveprice, planfeature,buyplanlink, buyplan="Buy Plan", isActive = false}) => {
     return (
         <>
         <div class="col-12 col-lg-6 col-xl-4">
@@ -14,7 +14,7 @@ const InvestmentPlan = ({plantime, plan_prich, totleplantime, saveprice, planfea
                         <li key={index}>{feature}</li>
                     ))}
                 </ul>
-                <a href="javascript:;" class="cta_btn">{buyplan}</a>
+                <a href={buyplanlink} class="cta_btn">{buyplan}</a>
             </div>
         </div>
         </>

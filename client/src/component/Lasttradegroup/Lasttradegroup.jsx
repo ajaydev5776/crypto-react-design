@@ -11,7 +11,7 @@ const Lasttradegroup = () => {
         <table className="table table-borderless align-middle">
             <thead>
             <tr className="border-bottom-light">
-                <th className="text-white fw-normal fs-12">Prich</th>
+                <th className="text-white fw-normal fs-12">Price</th>
                 <th className="text-white fw-normal fs-12 text-capitalize"><button className="criptoFilter small-fs shadow-none border-0 rounded-1 text-white text-opacity-75 bg-transparent p-0" id="lasttradeCripto"><span className="quantitycrypto text-nowrap">amount</span><img src={Switchsvg} alt="Switchsvg" /></button></th>
                 <th className="text-white fw-normal fs-12">Time</th>
             </tr>

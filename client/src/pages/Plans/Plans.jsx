@@ -1,6 +1,17 @@
 import React from 'react'
 import InvestmentPlan from '../../component/InvestmentPlan/InvestmentPlan'
+import { useEffect } from 'react';
+import { GetTelegramLink } from '../../BackendApiCalls/ApiCall';
+import { useState } from 'react';
+
 const Plans = () => {
+    const[planLink,setPlanLink]= useState("")
+    useEffect(()=>{
+    GetTelegramLink("supportLink").then(link=>{
+        setPlanLink(link.link)
+    })
+    },[])
+
     const investmentPlans = [
         {
             plantime: "Weekly",
@@ -46,7 +57,8 @@ const Plans = () => {
                                 totleplantime={plan.totleplantime} 
                                 saveprice={plan.saveprice} 
                                 planfeature={plan.planfeature} 
-                                buyplan={plan.buyplan} 
+                                buyplan={plan.buyplan}
+                                buyplanlink={planLink} 
                                 isActive={plan.isActive} 
                             />
                         ))}

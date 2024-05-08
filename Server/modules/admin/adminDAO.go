@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 
@@ -113,7 +114,7 @@ func AddCoinToUserAccountDAO(userTran admin.UserTransitions) (bool, error) {
 		return false, err
 	}
 	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
-	currTime := time.Now().Format("2006-01-02")
+	currTime := time.Now().String()
 	userTran.InvestedDate = currTime
 
 	collection := conn.Database("cryptoServer").Collection("TransitionDetails")
@@ -125,6 +126,106 @@ func AddCoinToUserAccountDAO(userTran admin.UserTransitions) (bool, error) {
 		return false, err
 	}
 
+	return true, nil
+
+}
+func DeleteTranDAO(trans TranDetail) (bool, error) {
+	log.Println("IN DeleteTranDAO")
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+
+	if err != nil {
+		log.Println("Error in Monog Connnection in insertDataInMongo", err)
+		return false, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+
+	collection := conn.Database("cryptoServer").Collection("TransitionDetails")
+	objectId, _ := primitive.ObjectIDFromHex(trans.TransID)
+
+	// filter := bson.M{"_id": objectId}
+
+	// var existingUser admin.UserDetails
+
+	// err = collection.FindOne(ctx, filter).Decode(&existingUser)
+	// if err != nil {
+	// 	if err == mongo.ErrNoDocuments {
+	// 		return false, errors.New("Phone number not exist in Server")
+	// 	} else {
+	// 		return false, err
+	// 	}
+	// }
+	update := bson.M{"isDeleted": true}
+	optio := options.Update().SetUpsert(true)
+	_, err = collection.UpdateOne(ctx, bson.M{"_id": objectId}, update, optio)
+
+	if err != nil {
+		return false, errors.New("Error in inserting new User")
+	}
+	return true, nil
+}
+
+func GetAllTransitionDetailsDAO() ([]admin.UserTransitions, error) {
+	log.Println("IN GetAllTransitionDetailsDAO")
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+
+	if err != nil {
+		log.Println("Error in Monog Connnection in insertDataInMongo", err)
+		return []admin.UserTransitions{}, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+
+	collection := conn.Database("cryptoServer").Collection("TransitionDetails")
+
+	tranData := []admin.UserTransitions{}
+	option := options.Find().SetSort(bson.M{"_id": -1})
+	cursr, err := collection.Find(ctx, bson.M{}, option)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			return tranData, nil
+		}
+		return tranData, err
+	}
+
+	err = cursr.All(ctx, &tranData)
+	if err != nil {
+		return tranData, err
+	}
+	return tranData, nil
+
+}
+
+func UpdateUserPasswordDAO(userdetails UpdateUserPass) (bool, error) {
+	log.Println("IN UpdateUserPasswordDAO")
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+
+	if err != nil {
+		log.Println("Error in Monog Connnection in insertDataInMongo", err)
+		return false, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+
+	collection := conn.Database("cryptoServer").Collection("userDetails")
+	filter := bson.M{"phoneNo": userdetails.PhoneNo}
+
+	var existingUser admin.UserDetails
+
+	err = collection.FindOne(ctx, filter).Decode(&existingUser)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			return false, errors.New("Phone number not exist in Server")
+		} else {
+			return false, err
+		}
+	}
+	update := bson.M{"password": userdetails.Password}
+	_, err = collection.UpdateOne(ctx, filter, update)
+
+	if err != nil {
+		return false, errors.New("Error in inserting new User")
+	}
 	return true, nil
 
 }

@@ -1,26 +1,44 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import AdminTable from '../../component/AdminTable/AdminTable'
 import Pagination from '../../component/Pagination/Pagination'
 import AdminAsideBar from '../../component/AdminAsideBar/AdminAsideBar'
 import AdminHeader from '../../component/AdminHeader/AdminHeader'
+import { DeleteTransFunction, GetAllTransitionDetails } from '../../AdminFunction/ApiCalls'
 const AdminUserHistoryPage = () => {
     // Toggle Class In Aside Bar
     const [isAsidebarActive, setIsAsidebarActive] = useState(false);
     const toggleAsidebar = () => {
         setIsAsidebarActive(!isAsidebarActive);
     };
+    const [tranData,setTranData] = useState([])
+    const DeleteTrans = (data)=>{
+        DeleteTransFunction(data).then(res=>{
+            console.log("DeleteID",res)
+        })
+    }
 
-    const usersHeaders = ['User Mob. No.', 'Date', 'Time', 'Plan Amount'];
+    useEffect(()=>{
+GetAllTransitionDetails().then(res=>{
+    console.log("wertyujuooiuyfghjk",res)
+    var processDataArray =[]
+    if (!res || res.length <= 0){
+        setTranData([])
+        return
+    }
+
+    for(var i=0;i<res.length;i++){
+        var date = res[i].investedDate.slice(0, 10)
+        var time = res[i].investedDate.slice(12,19)
+       var temp = [res[i].transId,res[i].phoneNo, date,time,res[i].coinName,res[i].investedAmount]
+       processDataArray.push(temp)
+    }
+    setTranData(processDataArray)
+})
+    },[])
+    
+    const usersHeaders = ['Tran Id','User Mob. No.', 'Date', 'Time','Coin Name', 'Plan Amount'];
     const usersData = [
-        ['9876543210', 'Feb 15, 2024', '11:55:00 AM', '43,286'],
-        ['9876543210', 'Feb 15, 2024', '11:55:00 AM', '43,286'],
-        ['9876543210', 'Feb 15, 2024', '11:55:00 AM', '43,286'],
-        ['9876543210', 'Feb 15, 2024', '11:55:00 AM', '43,286'],
-        ['9876543210', 'Feb 15, 2024', '11:55:00 AM', '43,286'],
-        ['9876543210', 'Feb 15, 2024', '11:55:00 AM', '43,286'],
-        ['9876543210', 'Feb 15, 2024', '11:55:00 AM', '43,286'],
-        ['9876543210', 'Feb 15, 2024', '11:55:00 AM', '43,286'],
-        ['9876543210', 'Feb 15, 2024', '11:55:00 AM', '43,286'],
+        tranData
     ];
     return (
         <>
@@ -64,7 +82,7 @@ const AdminUserHistoryPage = () => {
                                                     </div>
                                                 </div>
                                                 <div className="table-responsive datatable-custom">
-                                                    <AdminTable headers={usersHeaders} data={usersData} />
+                                                    <AdminTable headers={usersHeaders} data={tranData} Actionname="Remove" action={DeleteTrans} />
                                                 </div>
                                                     <Pagination/>
                                                 </div>

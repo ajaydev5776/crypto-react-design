@@ -2,7 +2,7 @@ import Arrow from '../../assets/img/icon/right-arrow.svg'
 import Star from '../../assets/img/icon/Star.svg'
 import Heighlowcrypto from '../Heighlowcrypto/Heighlowcrypto'
 
-const Heighlowcryptogroup = () => {
+const Heighlowcryptogroup = ({bitcoinPrice}) => {
     function HeightLowCardItems({ data }) {
         return (
             <div className="row gx-0 row-gap-3 py-lg-0 py-2">
@@ -15,8 +15,8 @@ const Heighlowcryptogroup = () => {
         );
     }
     const data = [
-        { cryptolavelTime: "24h High", cryptoamount: "₹41,99,999" },
-        { cryptolavelTime: "24h Low", cryptoamount: "₹41,33,600" },
+        { cryptolavelTime: "24h High", cryptoamount: "₹"+ (bitcoinPrice + 4859) },
+        { cryptolavelTime: "24h Low", cryptoamount: "₹" +(bitcoinPrice - 4859.5) },
         { cryptolavelTime: "24h Volume (BTC)", cryptoamount: "4.25806" },
         { cryptolavelTime: "24h Volume (INR)", cryptoamount: "₹1,80,03,483.39" },
     ];
@@ -27,7 +27,7 @@ return (
                 <div className="carditem bg-theme1 rounded-1 d-flex justify-content-between gap-3 clickable">
                 <div className="leftside d-flex flex-column gap-1">
                     <div className="criptoname text-theme2">BTC<span className="text-white-50">/INR</span> <img src={Star} className="ms-2" alt="star" /></div>
-                    <div className="prich d-flex align-items-center gap-2">₹41,33,600 <span className="text-theme4">-0.67%</span></div>
+                    <div className="prich d-flex align-items-center gap-2">₹{bitcoinPrice} <span className="text-theme4">-0.67%</span></div>
                 </div>
                 <div className="rightside d-flex align-items-center"><img src={Arrow} alt="arrow" /></div>
                 </div>

@@ -4,6 +4,7 @@ import Headers from './../component/Header/Header'
 import { useNavigate , Outlet,useLocation  } from 'react-router-dom'
 import { AuthContext } from '../context/Auth.context.js';
 import LoginForm from '../pages/Login/index.jsx';
+import Block from '../pages/Block/index.jsx';
 const Layout = () => {
   const { state } = useContext(AuthContext);
   const location = useLocation();
@@ -17,6 +18,7 @@ const Layout = () => {
         <>
         <Headers/>
         <Outlet/>
+        {/* <Block /> */}
         </>
       )
     }
@@ -24,6 +26,7 @@ const Layout = () => {
     // return (<Login></Login>)
     return (<>
       <LoginForm />
+      {/* <Block /> */}
       </>)
   } else if(!state.isLoggedIn && location.pathname == "/login"){
       return(
@@ -36,6 +39,7 @@ const Layout = () => {
       <>
       <Headers/>
       <Outlet/>
+      {/* <Block /> */}
       </>
     )
   }

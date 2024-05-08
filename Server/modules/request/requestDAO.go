@@ -13,6 +13,7 @@ import (
 	"os"
 	"practice/project/crypto-react-design/Server/models/admin"
 	"practice/project/crypto-react-design/Server/models/request"
+	"practice/project/crypto-react-design/Server/modules/cryptowebsocket"
 	"practice/project/crypto-react-design/Server/modules/database"
 	"time"
 
@@ -145,6 +146,35 @@ func GetCoinCurrentValueDAO(coinName string, CurrentTime int64) (float64, error)
 	}
 	fmt.Println("DAta", bitcoinDetails)
 	return bitcoinDetails.High, nil
+}
+
+func GetCoinValueDAO(coinName string, CurrentTime int64) (request.BitCoinTimeWiseData, error) {
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+	if err != nil {
+		log.Println("Error creating a db connection", err)
+		// return config, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+	collection := conn.Database("cryptoServer").Collection("BitCoinData")
+	filter := bson.M{
+		"coinName": coinName,
+		"time": bson.M{
+			"$gte": CurrentTime,
+		},
+	}
+	bitcoinDetails := request.BitCoinTimeWiseData{}
+	err = collection.FindOne(ctx, filter).Decode(&bitcoinDetails)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			fmt.Println("No data Found", err)
+			return bitcoinDetails, err
+		}
+		fmt.Println("Error ", err)
+		return bitcoinDetails, err
+	}
+	fmt.Println("DAta", bitcoinDetails)
+	return bitcoinDetails, nil
 }
 
 func GetBitCoinPriceDAO(BitCoinReq request.Request) ([]request.ApiDetails, error) {
@@ -411,6 +441,7 @@ func GetNextHourDataDAO(BitCoinReq request.Request) ([]request.BitCoinTimeWiseDa
 	log.Println("IN : GetNextHourDataDAO")
 	log.Println("IN GetCoinDataFromAPIDAO")
 	var BitCoinResponse request.BitCoinDataFromApi
+	var Retry = 0
 
 	ApiDetails, err := GetAPIdetails(BitCoinReq.CoinName)
 
@@ -425,12 +456,20 @@ func GetNextHourDataDAO(BitCoinReq request.Request) ([]request.BitCoinTimeWiseDa
 		return []request.BitCoinTimeWiseData{}, ReqErr
 	}
 	Client := &http.Client{Timeout: 60 * time.Second}
+	var responce = &http.Response{}
+	for Retry < 2 {
+		responce, err = Client.Do(Request)
 
-	responce, resErr := Client.Do(Request)
-
-	if resErr != nil {
-		log.Println("Error in HTTP request", resErr)
-		return []request.BitCoinTimeWiseData{}, resErr
+		if err != nil {
+			log.Println("Error in HTTP request", err)
+			continue
+			// return []request.BitCoinTimeWiseData{}, err
+		}
+		break
+	}
+	if err != nil {
+		log.Println("Error in HTTP request", err)
+		return []request.BitCoinTimeWiseData{}, err
 	}
 	defer responce.Body.Close()
 
@@ -456,6 +495,10 @@ func GetNextHourDataDAO(BitCoinReq request.Request) ([]request.BitCoinTimeWiseDa
 		respData, err := InsertHourlyDataInMongo(BitCoinResponse.Data)
 		if err != nil {
 			return []request.BitCoinTimeWiseData{}, err
+		}
+		resps, err := cryptowebsocket.SetCoinDataToMap(BitCoinReq.CoinName)
+		if err != nil {
+			return resps, err
 		}
 		return respData, nil
 	} else {

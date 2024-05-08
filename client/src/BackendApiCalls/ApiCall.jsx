@@ -123,3 +123,55 @@ export function GetCoinCurrentValue(CoinName) {
            }
     })
   }
+
+  export function GetCoinValue(CoinName) {
+    return new Promise((resolve,reject) => {
+        try{
+            instance({
+              url:"o/request/getcoinvalue",
+              method: "POST",
+              data :{coinName:CoinName}
+            }).then((res) => {
+               
+              console.log("res.status",res.status)
+              if (res.status == 200 || res.statusText == "OK"){
+                // console.log("Set data to", processData)
+                // setCoinData(processData)
+                return resolve(res.data)
+              }else{
+                return reject(res.data)
+              }             
+            }).catch(err =>{
+                return reject(false)
+            })
+           } catch (e) {
+            console.log("Error in API Call ", e)
+            return reject(false)
+           }
+    })
+  }
+
+export function GetTelegramLink(key){
+    return new Promise((resolve,reject) => {
+        try{
+            instance({
+              url:"o/admin/getTelegramLink",
+              method: "POST",
+              data :{key:key}
+            }).then((res) => {
+              if (res.status == 200 || res.statusText == "OK"){
+                // console.log("Set data to", processData)
+                // setCoinData(processData)
+                return resolve(res.data)
+              }else{
+                return reject(res.data)
+              }             
+            }).catch(err =>{
+                return reject(false)
+            })
+           } catch (e) {
+            console.log("Error in API Call ", e)
+            return reject(false)
+           }
+    })
+}

@@ -1,5 +1,7 @@
 package admin
 
+import "go.mongodb.org/mongo-driver/bson/primitive"
+
 type UserDetails struct {
 	UserId        string `json:"userId" bson:"userId"`
 	UserName      string `json:"userName" bson:"userName" validate:"required"`
@@ -23,13 +25,15 @@ type LoginDetails struct {
 }
 
 type UserTransitions struct {
-	UserId         string  `josn:"userId" bson:"userId"`
-	UserName       string  `josn:"userName" bson:"userName"`
-	CoinName       string  `json:"coinName" bson:"coinName"`
-	BuyAtValue     float32 `json:"buyAtValue" bson:"buyAtValue"`
-	InvestedAmount string  `json:"investedAmount" bson:"investedAmount"`
-	CoinAvailable  float32 `json:"coinAvailable" bson:"coinAvailable"`
-	InvestedDate   string  `json:"investedDate" bson:"investedDate"`
+	TransId        primitive.ObjectID `json:"transId,omitempty" bson:"_id,omitempty"`
+	UserId         string             `json:"userId" bson:"userId"`
+	UserName       string             `json:"userName" bson:"userName"`
+	CoinName       string             `json:"coinName" bson:"coinName"`
+	PhoneNo        string             `json:"phoneNo" bson:"phoneNo"`
+	BuyAtValue     float32            `json:"buyAtValue" bson:"buyAtValue"`
+	InvestedAmount string             `json:"investedAmount" bson:"investedAmount"`
+	CoinAvailable  float32            `json:"coinAvailable" bson:"coinAvailable"`
+	InvestedDate   string             `json:"investedDate" bson:"investedDate"`
 }
 
 type TelegramLink struct {

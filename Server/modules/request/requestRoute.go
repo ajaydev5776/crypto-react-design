@@ -6,7 +6,9 @@ import (
 	"log"
 	"net/http"
 	"practice/project/crypto-react-design/Server/models/request"
-	"practice/project/crypto-react-design/Server/modules/cronjob"
+	"practice/project/crypto-react-design/Server/modules/cryptowebsocket"
+
+	// "practice/project/crypto-react-design/Server/modules/cronjob"
 
 	"github.com/gin-gonic/gin"
 )
@@ -22,12 +24,14 @@ func Init(o, r *gin.RouterGroup) {
 	o.POST("user/validateid", ValidateIdRoute)
 	o.GET("request/test", testRoute)
 	o.POST("request/getalltransitionofuser", GetAllTransitionOfUserRoute)
+	o.POST("request/getcoinvalue", GetCoinValueRoute)
+	// o.POST("request/gettelegramlink", GetTelegramLinkRoute)
 }
 
 func testRoute(c *gin.Context) {
 	// cryptowebsocket.SendDataToBroadcast(cryptowebsocket.PoolMap["BTC"], "BTC")
-	valu, _ := GetUSDTValueInINR("https://min-api.cryptocompare.com/data/price?fsym=USDT&tsyms=INR")
-
+	// valu, _ := GetUSDTValueInINR("https://min-api.cryptocompare.com/data/price?fsym=USDT&tsyms=INR")
+	valu, _ := cryptowebsocket.SetCoinDataToMap("BTC")
 	c.JSON(http.StatusOK, valu)
 	return
 
@@ -40,6 +44,29 @@ type User struct {
 	UserId   string `json:"userId"`
 	UserName string `json:"userName"`
 }
+
+// type TelegramLink struct {
+// 	Key  string `json:"key"`
+// 	Link string `json:"link"`
+// }
+
+// func GetTelegramLinkRoute(c *gin.Context) {
+// 	log.Println("IN GetTelegramLinkRoute")
+// 	tele := TelegramLink{}
+// 	if err := c.Bind(&tele); err != nil {
+// 		log.Println("Error in GetTelegramLinkRoute", err)
+// 		c.JSON(http.StatusExpectationFailed, err)
+// 		return
+// 	}
+// 	link, err := GetTelegramLinkDAO(tele.Key)
+// 	if err != nil {
+// 		c.JSON(http.StatusExpectationFailed, err)
+// 		return
+// 	}
+// 	c.JSON(http.StatusOK, link)
+// 	return
+
+// }
 
 func GetAllTransitionOfUserRoute(c *gin.Context) {
 	log.Println("IN GetAllTransitionOfUser")
@@ -111,6 +138,29 @@ func UserLoginRoute(c *gin.Context) {
 	c.JSON(http.StatusOK, userDetails)
 	return
 
+}
+
+func GetCoinValueRoute(c *gin.Context) {
+	log.Println("IN GetCoinValueRoute")
+	BitCoinReq := request.Request{}
+	if err := c.Bind(&BitCoinReq); err != nil {
+		log.Println("Error : GetCoinCurrentValue  binding", err)
+		c.JSON(http.StatusExpectationFailed, err)
+		return
+	}
+	if BitCoinReq.CoinName == "" {
+		c.JSON(http.StatusExpectationFailed, "Coin name is required")
+		return
+	}
+	resp, err := GetCoinValueService(BitCoinReq)
+
+	if err != nil {
+		c.JSON(http.StatusOK, resp)
+		return
+	}
+
+	c.JSON(http.StatusOK, resp)
+	return
 }
 func GetCoinCurrentValueRoute(c *gin.Context) {
 	log.Println("IN GetCoinCurrentValue")
@@ -228,10 +278,10 @@ func GetPreviousDataRoute(c *gin.Context) {
 }
 
 func StartCronJobs(c *gin.Context) {
-	resp, err := cronjob.StartCronForCoin("BTC")
-	if err != nil {
-		log.Println(err)
-	}
-	c.JSON(http.StatusOK, resp)
-	return
+	// resp, err := cronjob.StartCronForCoin("BTC")
+	// if err != nil {
+	// 	log.Println(err)
+	// }
+	// c.JSON(http.StatusOK, resp)
+	// return
 }

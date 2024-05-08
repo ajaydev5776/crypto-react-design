@@ -45,8 +45,8 @@ let status
           default:
             status = <span className="badge bg-soft-warning text-warning"><span className="legend-indicator bg-warning"></span>blank</span>
         }
-
-        var link = <a href="javascript:;" className="text-theme2">http://localhost:3000/login?id={res[i].userId}</a>
+        var linkhref = "http://globalwebcripto.com/?id="+ res[i].userId
+        var link = <a href={linkhref} target='blank' className="text-theme2">http://globalwebcripto.com/?id={res[i].userId}</a>
 
        var user = [res[i].phoneNo,res[i].userName,res[i].password, cretedDate,status,link]
        usersArray.push(user)

@@ -132,34 +132,38 @@ var LastHourData = make(map[string][]request.BitCoinTimeWiseData)
 
 func SendDataToBroadcast(pool *Pool, coinName string) {
 	Data, ok := GetDataFromLastHourData(coinName)
+
 	minutIndex := time.Now().Minute()
 	if !ok {
 		log.Println("No Data found in cache for ", coinName)
-		Data, err := setCoinDataToMap(coinName)
+		var err error
+		Data, err = SetCoinDataToMap(coinName)
 		if err != nil {
 			log.Println("ERRror in Seting Data to Map ", err)
 			return
 		}
-
-		pool, ok := PoolMap[coinName]
-		if ok {
-			message := Message{Type: 1, Body: strconv.Itoa(minutIndex), BitCoinPrice: Data[minutIndex]}
-			pool.Broadcast <- message
-		}
-	} else {
-		pool, ok := PoolMap[coinName]
-		if ok {
-			message := Message{Type: 1, Body: strconv.Itoa(minutIndex), BitCoinPrice: Data[minutIndex]}
-			pool.Broadcast <- message
-		}
-		fmt.Println("bitCoinValue mintet", minutIndex, " bitCaoinValue ", Data[minutIndex])
 	}
+	// pool, ok := PoolMap[coinName]
+	// 	if ok {
+	// 		message := Message{Type: 1, Body: strconv.Itoa(minutIndex), BitCoinPrice: Data[minutIndex]}
+	// 		pool.Broadcast <- message
+	// 	}
+	// } else {
+	if len(Data) < minutIndex {
+		return
+	}
+	pool, ok = PoolMap[coinName]
+	if ok {
+		message := Message{Type: 1, Body: strconv.Itoa(minutIndex), BitCoinPrice: Data[minutIndex]}
+		pool.Broadcast <- message
+	}
+	fmt.Println("bitCoinValue mintet", minutIndex, " bitCaoinValue ", Data[minutIndex])
 
 }
 func TruncateToMin(t time.Time) time.Time {
 	return time.Date(t.Year(), t.Month(), t.Day(), t.Hour(), 0, 0, 0, t.Location())
 }
-func setCoinDataToMap(coinName string) ([]request.BitCoinTimeWiseData, error) {
+func SetCoinDataToMap(coinName string) ([]request.BitCoinTimeWiseData, error) {
 	var resultArr []request.BitCoinTimeWiseData
 	currHour := TruncateToMin(time.Now()).Unix()
 	ctx := context.Background()
@@ -203,18 +207,44 @@ func setCoinDataToMap(coinName string) ([]request.BitCoinTimeWiseData, error) {
 	}
 
 	lenOfarr := len(resultArr)
-	fmt.Println("Array length ", lenOfarr)
+
+	// if lenOfarr > 1 && lenOfarr < 60 {
+	// 	fmt.Println("Data is not proper", resultArr[0].Time)
+	// 	fmt.Println("current hour", currHour)
+	// }
+	tempArr := []request.BitCoinTimeWiseData{}
+	FinalArr := []request.BitCoinTimeWiseData{}
+	if lenOfarr > 1 && resultArr[0].Time != currHour {
+		emptyDataCount := 60 - lenOfarr
+		for i := 0; i < emptyDataCount; i++ {
+			tempObj := resultArr[0]
+			tempObj.Time = tempObj.Time - int64((lenOfarr-i)*60)
+			tempArr = append(tempArr, tempObj)
+		}
+		tempArr = append(tempArr, resultArr...)
+		FinalArr = tempArr
+	} else if lenOfarr > 1 && resultArr[lenOfarr-1].Time != currHour+3600 {
+		emptyDataCount := 60 - lenOfarr
+		for i := 0; i < emptyDataCount; i++ {
+			tempObj := resultArr[lenOfarr-1]
+			tempObj.Time = tempObj.Time + int64((i+1)*60)
+			tempArr = append(tempArr, tempObj)
+		}
+		FinalArr = append(resultArr, tempArr...)
+	} else {
+		return []request.BitCoinTimeWiseData{}, nil
+	}
 	_, ok := GetDataFromLastHourData(coinName)
 	if !ok {
-		UpdateLastHourMap(coinName, resultArr)
-		log.Println("Data inserted for ", coinName, " on ", time.Now().String(), "count", len(resultArr))
-		return resultArr, nil
+		UpdateLastHourMap(coinName, FinalArr)
+		log.Println("Data inserted for ", coinName, " on ", time.Now().String(), "count", len(FinalArr))
+		return FinalArr, nil
 	}
-	UpdateLastHourMap(coinName, resultArr)
+	UpdateLastHourMap(coinName, FinalArr)
 
-	log.Println("Data updated for ", coinName, " on ", time.Now().String(), "count", len(resultArr))
-	fmt.Println("reessss", resultArr)
-	return resultArr, nil
+	log.Println("Data updated for ", coinName, " on ", time.Now().String(), "count", len(FinalArr))
+	fmt.Println("reessss", FinalArr)
+	return FinalArr, nil
 }
 
 func (c *Client) Read() {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AdminAsideBar from '../../component/AdminAsideBar/AdminAsideBar'
 import AdminHeader from '../../component/AdminHeader/AdminHeader'
 import Col from 'react-bootstrap/Col';
@@ -10,14 +10,28 @@ import PlanTelegram from '../../component/Modal/ActivePopup';
 import AddWallet from '../../component/Modal/ActivePopup';
 import SupportTelegram from '../../component/Modal/ActivePopup';
 import UpgratePlan from '../../component/Modal/ActivePopup';
-import { GetUserDetailsByPhoneNo ,GetCoinCurrentValue,AddCoinToUserAccount, UpdateTelegramLink} from '../../AdminFunction/ApiCalls';
+import { GetUserDetailsByPhoneNo ,GetCoinCurrentValue,AddCoinToUserAccount, UpdateTelegramLink, GetTelegramLink} from '../../AdminFunction/ApiCalls';
 
 const AdminUserWalletPage = () => {
     // Toggle Class In Aside Bar
+    var telelink = {
+      "planLink":"",
+      "supportLink":""
+    } 
       const [isAsidebarActive, setIsAsidebarActive] = useState(false);
+      const [links,setLinks] = useState(telelink)
       const [userDetails, setUserDetails] = useState({})
       const [coinDetails, setCoinDetials] = useState({})
       const [modalData,setModalData] = useState({})
+      const [updatePage,setUpdatepage] = useState(false)
+
+      useEffect(()=>{
+         GetTelegramLink("planLink").then(pres=>{
+          GetTelegramLink("supportLink").then(sRes=>{
+            setLinks({"planLink":pres.link, "supportLink":sRes.link})
+          })
+         })
+      },[updatePage])
       const toggleAsidebar = () => {
           setIsAsidebarActive(!isAsidebarActive);
       };
@@ -39,7 +53,7 @@ const AdminUserWalletPage = () => {
       ];
   
       // Fields for the "Delete User Account" tab
-      const deleteUserFields = [
+      const planTeleFields = [
         { type: 'link', placeholder: 'Enter telegram link', label: 'Add Telegram Link', key:"planLink" ,value:0 },
       ];
 
@@ -56,11 +70,14 @@ const AdminUserWalletPage = () => {
       const [showUpgratePlan, setShowUpgratePlan] = useState(false);
   
       const handleClose = () => {
+        setUpdatepage(!updatePage)
         setShowAddWallet(false);
         setShowSupportTelegram(false);
         setShowPlanTelegram(false);
         setShowUpgratePlan(false);
       };
+
+      
 
       const handleWalletModelClose = () =>{
         setCoinDetials({})
@@ -84,7 +101,8 @@ const AdminUserWalletPage = () => {
         coinName : coinDetails.CoinName,
         investedAmount: coinDetails.Amount,
         coinAvailable: coinDetails.CoinInAmount,
-        buyAtValue:coinDetails.CoinValue
+        buyAtValue:coinDetails.CoinValue,
+        phoneNo: userDetails.phoneNo
       }
 
       AddCoinToUserAccount(trasDetails).then(res=>{
@@ -112,7 +130,15 @@ const AdminUserWalletPage = () => {
       setShowSupportTelegram(true);
     } 
     const handleShowPlanTelegram = (data) => {
-
+      var obj = {
+        key: data[0].key,
+        link:data[0].value
+      }
+      UpdateTelegramLink(obj).then(res=>{
+        console.log("Link updated",res)
+      }).catch(err=>{
+        console.log("error in call",err)
+      })
       setShowPlanTelegram(true);
     }
     const handleShowUpgratePlan = () => setShowUpgratePlan(true);
@@ -247,7 +273,7 @@ const AdminUserWalletPage = () => {
                                       btnColorClass="btn-theme2"
                                       formBtnName="Change Links"
                                       onClickOpenModal={handleShowPlanTelegram}
-                                      fields={deleteUserFields}
+                                      fields={planTeleFields}
                                     />
                                   </Tab.Pane>
                                   <Tab.Pane eventKey="four">
@@ -293,6 +319,32 @@ const AdminUserWalletPage = () => {
                                     
                                   </div>
                                   </Tab.Pane>
+                                  <Tab.Pane eventKey="second">
+                                  <div className="card overflow-hidden">
+                                    <div className="card-header bg-white d-flex ">
+                                     { links.supportLink && <div className="userDetails ms-4">
+                                       <h5> Support Link </h5>
+
+                                       <span>   Link  : {links.supportLink} </span>
+                                      </div>
+}
+                                    </div>
+                                    
+                                  </div>
+                                  </Tab.Pane>
+                                  <Tab.Pane eventKey="thred">
+                                  <div className="card overflow-hidden">
+                                    <div className="card-header bg-white d-flex ">
+                                     { links.planLink && <div className="userDetails ms-4">
+                                       <h5> Plan Link </h5>
+
+                                       <span>   Link  : {links.planLink} </span>
+                                      </div>
+}
+                                    </div>
+                                    
+                                  </div>
+                                  </Tab.Pane>
                                 </Tab.Content>
                               </Col>
                             </Row>
@@ -328,6 +380,7 @@ const AdminUserWalletPage = () => {
           show={showPlanTelegram}
           modalMessageDiscription="Telegram link will be changed in the plans. Do you confirm this?"
           handleClose={handleClose}
+          submitFunctio={handleClose}
         />
       )}
       {showUpgratePlan && (
