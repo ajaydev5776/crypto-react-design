@@ -24,14 +24,6 @@ const OrderList = () => {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-auto">
-                            <div class="refreshBtn">
-                                <a class="text-uppercase fw-medium btn btn-theme2 text-white themebtn refreshBtnBtn d-flex align-items-center gap-1" href="javascript:;">
-                                    Download CSV
-                                    <span class="refreshSvg d-flex"><img src={Referce} alt="Refresh" /></span>
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="table-responsive mt-3">

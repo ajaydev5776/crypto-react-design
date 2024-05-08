@@ -1,8 +1,12 @@
 import React, {useContext,useEffect,useState} from 'react';
 import { useSetState } from 'react-use';
-import Logo from '../../assets/img/logo copy.svg';
 import { useNavigate } from "react-router-dom";
 import { ValidateId } from '../../BackendApiCalls/ApiCall.jsx';
+
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import ModalForm from '../../component/Modals/Modals';
+import Formgroup from '../../component/Forms/Forms';
 
 import { AuthContext } from '../../context/Auth.context.js';
 
@@ -78,61 +82,27 @@ const LoginForm = () => {
  
   
   return (
-    // <form name="loginForm" onSubmit={onSubmit}>
 
-    //   <div className="row">
+    <>
+    <div className="modal show loginpage" style={{ display: 'block', position: 'initial' }}>
+        <Modal.Dialog className='form loginmodal'>
+            <Modal.Header className='px-4' closeButton>
+                <Modal.Title className='fs-5'>Log in to your PFW Account</Modal.Title>
+            </Modal.Header>
 
-    //     <div className="col-sm-3 col-md-6">
-    //       <label htmlFor="email">Username</label>
-    //     </div>
-        
-    //     <div className="col-sm-9 col-md-6">
-    //       <input 
-    //         type="text" 
-    //         name="email" 
-    //         onChange={e => setState({email: e.target.value})} 
-    //         value={state.email} 
-    //         placeholder="admin" 
-    //       />
-    //     </div>
-
-    //     <div className="col-sm-3 col-md-6">
-    //       <label htmlFor="password">Password</label>
-    //     </div>
-    //     <div className="col-sm-9 col-md-6">
-    //         <input 
-    //           type="password" 
-    //           name="password" 
-    //           onChange={e => setState({password: e.target.value})} 
-    //           value={state.password} 
-    //           placeholder="admin" 
-    //         />
-    //     </div>
-
-    //     <div className="col-sm-3 col-md-6">
-    //     </div>
-    //     <div className="col-sm-9 col-md-6">
-    //       <input className="primary" type="submit" value="Login" />
-    //     </div>
-        
-    //   </div>
-
-    //   { isLoginPending && <div>Please wait...</div> }
-    //   { isLoggedIn && <div>Success.</div> }
-    //   { loginError && <div>{loginError.message}</div> }
-    // </form>
-
+            <Modal.Body className='px-4'>
+            <form>
+                <Formgroup/>
+            </form>
+            </Modal.Body>
+        </Modal.Dialog>
+    </div>
     <main>
     <div className="container">
       <section className="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-xl-5 col-lg-7 col-md-10 d-flex flex-column align-items-center justify-content-center">
-              <div className="d-flex justify-content-center py-4">
-                <a href="javascript:;" className="logo w-auto">
-                  <img src={Logo} alt="logo" />
-                </a>
-              </div>
               <div className="card mb-3">
                 <div className="card-body p-md-5 p-4">
                   <div className="pb-2">
@@ -224,6 +194,8 @@ const LoginForm = () => {
       </section>
     </div>
   </main>
+
+</>
   )
 }
 
