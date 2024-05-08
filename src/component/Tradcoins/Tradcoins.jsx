@@ -3,7 +3,7 @@ import Stargray from '../../assets/img/icon/star-gray.svg'
 import Switchsvg from '../../assets/img/icon/Switchsvg.svg'
 import Bitcoin from '../../assets/img/btc.png'
 
-const Tradcoins = ({coinName, coincurrency, coinplatform, coinprich, coinheightLow, isHighlighted}) => {
+const Tradcoins = ({coinName, coincurrency, coinplatform, coinPrice, coinheightLow, isHighlighted}) => {
   return (
     <>
      <div className="card coincard border-0 rounded-0">
@@ -19,7 +19,7 @@ const Tradcoins = ({coinName, coincurrency, coinplatform, coinprich, coinheightL
             </div>
             </div>
             <div className="coinamount text-end">
-            <div className="text-white fs-10">{coinprich}</div>
+            <div className="text-white fs-10">{coinPrice}</div>
             <div className={` fs-10 ${isHighlighted ? 'text-theme4' : 'text-theme3'}`} fs-10>{coinheightLow}</div>
             </div>
         </div>

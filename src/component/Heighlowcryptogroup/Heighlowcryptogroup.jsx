@@ -27,7 +27,7 @@ return (
                 <div className="carditem bg-theme1 rounded-1 d-flex justify-content-between gap-3 clickable">
                 <div className="leftside d-flex flex-column gap-1">
                     <div className="criptoname text-theme2">BTC<span className="text-white-50">/INR</span> <img src={Star} className="ms-2" alt="star" /></div>
-                    <div className="prich d-flex align-items-center gap-2">₹41,33,600 <span className="text-theme4">-0.67%</span></div>
+                    <div className="Price d-flex align-items-center gap-2">₹41,33,600 <span className="text-theme4">-0.67%</span></div>
                 </div>
                 <div className="rightside d-flex align-items-center"><img src={Arrow} alt="arrow" /></div>
                 </div>

@@ -4,14 +4,14 @@ const Plans = () => {
     const investmentPlans = [
         {
             plantime: "Weekly",
-            plan_prich: "$10",
+            plan_Price: "$10",
             totleplantime: "Week",
             saveprice: "$50",
             planfeature: ["One account", "100K Coin", "Customer Support", "Help 24/7"],
         },
         {
             plantime: "Monthly",
-            plan_prich: "$50",
+            plan_Price: "$50",
             totleplantime: "month",
             saveprice: "$100",
             planfeature: ["One account", "500K Coin", "Customer Support", "Help 24/7"],
@@ -19,7 +19,7 @@ const Plans = () => {
         },
         {
             plantime: "Yearly",
-            plan_prich: "$100",
+            plan_Price: "$100",
             totleplantime: "year",
             saveprice: "$150",
             planfeature: ["Six account", "10M Coin", "Customer Support", "Help 24/7"],
@@ -42,7 +42,7 @@ const Plans = () => {
                             <InvestmentPlan 
                                 key={index} 
                                 plantime={plan.plantime} 
-                                plan_prich={plan.plan_prich} 
+                                plan_Price={plan.plan_Price} 
                                 totleplantime={plan.totleplantime} 
                                 saveprice={plan.saveprice} 
                                 planfeature={plan.planfeature} 

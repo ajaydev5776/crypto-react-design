@@ -25,8 +25,8 @@ const Asidebar = () => {
             <div className="tab-content" id="pills-tabContent">
               <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabIndex={0}>
                 <div className="topheader">
-                  <Tradcoins coinName="BTC" coincurrency="/INR" coinplatform="CoinSwitchX + 1" coinprich="₹44,78,961" coinheightLow="+2.72%" isHighlighted=""/>
-                  <Tradcoins coinName="USDT" coincurrency="/INR" coinplatform="CoinSwitchX + 1" coinprich="₹44,78,961" coinheightLow="+2.72%" isHighlighted="false"/>
+                  <Tradcoins coinName="BTC" coincurrency="/INR" coinplatform="CoinSwitchX + 1" coinPrice="₹44,78,961" coinheightLow="+2.72%" isHighlighted=""/>
+                  <Tradcoins coinName="USDT" coincurrency="/INR" coinplatform="CoinSwitchX + 1" coinPrice="₹44,78,961" coinheightLow="+2.72%" isHighlighted="false"/>
                   
                 </div>
               </div>
