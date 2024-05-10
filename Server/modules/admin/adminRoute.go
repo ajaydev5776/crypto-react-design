@@ -59,6 +59,7 @@ func DeleteTransRoute(c *gin.Context) {
 	}
 	status, err := DeleteTranDAO(trandetail)
 	if err != nil {
+		log.Println("Error in DAO", err)
 		c.JSON(http.StatusExpectationFailed, err)
 		return
 	}

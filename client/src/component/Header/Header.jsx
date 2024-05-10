@@ -1,10 +1,11 @@
-import React ,{ useState } from 'react'
+import React ,{ useEffect, useState } from 'react'
 import Logo from '../../assets/img/logo.svg'
 import Contact from '../../assets/img/icon/contact.svg'
 import { Link, NavLink,useNavigate,createSearchParams } from 'react-router-dom'
 import Login from '../Modals/Login';
 import Ragister from '../Modals/Ragister';
 import Otp from '../Modals/Otp';
+import { GetTelegramLink } from '../../BackendApiCalls/ApiCall';
 
     
 
@@ -14,6 +15,7 @@ const Header = () => {
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showSecondModal, setShowSecondModal] = useState(false);
     const [showOtpModal, setShowOtpModal] = useState(false);
+    const [HelpUrl,setHelpUrl] =useState("")
 
     const handleLoginModalOpen = () => {
         var loginStaus = JSON.parse(localStorage.getItem('isLoggedIn'))
@@ -44,6 +46,12 @@ const Header = () => {
         setShowOtpModal(false);
     };
 
+    useEffect(()=>{
+      GetTelegramLink("supportLink").then(link=>{
+        setHelpUrl(link.link)
+      })
+    },[])
+
     return (
         <>
         <div className="col-12 px-0 sticky-top mb-2">
@@ -67,7 +75,7 @@ const Header = () => {
                         </ul>
                         <ul className="navbar-nav gap-3 align-items-lg-center">
                             <li className="nav-item"><NavLink to="/refer" className="nav-link">Refer & Earn</NavLink></li>
-                            <li className="nav-item"><NavLink to="https://telegram.org/" className="nav-link d-flex align-items-center gap-3">Help Center<span><img src={Contact} alt="contact" className="object-contain w-100" /></span></NavLink></li>
+                            <li className="nav-item"><NavLink to={HelpUrl} target='_blank' className="nav-link d-flex align-items-center gap-3">Help Center<span><img src={Contact} alt="contact" className="object-contain w-100" /></span></NavLink></li>
                             <li className="nav-item"><NavLink to="#" onClick={handleLoginModalOpen} className="text-uppercase fw-medium btn btn-theme2 themebtn text-white">LogOut</NavLink></li>
                         </ul>
                     </div>

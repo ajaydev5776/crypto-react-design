@@ -17,18 +17,18 @@ const Lasttradegroup = () => {
             </tr>
             </thead>
             <tbody>
-                <Lasttrade tradprich="₹43,36,716" tradamount="₹477.04" tradtime="17:38:52" isHighlighted={false}/>
-                <Lasttrade tradprich="₹43,36,716" tradamount="₹477.04" tradtime="17:38:52" isHighlighted={true}/>
-                <Lasttrade tradprich="₹43,36,716" tradamount="₹477.04" tradtime="17:38:52" isHighlighted={true}/>
-                <Lasttrade tradprich="₹43,36,716" tradamount="₹477.04" tradtime="17:38:52" isHighlighted={false}/>
-                <Lasttrade tradprich="₹43,36,716" tradamount="₹477.04" tradtime="17:38:52" isHighlighted={false}/>
-                <Lasttrade tradprich="₹43,36,716" tradamount="₹477.04" tradtime="17:38:52" isHighlighted={true}/>
-                <Lasttrade tradprich="₹43,36,716" tradamount="₹477.04" tradtime="17:38:52" isHighlighted={true}/>
-                <Lasttrade tradprich="₹43,36,716" tradamount="₹477.04" tradtime="17:38:52" isHighlighted={false}/>
-                <Lasttrade tradprich="₹43,36,716" tradamount="₹477.04" tradtime="17:38:52" isHighlighted={true}/>
-                <Lasttrade tradprich="₹43,36,716" tradamount="₹477.04" tradtime="17:38:52" isHighlighted={false}/>
-                <Lasttrade tradprich="₹43,36,716" tradamount="₹477.04" tradtime="17:38:52" isHighlighted={true}/>
-                <Lasttrade tradprich="₹43,36,716" tradamount="₹477.04" tradtime="17:38:52" isHighlighted={false}/>
+                <Lasttrade tradprich={4336716} tradamount={477.04} tradtime={"17:38:52"} isHighlighted={false}/>
+                <Lasttrade tradprich={4336716} tradamount={477.04} tradtime={"17:38:52"} isHighlighted={true}/>
+                <Lasttrade tradprich={4336716} tradamount={477.04} tradtime={"17:38:52"} isHighlighted={true}/>
+                <Lasttrade tradprich={4336716} tradamount={477.04} tradtime={"17:38:52"} isHighlighted={false}/>
+                <Lasttrade tradprich={4336716} tradamount={477.04} tradtime={"17:38:52"} isHighlighted={false}/>
+                <Lasttrade tradprich={4336716} tradamount={477.04} tradtime={"17:38:52"} isHighlighted={true}/>
+                <Lasttrade tradprich={4336716} tradamount={477.04} tradtime={"17:38:52"} isHighlighted={true}/>
+                <Lasttrade tradprich={4336716} tradamount={477.04} tradtime={"17:38:52"} isHighlighted={false}/>
+                <Lasttrade tradprich={4336716} tradamount={477.04} tradtime={"17:38:52"} isHighlighted={true}/>
+                <Lasttrade tradprich={4336716} tradamount={477.04} tradtime={"17:38:52"} isHighlighted={false}/>
+                <Lasttrade tradprich={4336716} tradamount={477.04} tradtime={"17:38:52"} isHighlighted={true}/>
+                <Lasttrade tradprich={4336716} tradamount={477.04} tradtime={"17:38:52"} isHighlighted={false}/>
             </tbody>
         </table>
         </div>

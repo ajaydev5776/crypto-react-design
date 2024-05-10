@@ -301,14 +301,14 @@ const AdminUserWalletPage = () => {
                               <Col className="col-xxl-9 col-xl-8 col-12">
                                 <Tab.Content>
                                 <Tab.Pane eventKey="first">
-                                  <div className="card overflow-hidden">
+                                { userDetails.userName &&   <div className="card overflow-hidden mt-4">
                                     <div className="card-header bg-white d-flex ">
-                                     { userDetails.userName && <div className="userDetails ms-4">
+                                    <div className="userDetails ms-4">
                                        <h5> User Detail</h5>
 
                                        <span>   UserName : {userDetails.userName} </span>
                                       </div>
-}
+
 { coinDetails.CoinName &&  <div className="CoinPrice ms-4">
                                         <h5>Coin Price</h5> 
                                        <span> CoinName : {coinDetails.CoinName}</span><br />
@@ -317,7 +317,7 @@ const AdminUserWalletPage = () => {
                                         </div>}
                                     </div>
                                     
-                                  </div>
+                                  </div>}
                                   </Tab.Pane>
                                   <Tab.Pane eventKey="second">
                                   <div className="card overflow-hidden">

@@ -36,9 +36,9 @@ const Candlestick = ({CoinDetails,SetCoinValue}) => {
   // },[readyState,CoinDetails])
 
   const [currentData, setCurrentData] = useState({})
-
+  var timeoutId
   useEffect(()=>{
-    const timeoutId = setInterval(() => {
+    timeoutId = setInterval(() => {
       GetCoinValue(CoinDetails).then(res =>{
         setCurrentData(res)
         SetCoinValue({coinname: CoinDetails,value : res.high})
@@ -46,7 +46,7 @@ const Candlestick = ({CoinDetails,SetCoinValue}) => {
     }, 60000);
 
     return () => clearTimeout(timeoutId);
-  },[])
+  },[CoinDetails])
 
   const [series, setSeries] = useState(
     [{

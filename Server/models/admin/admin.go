@@ -30,10 +30,11 @@ type UserTransitions struct {
 	UserName       string             `json:"userName" bson:"userName"`
 	CoinName       string             `json:"coinName" bson:"coinName"`
 	PhoneNo        string             `json:"phoneNo" bson:"phoneNo"`
-	BuyAtValue     float32            `json:"buyAtValue" bson:"buyAtValue"`
+	BuyAtValue     float64            `json:"buyAtValue" bson:"buyAtValue"`
 	InvestedAmount string             `json:"investedAmount" bson:"investedAmount"`
-	CoinAvailable  float32            `json:"coinAvailable" bson:"coinAvailable"`
+	CoinAvailable  float64            `json:"coinAvailable" bson:"coinAvailable"`
 	InvestedDate   string             `json:"investedDate" bson:"investedDate"`
+	IsDeleted      bool               `json:"isDeleted" bson:"isDeleted"`
 }
 
 type TelegramLink struct {

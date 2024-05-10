@@ -155,12 +155,12 @@ func DeleteTranDAO(trans TranDetail) (bool, error) {
 	// 		return false, err
 	// 	}
 	// }
-	update := bson.M{"isDeleted": true}
+	update := bson.M{"$set": bson.M{"isDeleted": true}}
 	optio := options.Update().SetUpsert(true)
 	_, err = collection.UpdateOne(ctx, bson.M{"_id": objectId}, update, optio)
 
 	if err != nil {
-		return false, errors.New("Error in inserting new User")
+		return false, err
 	}
 	return true, nil
 }
