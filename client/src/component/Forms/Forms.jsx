@@ -87,7 +87,7 @@ function Forms() {
             <div className="col-12">
                       <div className="form-check">
                         <input
-                          className="form-check-input"
+                          className="form-check-input login"
                           type="checkbox"
                           name="remember"
                           value={state.remember}
@@ -95,7 +95,7 @@ function Forms() {
                           onChange={e =>setState({remember: !state.remember}) } 
                         />
                         <label
-                          className="form-check-label"
+                          className="form-check-label ps-1"
                           for="rememberMe"
                         >
                           Remember me
@@ -105,7 +105,7 @@ function Forms() {
             <div class="col-12 text-center">
                 {/* <Link type="button" class="btn btn-theme1 w-100 p-3 fs-16 d-flex align-items-center justify-content-center">Login</Link> */}
                 <input
-                        className="btn btn-theme1 w-100 p-3 fs-16 d-flex align-items-center justify-content-center"
+                        className="btn btn-theme1 w-100 px-3 fs-16 d-flex align-items-center justify-content-center"
                         type="submit"
                         value="Login"
                         onClick={onSubmit}

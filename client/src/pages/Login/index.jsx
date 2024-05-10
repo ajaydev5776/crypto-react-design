@@ -17,7 +17,7 @@ const LoginForm = () => {
     <>
     <div className="modal show loginpage" style={{ display: 'block', position: 'initial' }}>
         <Modal.Dialog className='form loginmodal'>
-            <Modal.Header className='px-4' closeButton>
+            <Modal.Header className='px-4'>
                 <Modal.Title className='fs-5'>Log in to your PFW Account</Modal.Title>
             </Modal.Header>
 
