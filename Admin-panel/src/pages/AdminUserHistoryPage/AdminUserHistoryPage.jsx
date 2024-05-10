@@ -19,7 +19,6 @@ const AdminUserHistoryPage = () => {
 
     useEffect(()=>{
 GetAllTransitionDetails().then(res=>{
-    console.log("wertyujuooiuyfghjk",res)
     var processDataArray =[]
     if (!res || res.length <= 0){
         setTranData([])
@@ -27,6 +26,9 @@ GetAllTransitionDetails().then(res=>{
     }
 
     for(var i=0;i<res.length;i++){
+        if(res[i].isDeleted){
+            continue    
+        }
         var date = res[i].investedDate.slice(0, 10)
         var time = res[i].investedDate.slice(12,19)
        var temp = [res[i].transId,res[i].phoneNo, date,time,res[i].coinName,res[i].investedAmount]

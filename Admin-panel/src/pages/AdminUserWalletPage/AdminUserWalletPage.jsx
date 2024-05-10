@@ -291,19 +291,15 @@ const AdminUserWalletPage = () => {
                               <Col className="col-xxl-9 col-xl-8 col-12 ms-auto">
                                 <Tab.Content>
                                 <Tab.Pane eventKey="first">
-                                  <div className="card overflow-hidden">
+                                { userDetails.userName &&   <div className="card overflow-hidden mt-4">
                                     <div className="card-header bg-white d-flex ">
-                                     { userDetails.userName && <div className="userDetails">
-                                       <h5 className='card-title my-2'> User Detail</h5>
+                                    <div className="userDetails ms-4">
+                                       <h5> User Detail</h5>
 
-                                       </div>
-}
+                                       <span>   UserName : {userDetails.userName} </span>
                                       </div>
-                                      <div className="card-body">
-                                      <span>   UserName : testuser1 </span>
-                                      </div>
-                                      <div className="card-header bg-white d-flex ">
-                                      { coinDetails.CoinName &&  <div className="CoinPrice">
+
+{ coinDetails.CoinName &&  <div className="CoinPrice ms-4">
                                         <h5>Coin Price</h5> 
                                         </div>}
                                         </div>
@@ -313,7 +309,7 @@ const AdminUserWalletPage = () => {
                                        <span>  {coinDetails.Amount} INR : {coinDetails.CoinInAmount} {coinDetails.CoinName} <br /> </span>
                                     </div>
                                     
-                                  </div>
+                                  </div>}
                                   </Tab.Pane>
                                   <Tab.Pane eventKey="second">
                                   <div className="card overflow-hidden">

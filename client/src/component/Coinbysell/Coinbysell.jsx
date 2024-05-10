@@ -30,88 +30,88 @@ const Coinbysell = () => {
             <div className="tab-content bg-theme1 pb-lg-0 pb-4" id="pills-tabContent">
             <div className="tab-pane fade show active" id="pills-home1" role="tabpanel" aria-labelledby="pills-home1-tab" tabIndex={0}>
                 <ul className="list-unstyled m-0 cryptoprichGroup border-bottom-light py-2 d-flex flex-column gap-1">
-                <Bysellprichcoin cryptoprich="₹43,47,878" cryptoamount="₹6,30,443.01" barvaluenow="100" barvaluemax="100" barwidth="100%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹42,47,878" cryptoamount="₹5,30,443.01" barvaluenow="90" barvaluemax="90" barwidth="90%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹41,47,878" cryptoamount="₹3,30,443.01" barvaluenow="80" barvaluemax="80" barwidth="80%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹38,47,878" cryptoamount="₹3,10,443.01" barvaluenow="70" barvaluemax="70" barwidth="70%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="35,47,878"  cryptoamount="₹2,30,443.01" barvaluenow="60" barvaluemax="60" barwidth="60%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹32,47,878" cryptoamount="₹2,20,443.01" barvaluenow="50" barvaluemax="50" barwidth="50%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹29,47,878" cryptoamount="₹2,10,443.01" barvaluenow="40" barvaluemax="40" barwidth="40%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹28,47,878" cryptoamount="₹2,10,443.01" barvaluenow="30" barvaluemax="30" barwidth="30%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹22,47,878" cryptoamount="₹2,10,443.01" barvaluenow="20" barvaluemax="20" barwidth="20%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹20,47,878" cryptoamount="₹2,10,443.01" barvaluenow="10" barvaluemax="10" barwidth="10%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={434787} cryptoamount={630443.01} barvaluenow="100" barvaluemax="100" barwidth="100%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={424787} cryptoamount={530443.01} barvaluenow="90" barvaluemax="90" barwidth="90%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={414787} cryptoamount={330443.01} barvaluenow="80" barvaluemax="80" barwidth="80%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={384787} cryptoamount={310443.01} barvaluenow="70" barvaluemax="70" barwidth="70%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={354787}  cryptoamount={230443.01} barvaluenow="60" barvaluemax="60" barwidth="60%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={324787} cryptoamount={220443.01} barvaluenow="50" barvaluemax="50" barwidth="50%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={294787} cryptoamount={210443.01} barvaluenow="40" barvaluemax="40" barwidth="40%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={284787} cryptoamount={210443.01} barvaluenow="30" barvaluemax="30" barwidth="30%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={224787} cryptoamount={210443.01} barvaluenow="20" barvaluemax="20" barwidth="20%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={204787} cryptoamount={210443.01} barvaluenow="10" barvaluemax="10" barwidth="10%" isHighlighted="false"/>
                 </ul>
                 <div className="d-flex align-items-center justify-content-between p-2 border-bottom-light">
                     <div className="fs-16 text-white fw-medium m-0">Spread</div>
                     <div cclass="fs-16 text-white fw-medium m-0">0.61%</div>
                 </div>
                 <ul className="list-unstyled m-0 cryptoprichGroup py-2 d-flex flex-column gap-1">
-                    <Bysellprichcoin cryptoprich="₹43,47,878" cryptoamount="₹6,30,443.01" barvaluenow="10" barvaluemax="10" barwidth="10%"/>
-                    <Bysellprichcoin cryptoprich="₹42,47,878" cryptoamount="₹5,30,443.01" barvaluenow="20" barvaluemax="20" barwidth="20%"/>
-                    <Bysellprichcoin cryptoprich="₹41,47,878" cryptoamount="₹3,30,443.01" barvaluenow="30" barvaluemax="30" barwidth="30%"/>
-                    <Bysellprichcoin cryptoprich="₹38,47,878" cryptoamount="₹3,10,443.01" barvaluenow="40" barvaluemax="40" barwidth="40%"/>
-                    <Bysellprichcoin cryptoprich="35,47,878" cryptoamount="₹2,30,443.01" barvaluenow="40" barvaluemax="40" barwidth="40%"/>
-                    <Bysellprichcoin cryptoprich="₹32,47,878" cryptoamount="₹2,20,443.01" barvaluenow="60" barvaluemax="60" barwidth="60%"/>
-                    <Bysellprichcoin cryptoprich="₹29,47,878" cryptoamount="₹2,10,443.01" barvaluenow="70" barvaluemax="70" barwidth="70%"/>
-                    <Bysellprichcoin cryptoprich="₹28,47,878" cryptoamount="₹2,10,443.01" barvaluenow="80" barvaluemax="80" barwidth="80%"/>
-                    <Bysellprichcoin cryptoprich="₹22,47,878" cryptoamount="₹2,10,443.01" barvaluenow="90" barvaluemax="90" barwidth="90%"/>
-                    <Bysellprichcoin cryptoprich="₹20,47,878" cryptoamount="₹2,10,443.01" barvaluenow="100" barvaluemax="100" barwidth="100%"/>
+                    <Bysellprichcoin cryptoprich={434787} cryptoamount={630443.01} barvaluenow="10" barvaluemax="10" barwidth="10%"/>
+                    <Bysellprichcoin cryptoprich={424787} cryptoamount={530443.01} barvaluenow="20" barvaluemax="20" barwidth="20%"/>
+                    <Bysellprichcoin cryptoprich={414787} cryptoamount={330443.01} barvaluenow="30" barvaluemax="30" barwidth="30%"/>
+                    <Bysellprichcoin cryptoprich={384787} cryptoamount={310443.01} barvaluenow="40" barvaluemax="40" barwidth="40%"/>
+                    <Bysellprichcoin cryptoprich={354787} cryptoamount={230443.01} barvaluenow="40" barvaluemax="40" barwidth="40%"/>
+                    <Bysellprichcoin cryptoprich={324787} cryptoamount={220443.01} barvaluenow="60" barvaluemax="60" barwidth="60%"/>
+                    <Bysellprichcoin cryptoprich={294787} cryptoamount={210443.01} barvaluenow="70" barvaluemax="70" barwidth="70%"/>
+                    <Bysellprichcoin cryptoprich={284787} cryptoamount={210443.01} barvaluenow="80" barvaluemax="80" barwidth="80%"/>
+                    <Bysellprichcoin cryptoprich={224787} cryptoamount={210443.01} barvaluenow="90" barvaluemax="90" barwidth="90%"/>
+                    <Bysellprichcoin cryptoprich={204787} cryptoamount={210443.01} barvaluenow="100" barvaluemax="100" barwidth="100%"/>
                 </ul>
             </div>
             <div className="tab-pane fade" id="pills-profile1" role="tabpanel" aria-labelledby="pills-profile1-tab" tabIndex={0}>
                 <div className="p-2 border-bottom-light">
-                <div className="fs-16 text-theme3 text-center fw-medium m-0">₹43,12,233</div>
+                <div className="fs-16 text-theme3 text-center fw-medium m-0">₹4312233</div>
                 {/* if green value show than uncomment this line only change clss "text-theme4" */}
-                {/* <div class="fs-16 text-theme4 text-center fw-medium m-0">₹43,12,233</div> */}
+                {/* <div class="fs-16 text-theme4 text-center fw-medium m-0">₹4312233</div> */}
                 </div>
                 <ul className="list-unstyled m-0 cryptoprichGroup py-2 d-flex flex-column gap-1 border-bottom-light">
-                <Bysellprichcoin cryptoprich="₹43,47,878" cryptoamount="₹6,30,443.01" barvaluenow="100" barvaluemax="100" barwidth="100%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹42,47,878" cryptoamount="₹5,30,443.01" barvaluenow="95" barvaluemax="95" barwidth="95%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹42,47,878" cryptoamount="₹5,30,443.01" barvaluenow="90" barvaluemax="90" barwidth="90%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹41,47,878" cryptoamount="₹3,30,443.01" barvaluenow="85" barvaluemax="85" barwidth="85%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹41,47,878" cryptoamount="₹3,30,443.01" barvaluenow="80" barvaluemax="80" barwidth="80%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹38,47,878" cryptoamount="₹3,10,443.01" barvaluenow="75" barvaluemax="75" barwidth="75%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹38,47,878" cryptoamount="₹3,10,443.01" barvaluenow="70" barvaluemax="70" barwidth="70%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="35,47,878" cryptoamount="₹2,30,443.01" barvaluenow="65" barvaluemax="65" barwidth="65%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="35,47,878" cryptoamount="₹2,30,443.01" barvaluenow="60" barvaluemax="60" barwidth="60%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹32,47,878" cryptoamount="₹2,20,443.01" barvaluenow="55" barvaluemax="55" barwidth="55%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹32,47,878" cryptoamount="₹2,20,443.01" barvaluenow="50" barvaluemax="50" barwidth="50%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹29,47,878" cryptoamount="₹2,10,443.01" barvaluenow="45" barvaluemax="45" barwidth="45%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹29,47,878" cryptoamount="₹2,10,443.01" barvaluenow="40" barvaluemax="40" barwidth="40%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹28,47,878" cryptoamount="₹2,10,443.01" barvaluenow="35" barvaluemax="35" barwidth="35%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹28,47,878" cryptoamount="₹2,10,443.01" barvaluenow="30" barvaluemax="30" barwidth="30%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹22,47,878" cryptoamount="₹2,10,443.01" barvaluenow="25" barvaluemax="25" barwidth="25%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹22,47,878" cryptoamount="₹2,10,443.01" barvaluenow="20" barvaluemax="20" barwidth="20%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹20,47,878" cryptoamount="₹2,10,443.01" barvaluenow="15" barvaluemax="15" barwidth="15%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹20,47,878" cryptoamount="₹2,10,443.01" barvaluenow="10" barvaluemax="10" barwidth="10%" isHighlighted="false"/>
-                <Bysellprichcoin cryptoprich="₹20,47,878" cryptoamount="₹2,10,443.01" barvaluenow="5" barvaluemax="5" barwidth="5%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={434787} cryptoamount={630443.01} barvaluenow="100" barvaluemax="100" barwidth="100%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={424787} cryptoamount={530443.01} barvaluenow="95" barvaluemax="95" barwidth="95%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={424787} cryptoamount={530443.01} barvaluenow="90" barvaluemax="90" barwidth="90%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={414787} cryptoamount={330443.01} barvaluenow="85" barvaluemax="85" barwidth="85%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={414787} cryptoamount={330443.01} barvaluenow="80" barvaluemax="80" barwidth="80%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={384787} cryptoamount={310443.01} barvaluenow="75" barvaluemax="75" barwidth="75%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={384787} cryptoamount={310443.01} barvaluenow="70" barvaluemax="70" barwidth="70%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={354787} cryptoamount={230443.01} barvaluenow="65" barvaluemax="65" barwidth="65%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={354787} cryptoamount={230443.01} barvaluenow="60" barvaluemax="60" barwidth="60%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={324787} cryptoamount={220443.01} barvaluenow="55" barvaluemax="55" barwidth="55%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={324787} cryptoamount={220443.01} barvaluenow="50" barvaluemax="50" barwidth="50%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={294787} cryptoamount={210443.01} barvaluenow="45" barvaluemax="45" barwidth="45%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={294787} cryptoamount={210443.01} barvaluenow="40" barvaluemax="40" barwidth="40%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={284787} cryptoamount={210443.01} barvaluenow="35" barvaluemax="35" barwidth="35%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={284787} cryptoamount={210443.01} barvaluenow="30" barvaluemax="30" barwidth="30%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={224787} cryptoamount={210443.01} barvaluenow="25" barvaluemax="25" barwidth="25%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={224787} cryptoamount={210443.01} barvaluenow="20" barvaluemax="20" barwidth="20%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={204787} cryptoamount={210443.01} barvaluenow="15" barvaluemax="15" barwidth="15%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={204787} cryptoamount={210443.01} barvaluenow="10" barvaluemax="10" barwidth="10%" isHighlighted="false"/>
+                <Bysellprichcoin cryptoprich={204787} cryptoamount={210443.01} barvaluenow="5" barvaluemax="5" barwidth="5%" isHighlighted="false"/>
                 </ul>
             </div>
             <div className="tab-pane fade" id="pills-contact1" role="tabpanel" aria-labelledby="pills-contact1-tab" tabIndex={0}>
                 <div className="p-2 border-bottom-light">
-                <div className="fs-16 text-theme3 text-center fw-medium m-0">₹43,12,233</div>
-                {/* <div class="fs-16 text-theme4 text-center fw-medium m-0">₹43,12,233</div> */}
+                <div className="fs-16 text-theme3 text-center fw-medium m-0">₹4312233</div>
+                {/* <div class="fs-16 text-theme4 text-center fw-medium m-0">₹4312233</div> */}
                 </div>
                 <ul className="list-unstyled m-0 cryptoprichGroup py-2 d-flex flex-column gap-1">
-                    <Bysellprichcoin cryptoprich="₹43,47,878" cryptoamount="₹6,30,443.01" barvaluenow="5" barvaluemax="5" barwidth="5%"/>
-                    <Bysellprichcoin cryptoprich="₹43,47,878" cryptoamount="₹6,30,443.01" barvaluenow="10" barvaluemax="10" barwidth="10%"/>
-                    <Bysellprichcoin cryptoprich="₹42,47,878" cryptoamount="₹5,30,443.01" barvaluenow="15" barvaluemax="15" barwidth="15%"/>
-                    <Bysellprichcoin cryptoprich="₹42,47,878" cryptoamount="₹5,30,443.01" barvaluenow="20" barvaluemax="20" barwidth="20%"/>
-                    <Bysellprichcoin cryptoprich="₹41,47,878" cryptoamount="₹3,30,443.01" barvaluenow="25" barvaluemax="25" barwidth="25%"/>
-                    <Bysellprichcoin cryptoprich="₹41,47,878" cryptoamount="₹3,30,443.01" barvaluenow="30" barvaluemax="30" barwidth="30%"/>
-                    <Bysellprichcoin cryptoprich="₹38,47,878" cryptoamount="₹3,10,443.01" barvaluenow="35" barvaluemax="35" barwidth="35%"/>
-                    <Bysellprichcoin cryptoprich="₹38,47,878" cryptoamount="₹3,10,443.01" barvaluenow="40" barvaluemax="40" barwidth="40%"/>
-                    <Bysellprichcoin cryptoprich="35,47,878" cryptoamount="₹2,30,443.01" barvaluenow="45" barvaluemax="45" barwidth="45%"/>
-                    <Bysellprichcoin cryptoprich="35,47,878" cryptoamount="₹2,30,443.01" barvaluenow="50" barvaluemax="50" barwidth="50%"/>
-                    <Bysellprichcoin cryptoprich="₹32,47,878" cryptoamount="₹2,20,443.01" barvaluenow="60" barvaluemax="60" barwidth="60%"/>
-                    <Bysellprichcoin cryptoprich="₹32,47,878" cryptoamount="₹2,20,443.01" barvaluenow="65" barvaluemax="65" barwidth="65%"/>
-                    <Bysellprichcoin cryptoprich="₹29,47,878" cryptoamount="₹2,10,443.01" barvaluenow="70" barvaluemax="70" barwidth="70%"/>
-                    <Bysellprichcoin cryptoprich="₹29,47,878" cryptoamount="₹2,10,443.01" barvaluenow="75" barvaluemax="75" barwidth="75%"/>
-                    <Bysellprichcoin cryptoprich="₹28,47,878" cryptoamount="₹2,10,443.01" barvaluenow="80" barvaluemax="80" barwidth="80%"/>
-                    <Bysellprichcoin cryptoprich="₹28,47,878" cryptoamount="₹2,10,443.01" barvaluenow="85" barvaluemax="85" barwidth="85%"/>
-                    <Bysellprichcoin cryptoprich="₹22,47,878" cryptoamount="₹2,10,443.01" barvaluenow="90" barvaluemax="90" barwidth="90%"/>
-                    <Bysellprichcoin cryptoprich="₹22,47,878" cryptoamount="₹2,10,443.01" barvaluenow="95" barvaluemax="95" barwidth="95%"/>
-                    <Bysellprichcoin cryptoprich="₹20,47,878" cryptoamount="₹2,10,443.01" barvaluenow="100" barvaluemax="100" barwidth="100%"/>
+                    <Bysellprichcoin cryptoprich={434787} cryptoamount={630443.01} barvaluenow="5" barvaluemax="5" barwidth="5%"/>
+                    <Bysellprichcoin cryptoprich={434787} cryptoamount={630443.01} barvaluenow="10" barvaluemax="10" barwidth="10%"/>
+                    <Bysellprichcoin cryptoprich={424787} cryptoamount={530443.01} barvaluenow="15" barvaluemax="15" barwidth="15%"/>
+                    <Bysellprichcoin cryptoprich={424787} cryptoamount={530443.01} barvaluenow="20" barvaluemax="20" barwidth="20%"/>
+                    <Bysellprichcoin cryptoprich={414787} cryptoamount={330443.01} barvaluenow="25" barvaluemax="25" barwidth="25%"/>
+                    <Bysellprichcoin cryptoprich={414787} cryptoamount={330443.01} barvaluenow="30" barvaluemax="30" barwidth="30%"/>
+                    <Bysellprichcoin cryptoprich={384787} cryptoamount={310443.01} barvaluenow="35" barvaluemax="35" barwidth="35%"/>
+                    <Bysellprichcoin cryptoprich={384787} cryptoamount={310443.01} barvaluenow="40" barvaluemax="40" barwidth="40%"/>
+                    <Bysellprichcoin cryptoprich={354787} cryptoamount={230443.01} barvaluenow="45" barvaluemax="45" barwidth="45%"/>
+                    <Bysellprichcoin cryptoprich={354787} cryptoamount={230443.01} barvaluenow="50" barvaluemax="50" barwidth="50%"/>
+                    <Bysellprichcoin cryptoprich={324787} cryptoamount={220443.01} barvaluenow="60" barvaluemax="60" barwidth="60%"/>
+                    <Bysellprichcoin cryptoprich={324787} cryptoamount={220443.01} barvaluenow="65" barvaluemax="65" barwidth="65%"/>
+                    <Bysellprichcoin cryptoprich={294787} cryptoamount={210443.01} barvaluenow="70" barvaluemax="70" barwidth="70%"/>
+                    <Bysellprichcoin cryptoprich={294787} cryptoamount={210443.01} barvaluenow="75" barvaluemax="75" barwidth="75%"/>
+                    <Bysellprichcoin cryptoprich={284787} cryptoamount={210443.01} barvaluenow="80" barvaluemax="80" barwidth="80%"/>
+                    <Bysellprichcoin cryptoprich={284787} cryptoamount={210443.01} barvaluenow="85" barvaluemax="85" barwidth="85%"/>
+                    <Bysellprichcoin cryptoprich={224787} cryptoamount={210443.01} barvaluenow="90" barvaluemax="90" barwidth="90%"/>
+                    <Bysellprichcoin cryptoprich={224787} cryptoamount={210443.01} barvaluenow="95" barvaluemax="95" barwidth="95%"/>
+                    <Bysellprichcoin cryptoprich={204787} cryptoamount={210443.01} barvaluenow="100" barvaluemax="100" barwidth="100%"/>
                 </ul>
             </div>
             </div>
