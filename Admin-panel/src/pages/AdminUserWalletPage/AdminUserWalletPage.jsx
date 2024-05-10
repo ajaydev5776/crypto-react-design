@@ -287,18 +287,8 @@ const AdminUserWalletPage = () => {
                                 </Tab.Content>
                               </Col>
                             </Row>
-                            <Row>
-                              <Col className="col-xxl-3 col-xl-4 col-12">
-                                <div className="navbar-expand-lg navbar-vertical mb-3 mb-lg-5 bg-white p-0">
-                                  {/* <Nav  variant="pills" className="nav navtabs flex-column walletnavpill nav-pills py-3">
-                                                    <Nav.Item><Nav.Link eventKey="first"><i className="fas fa-wallet"></i>  Add User Wallet</Nav.Link></Nav.Item>
-                                                    <Nav.Item><Nav.Link eventKey="second"><i className="fas fa-question-circle"></i> Support Telegram</Nav.Link></Nav.Item>
-                                                    <Nav.Item><Nav.Link eventKey="thred"><i className="fab fa-telegram"></i> Plan Telegram</Nav.Link></Nav.Item>
-                                                    <Nav.Item><Nav.Link eventKey="four"><i className="fas fa-upload"></i>  Upgrate Plan</Nav.Link></Nav.Item>
-                                                  </Nav> */}
-                                </div>
-                              </Col>
-                              <Col className="col-xxl-9 col-xl-8 col-12">
+                            <Row className="mt-4">
+                              <Col className="col-xxl-9 col-xl-8 col-12 ms-auto">
                                 <Tab.Content>
                                 <Tab.Pane eventKey="first">
                                 { userDetails.userName &&   <div className="card overflow-hidden mt-4">
@@ -311,10 +301,12 @@ const AdminUserWalletPage = () => {
 
 { coinDetails.CoinName &&  <div className="CoinPrice ms-4">
                                         <h5>Coin Price</h5> 
+                                        </div>}
+                                        </div>
+                                        <div className="card-body">
                                        <span> CoinName : {coinDetails.CoinName}</span><br />
                                        <span>1 {coinDetails.CoinName} : { coinDetails.CoinValue} INR, <br /> </span>
                                        <span>  {coinDetails.Amount} INR : {coinDetails.CoinInAmount} {coinDetails.CoinName} <br /> </span>
-                                        </div>}
                                     </div>
                                     
                                   </div>}
@@ -323,7 +315,7 @@ const AdminUserWalletPage = () => {
                                   <div className="card overflow-hidden">
                                     <div className="card-header bg-white d-flex ">
                                      { links.supportLink && <div className="userDetails ms-4">
-                                       <h5> Support Link </h5>
+                                       <h5 className='card-title my-2'> Support Link </h5>
 
                                        <span>   Link  : {links.supportLink} </span>
                                       </div>

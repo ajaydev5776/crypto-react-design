@@ -465,23 +465,23 @@ input:-webkit-autofill:active {
     width: 16px
 }
 
-.criptotiming-high .carditem .leftside .prich {
+.criptotiming-high .carditem .leftside .Price {
     font-size: 12px
 }
 
 @media only screen and (min-width: 992px) {
-    .criptotiming-high .carditem .leftside .prich {
+    .criptotiming-high .carditem .leftside .Price {
         font-size: 12px
     }
 }
 
 @media only screen and (min-width: 1200px) {
-    .criptotiming-high .carditem .leftside .prich {
+    .criptotiming-high .carditem .leftside .Price {
         font-size: 14px
     }
 }
 
-.criptotiming-high .carditem .leftside .prich span {
+.criptotiming-high .carditem .leftside .Price span {
     font-size: 12px
 }
 
@@ -662,23 +662,23 @@ img {
     width: 16px
 }
 
-.portfolioSection .carditem .leftside .prich {
+.portfolioSection .carditem .leftside .Price {
     font-size: 12px
 }
 
 @media only screen and (min-width: 992px) {
-    .portfolioSection .carditem .leftside .prich {
+    .portfolioSection .carditem .leftside .Price {
         font-size: 12px
     }
 }
 
 @media only screen and (min-width: 1200px) {
-    .portfolioSection .carditem .leftside .prich {
+    .portfolioSection .carditem .leftside .Price {
         font-size: 14px
     }
 }
 
-.portfolioSection .carditem .leftside .prich span {
+.portfolioSection .carditem .leftside .Price span {
     font-size: 12px
 }
 
@@ -1145,23 +1145,23 @@ img {
     }
 }
 
-.walletSection .tabContent .carditem .leftside .prich {
+.walletSection .tabContent .carditem .leftside .Price {
     font-size: 12px
 }
 
 @media only screen and (min-width: 992px) {
-    .walletSection .tabContent .carditem .leftside .prich {
+    .walletSection .tabContent .carditem .leftside .Price {
         font-size: 12px
     }
 }
 
 @media only screen and (min-width: 1200px) {
-    .walletSection .tabContent .carditem .leftside .prich {
+    .walletSection .tabContent .carditem .leftside .Price {
         font-size: 16px
     }
 }
 
-.walletSection .tabContent .carditem .leftside .prich span {
+.walletSection .tabContent .carditem .leftside .Price span {
     font-size: 12px
 }
 
@@ -1359,12 +1359,12 @@ img {
     border-bottom: 1px solid #3d4054
 }
 
-.cryptoprichGroup .cryptoamount {
+.cryptoPriceGroup .cryptoamount {
     position: relative;
     padding: 4px 0px
 }
 
-.cryptoprichGroup .cryptoamount .progress {
+.cryptoPriceGroup .cryptoamount .progress {
     position: absolute;
     top: 0;
     left: 0;
@@ -1375,11 +1375,11 @@ img {
     background: rgba(0, 0, 0, 0)
 }
 
-.cryptoprichGroup .cryptoamount .progress .progress-bar.radzone {
+.cryptoPriceGroup .cryptoamount .progress .progress-bar.radzone {
     background-color: rgba(241, 67, 102, .1)
 }
 
-.cryptoprichGroup .cryptoamount .progress .progress-bar.greenzone {
+.cryptoPriceGroup .cryptoamount .progress .progress-bar.greenzone {
     background-color: rgba(16, 189, 85, .1)
 }
 

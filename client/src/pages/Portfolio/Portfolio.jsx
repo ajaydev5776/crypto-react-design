@@ -98,7 +98,7 @@ return (
                         </div>
                         <div class="col-auto">
                             <div class="refreshBtn">
-                                <a class="text-uppercase fw-medium btn btn-theme2 text-white themebtn refreshBtnBtn d-flex align-items-center gap-1" href="javascript:;">
+                                <a class="text-uppercase fw-medium btn btn-theme2 text-white themebtn refreshBtnBtn d-flex align-items-center gap-1" href="">
                                     Refresh
                                     <span class="refreshSvg d-flex"><img src={Referce} alt="Refresh" /></span>
                                 </a>

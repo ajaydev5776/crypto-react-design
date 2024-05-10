@@ -47,6 +47,9 @@
 .loginpage .loginmodal .modal-content {
     margin: auto;
 }
+.loginmodal .form-control:focus {
+    color: #fff;
+}
 
 @media screen and (max-width: 768px) {
     .carditemparent>div>div:nth-last-child(3) .carditem  .leftside {
