@@ -5,9 +5,11 @@ import { Outlet } from 'react-router-dom'
 const Layout = () => {
   const location = useLocation();
   const isLoginPage = location.pathname === '/';
+  const isFreezePage = location.pathname === '/freeze-account';
+  const isFreezePlan = location.pathname === '/active-account';
   return (
     <>
-    {!isLoginPage && <Headers />}
+    {!isLoginPage && !isFreezePage && !isFreezePlan && <Headers />}
     <Outlet/>
     </>
   )

@@ -15,6 +15,8 @@ import Wallet from './pages/Wallet/Wallet';
 import OrderList from './pages/OrderList/OrderList';
 import Plans from './pages/Plans/Plans';
 import Login from './pages/Login/Login';
+import FreezeAccount from './pages/FreezeAccount/FreezeAccount';
+import FreezePlan from './pages/FreezePlan/FreezePlan';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +28,8 @@ const router = createBrowserRouter(
       <Route path='/portfolio' element={<Portfolio/>}/>
       <Route path='/refer' element={<Refer/>}/>
       <Route path='/plans' element={<Plans/>}/>
+      <Route path='/freeze-account' element={<FreezeAccount/>}/>
+      <Route path='/active-account' element={<FreezePlan/>}/>
     </Route>
   )
 )
