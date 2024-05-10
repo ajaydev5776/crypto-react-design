@@ -38,6 +38,7 @@
     background-size: cover;
 }
 
+
 .loginpage .loginmodal {
     margin: 20px auto;
     height: calc(100% - 40px);
@@ -47,10 +48,20 @@
 .loginpage .loginmodal .modal-content {
     margin: auto;
 }
-.loginmodal .form-control:focus {
-    color: #fff;
-}
 
+.loginpage.freeze{
+    background: linear-gradient(rgba(0, 0, 0, 0.61), rgba(0, 0, 0, 0.63)), url(./assets/img/freeze.webp) no-repeat center;
+    position: relative;
+}
+.loginpage.freeze .modal-content{
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+.loginpage.freeze .plancard>div{
+    min-width: 100%;
+}
+.loginpage.freeze .main-card {
+    background: #485459b5;
+}
 @media screen and (max-width: 768px) {
     .carditemparent>div>div:nth-last-child(3) .carditem  .leftside {
         border: none !important;

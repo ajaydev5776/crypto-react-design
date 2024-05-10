@@ -18,6 +18,8 @@ import OrderList from './pages/OrderList/OrderList';
 import Plans from './pages/Plans/Plans';
 import { ContextProvider } from './context/Auth.context.js';
 import LoginForm from './pages/Login/index.jsx';
+import FreezeAccount from './pages/FreezeAccount/FreezeAccount';
+import FreezePlan from './pages/FreezePlan/FreezePlan';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,6 +32,8 @@ const router = createBrowserRouter(
       <Route path='/refer' element={<Refer/>}/>
       <Route path='/plans' element={<Plans/>} />
       <Route path='/login' element={<LoginForm/>}/>
+      <Route path='/freeze-account' element={<FreezeAccount/>}/>
+      <Route path='/active-account' element={<FreezePlan/>}/>
     </Route>
   )
 )
