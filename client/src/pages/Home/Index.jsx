@@ -1,4 +1,4 @@
-import React,{ useState } from 'react'
+import React,{ useEffect, useState } from 'react'
 import Chart from '../../component/Chart/Candlestick';
 import Topbar from '../../component/Topbar/Topbar';
 import Heighlowcryptogroup from '../../component/Heighlowcryptogroup/Heighlowcryptogroup';
@@ -6,8 +6,19 @@ import Asidebar from '../../component/Asidebar/Asidebar';
 import Addvideo from '../../component/Addvideo/Addvideo';
 import Lasttradegroup from '../../component/Lasttradegroup/Lasttradegroup';
 import Coinbysell from '../../component/Coinbysell/Coinbysell';
+import { GetAccountStatus } from '../../BackendApiCalls/ApiCall';
 
 const Home = () => {
+  useEffect(()=>{
+    var loginStaus = JSON.parse(localStorage.getItem('isLoggedIn'))
+    if(loginStaus.isLoggedIn){
+
+    GetAccountStatus(loginStaus.phoneNo).then(res => {
+      res['isLoggedIn'] = true
+         localStorage.setItem('isLoggedIn',JSON.stringify(res) )
+    })       
+  }
+  })
 var objj= {
   BTC : "12345",
   USDT :"85.52"
@@ -23,14 +34,14 @@ var objj= {
     } else {
       setCoinPrice({...coinPrice,USDT:data.value})
     }
-console.log("fghjklo9iuytrjk",data)
+// console.log("fghjklo9iuytrjk",data)
   }
 
 const onCoinSelect = (coin) => {
-  console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>",loginStaus)
+  // console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>",loginStaus)
     setSelectedCoin(coin);
     setUserId(loginStaus.userId)
-    console.log( "Coin selected",coin);
+    // console.log( "Coin selected",coin);
 }
   return (
     <>

@@ -23,11 +23,7 @@ export const ContextProvider = props => {
     setLoginError(null);
 
     fetchLogin(id, userName, password,remember, error => {
-      if (remember){
-        localStorage.setItem('isLoggedIn', JSON.stringify({"userName":userName,"isLoggedIn":true,"userId":id}));
-      }else{
-        localStorage.setItem('isLoggedIn', JSON.stringify({"userName":userName,"isLoggedIn":false,"userId":id}));
-      }
+      
       setLoginPending(false);
 
       if (!error) {
@@ -60,7 +56,15 @@ export const ContextProvider = props => {
 // fake login
 const fetchLogin = (userId,userName, password,remember,callback) => 
     UserLogin(userId,userName,password).then(res =>{
-      console.log("responce From loogin", res)
+      
+      if (remember){
+        res['isLoggedIn'] = true
+        localStorage.setItem('isLoggedIn', JSON.stringify(res));
+      }else{
+        res['isLoggedIn'] = false
+        localStorage.setItem('isLoggedIn', JSON.stringify(res));
+      }
+      // console.log("responce From loogin", res)
       callback(null)
     }).catch(err =>{
       console.log("Error from APIIIIIIII", err)

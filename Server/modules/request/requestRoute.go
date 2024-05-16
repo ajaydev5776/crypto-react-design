@@ -25,6 +25,7 @@ func Init(o, r *gin.RouterGroup) {
 	o.GET("request/test", testRoute)
 	o.POST("request/getalltransitionofuser", GetAllTransitionOfUserRoute)
 	o.POST("request/getcoinvalue", GetCoinValueRoute)
+	o.GET("request/getallplan", GetAllPlanRoute)
 	// o.POST("request/gettelegramlink", GetTelegramLinkRoute)
 }
 
@@ -67,6 +68,18 @@ type User struct {
 // 	return
 
 // }
+
+func GetAllPlanRoute(c *gin.Context) {
+	log.Println("IN GetAllPlanRoute")
+
+	plans, err := GetAllPlanDAO()
+	if err != nil {
+		c.JSON(http.StatusExpectationFailed, err)
+		return
+	}
+	c.JSON(http.StatusOK, plans)
+	return
+}
 
 func GetAllTransitionOfUserRoute(c *gin.Context) {
 	log.Println("IN GetAllTransitionOfUser")

@@ -63,7 +63,7 @@ const Candlestick = ({CoinDetails,SetCoinValue}) => {
         x: new Date(currentData.time * 1000),
         y: [currentData.open,currentData.low,currentData.high,currentData.close]
       }
-      console.log("dsadsds",series[0])
+      // console.log("dsadsds",series[0])
       var updateCoinData = series[0].data
       updateCoinData.push(obj)
       if (series[0].data.length > 200){
@@ -78,10 +78,10 @@ const Candlestick = ({CoinDetails,SetCoinValue}) => {
   }, [currentData])
   
   useEffect(()=>{
-    console.log("calledddddd",CoinDetails)
+    // console.log("calledddddd",CoinDetails)
     // if(series[0].data.length == 0){
       CallApi(CoinDetails).then((res)=>{
-        // console.log("response from CallAPI", res)
+        // // console.log("response from CallAPI", res)
         // setCoinData(res)
         // setCoinData((prev)=>[...prev,res])
         setSeries([{name:"candle",data:res}])
@@ -105,7 +105,7 @@ const Candlestick = ({CoinDetails,SetCoinValue}) => {
           "currentTime" : Math.ceil((new Date).getTime() / 1000),
            "beforeTimeInHour": 3.0
         }
-        console.log("Payload", payload)
+        // console.log("Payload", payload)
         instance({
           url:"o/request/getpreviousdata",
           method: "POST",
@@ -115,7 +115,7 @@ const Candlestick = ({CoinDetails,SetCoinValue}) => {
             return resolve([])
           }
           var processData = []
-          console.log("res.status",res.status)
+          // console.log("res.status",res.status)
           if (res.status == 200 || res.statusText == "OK"){
             for (var i=0;i<res.data.length; i++){
               var d = new Date((res.data[i].time * 1000 ))
@@ -125,7 +125,7 @@ const Candlestick = ({CoinDetails,SetCoinValue}) => {
                   y: [res.data[i].open, res.data[i].low, res.data[i].high, res.data[i].close]
               })
             }
-            // console.log("Set data to", processData)
+            // // console.log("Set data to", processData)
             // setCoinData(processData)
             return resolve(processData)
           }

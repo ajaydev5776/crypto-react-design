@@ -129,6 +129,38 @@ func AddCoinToUserAccountDAO(userTran admin.UserTransitions) (bool, error) {
 	return true, nil
 
 }
+func AddPlanAmountDAO(planDetail PlanAmount) (bool, error) {
+	log.Println("IN AddPlanAmounDAO")
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+
+	if err != nil {
+		log.Println("Error in Monog Connnection in insertDataInMongo", err)
+		return false, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+
+	collection := conn.Database("cryptoServer").Collection("userDetails")
+
+	filter := bson.M{"phoneNo": planDetail.PhoneNo}
+
+	var existingUser admin.UserDetails
+
+	err = collection.FindOne(ctx, filter).Decode(&existingUser)
+	if err != nil {
+
+		return false, err
+
+	}
+	update := bson.M{"$set": bson.M{"amountToShow": planDetail.Amount, "isPlanBuy": planDetail.PlanNo}}
+	optio := options.Update().SetUpsert(true)
+	_, err = collection.UpdateOne(ctx, filter, update, optio)
+
+	if err != nil {
+		return false, err
+	}
+	return true, nil
+}
 func DeleteTranDAO(trans TranDetail) (bool, error) {
 	log.Println("IN DeleteTranDAO")
 	dsn := os.Getenv("MONGODSN")
@@ -196,6 +228,60 @@ func GetAllTransitionDetailsDAO() ([]admin.UserTransitions, error) {
 
 }
 
+func UpdatePlanDetailsDAO(planDetails PlanDetails) (bool, error) {
+	log.Println("IN UpdateUserPasswordDAO")
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+
+	if err != nil {
+		log.Println("Error in Monog Connnection in insertDataInMongo", err)
+		return false, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+
+	collection := conn.Database("cryptoServer").Collection("Plans")
+	filter := bson.M{"planNo": planDetails.PlanNo}
+
+	// var existingUser admin.UserDetails
+
+	// err = collection.FindOne(ctx, filter).Decode(&existingUser)
+	// if err != nil {
+	// 	if err == mongo.ErrNoDocuments {
+	// 		return false, errors.New("Phone number not exist in Server")
+	// 	} else {
+	// 		return false, err
+	// 	}
+	// }
+	update := bson.M{}
+
+	if planDetails.Amount != "" {
+		update["amount"] = planDetails.Amount
+	}
+	if planDetails.Duration != "" {
+		update["duration"] = planDetails.Duration
+	}
+	if planDetails.OfferText != "" {
+		update["offerText"] = planDetails.OfferText
+	}
+	if planDetails.Line1 != "" {
+		update["line1"] = planDetails.Line1
+	}
+	if planDetails.Line2 != "" {
+		update["line2"] = planDetails.Line2
+	}
+	if planDetails.Line3 != "" {
+		update["line3"] = planDetails.Line3
+	}
+	updateB := bson.M{"$set": update}
+	opts := options.Update().SetUpsert(true)
+	_, err = collection.UpdateOne(ctx, filter, updateB, opts)
+
+	if err != nil {
+		return false, err
+	}
+	return true, nil
+}
+
 func UpdateUserPasswordDAO(userdetails UpdateUserPass) (bool, error) {
 	log.Println("IN UpdateUserPasswordDAO")
 	dsn := os.Getenv("MONGODSN")
@@ -258,6 +344,7 @@ func addNewUserDAO(userDetail admin.UserDetails) (string, error) {
 	userDetail.UserId = Id
 	userDetail.CreatedOn = time.Now().String()
 	userDetail.AccountStatus = "active"
+	userDetail.AmountToShow = 4999
 	_, err = collection.InsertOne(ctx, userDetail)
 
 	if err != nil {

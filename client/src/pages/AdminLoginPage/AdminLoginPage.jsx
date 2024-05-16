@@ -13,7 +13,7 @@ const initialState = {
 }
 const AdminLoginPage = () => {
   const { state: ContextState, login } = useContext(AuthContext);
-console.log('hii in admin login')
+// console.log('hii in admin login')
   const {
     isLoginPending,
     isLoggedIn,
@@ -39,7 +39,7 @@ console.log('hii in admin login')
     if (isLoggedIn){
       // Navigate({"to":"/index"})
       navigate("/index");
-      console.log("navigate to othe r location")
+      // console.log("navigate to othe r location")
     }
 
   },[isLoggedIn])

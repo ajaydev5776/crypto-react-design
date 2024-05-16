@@ -1,16 +1,34 @@
 import React from 'react'
 import InvestmentPlan from '../../component/InvestmentPlan/InvestmentPlan'
 import { useEffect } from 'react';
-import { GetTelegramLink } from '../../BackendApiCalls/ApiCall';
+import { GetAllPlan, GetTelegramLink } from '../../BackendApiCalls/ApiCall';
 import { useState } from 'react';
 
 const Plans = () => {
     const[planLink,setPlanLink]= useState("")
+    const[insPlanconst,setInsPlanconst] =useState([])
     useEffect(()=>{
-    GetTelegramLink("supportLink").then(link=>{
+    GetTelegramLink("planLink").then(link=>{
         setPlanLink(link.link)
     })
+    GetAllPlan().then(res=>{
+        var insPlans = []
+        res.forEach(ele => {
+            var obj = {
+                plantime: ele.duration,
+                plan_prich: ele.amount,
+                totleplantime: ele.duration.slice(0,-2),
+                saveprice: ele.offerText,
+                planfeature: [ele.line1, ele.line2, ele.line3, ele.line4],
+                isActive: ele.isActive
+            }
+            insPlans.push(obj)
+        });
+        setInsPlanconst(insPlans)
+    })
     },[])
+
+
 
     const investmentPlans = [
         {
@@ -44,12 +62,12 @@ const Plans = () => {
                     <div class="row">
                         <div class="col-12">
                             <div class="sectionHeading">
-                                Choose your plan
+                                Buy your plan
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="row gy-4 pt-5">
-                            {investmentPlans.map((plan, index) => (
+                            {insPlanconst.map((plan, index) => (
                             <InvestmentPlan 
                                 key={index} 
                                 plantime={plan.plantime} 

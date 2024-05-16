@@ -103,7 +103,7 @@ func UserLoginDAO(user request.UserLoginDetails) (admin.UserDetailswithoutPass, 
 	collection := conn.Database("cryptoServer").Collection("userDetails")
 	filter := bson.M{
 		"userId":   user.UserId,
-		"userName": user.UserName,
+		"phoneNo":  user.UserName,
 		"password": user.Password,
 	}
 
@@ -365,6 +365,48 @@ func GetAPIdetails(CoinName string) (request.ApiDetails, error) {
 
 	}
 
+}
+
+type PlanDetails struct {
+	PlanNo    string `json:"planNo" bson:"planNo"`
+	Duration  string `json:"duration" bson:"duration"`
+	Amount    string `json:"amount" bson:"amount"`
+	OfferText string `json:"offerText" bson:"offerText"`
+	Line1     string `json:"line1" bson:"line1"`
+	Line2     string `json:"line2" bson:"line2"`
+	Line3     string `json:"line3" bson:"line3"`
+	Line4     string `json:"line4" bson:"line4"`
+	IsActive  bool   `json:"isActive" bson:"isActive"`
+}
+
+func GetAllPlanDAO() ([]PlanDetails, error) {
+	log.Println("IN GetAllPlanDAO")
+	dsn := os.Getenv("MONGODSN")
+	conn, err := database.GetMongoConnection(dsn)
+
+	if err != nil {
+		log.Println("Error in Monog Connnection in insertDataInMongo", err)
+		return []PlanDetails{}, err
+	}
+	ctx, _ := context.WithTimeout(context.Background(), 15*time.Second)
+
+	collection := conn.Database("cryptoServer").Collection("Plans")
+
+	tranData := []PlanDetails{}
+	option := options.Find().SetSort(bson.M{"_id": -1})
+	cursr, err := collection.Find(ctx, bson.M{}, option)
+	if err != nil {
+		if err == mongo.ErrNoDocuments {
+			return tranData, nil
+		}
+		return tranData, err
+	}
+
+	err = cursr.All(ctx, &tranData)
+	if err != nil {
+		return tranData, err
+	}
+	return tranData, nil
 }
 
 func GetNext24HoursPriceDAO(BitCoinReq request.Request) (int, error) {

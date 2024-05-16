@@ -9,6 +9,8 @@ type UserDetails struct {
 	Password      string `json:"password" bson:"password" validate:"required"`
 	CreatedOn     string `json:"createdOn" bson:"createdOn"`
 	AccountStatus string `json:"accountStatus" bson:"accountStatus"`
+	AmountToShow  int    `json:"amountToShow" bson:"amountToShow"`
+	IsPlanBuy     string `json:"isPlanBuy" bson:"isPlanBuy"`
 }
 
 type UserDetailswithoutPass struct {
@@ -17,6 +19,8 @@ type UserDetailswithoutPass struct {
 	PhoneNo       string `json:"phoneNo" bson:"phoneNo" validate:"required"`
 	CreatedOn     string `json:"createdOn" bson:"createdOn"`
 	AccountStatus string `json:"accountStatus" bson:"accountStatus"`
+	AmountToShow  int    `json:"amountToShow" bson:"amountToShow"`
+	IsPlanBuy     string `json:"isPlanBuy" bson:"isPlanBuy"`
 }
 
 type LoginDetails struct {

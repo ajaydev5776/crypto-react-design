@@ -14,6 +14,7 @@ import { AddUserToDb, UpdateAccountStatus, UpdateUserPassWord } from '../../Admi
 const AdminNewUserPage = () => {  
     // Toggle Class In Aside Bar
     const [isAsidebarActive, setIsAsidebarActive] = useState(false);
+    const [userDetail,setUserDetails] = useState({})
     const toggleAsidebar = () => {
         setIsAsidebarActive(!isAsidebarActive);
     };
@@ -82,13 +83,22 @@ const AdminNewUserPage = () => {
       return
     }
     AddUserToDb(userPayload).then(res => {
-      alert("User Created SuccessFully UserId: ",res)
+      console.log("rrrrrrrrrrrrrr",res)
+      var userDetailsObj ={
+        userName : userPayload.userName,
+        phoneNo: userPayload.phoneNo,
+        password: userPayload.password,
+        login_link: "http://globalwebcripto.com/?id="+res
+      }
+      setUserDetails(userDetailsObj)
+
+      // alert("User Created SuccessFully UserId: ",res)
       
     }).catch(err =>{
       alert("errr " + err)
       return
     })
-    // setShowFormModal(true)
+    setShowFormModal(true)
   };
 
 
@@ -173,7 +183,7 @@ const AdminNewUserPage = () => {
               </div>
           </div>
       </div>
-      {showFormModal && ( <FormModal show={showFormModal} handleClose={handleClose} />)}
+      {showFormModal && ( <FormModal show={showFormModal} userDetails={userDetail} handleClose={handleClose} />)}
       {showResetPasswordodal && ( <ResetPasswordodal show={showResetPasswordodal} handleClose={handleClose} />)}
       {showDeletePopup && ( <DeletePopup show={showDeletePopup} handleClose={handleClose} />)}
     </>

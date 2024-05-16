@@ -31,7 +31,7 @@ const Portfolio = () => {
     useEffect(()=>{
         
      GetAllTransitionOfUser({userId:loginStaus.userId,userName:loginStaus.userName}).then(res=>{
-        // console.log(res)
+        // // console.log(res)
         var allData =[]
         var totalInvested = 0
         var totalCurrent = 0

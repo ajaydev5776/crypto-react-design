@@ -7,7 +7,7 @@ import HomeInfoCard from '../../component/HomeInfoCard/HomeInfoCard'
 import ActivePopup from '../../component/Modal/ActivePopup';
 import DeletePopup from '../../component/Modal/DeletePopup';
 import WarningPopup from '../../component/Modal/WarningPopup';
-import { GetTotalUser, UpdateAccountStatus } from '../../AdminFunction/ApiCalls';
+import { GetTotalMoney, GetTotalUser, UpdateAccountStatus } from '../../AdminFunction/ApiCalls';
 const AdminHomePage = () => {
   var dashboardInit = {
     TotalUser: 0,
@@ -18,6 +18,14 @@ const AdminHomePage = () => {
   const [ accountupdate,setAccountUpdate] = useState(0)
   const [usersData,setUserData] = useState([])
   const [DashBoardData,setDashBoardData] = useState(dashboardInit)
+  useEffect(()=>{
+GetTotalMoney().then(res=>{
+  setDashBoardData(previousState => ({
+    ...previousState,
+    TotalMoney: res
+  }))
+})
+  },[])
   useEffect(()=>{
     GetTotalUser().then(res=>{
       var usersArray = []

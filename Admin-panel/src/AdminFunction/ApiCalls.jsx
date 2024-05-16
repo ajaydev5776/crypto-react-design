@@ -244,6 +244,39 @@ export function UpdateAccountStatus(Accounts){
 })
 }
 
+export function UpdatePlanDetails(palnObj){
+  return new Promise((resolve,reject) => {
+    try{
+        instance({
+          url:"o/admin/updateplandetails",
+          method: "POST",
+          data: palnObj
+        }).then((res) => {
+           
+          console.log("res.status",res.status)
+          if (res.status == 200 || res.statusText == "OK"){
+              
+            // console.log("Set data to", processData)
+            // setCoinData(processData)
+            return resolve(res.data)
+          } else if(res.status == 417) {
+            return reject(res.data)
+          }else{
+            return reject(res.data)
+          }
+          // console.log("responce From API ",res)
+         
+        }).catch(err =>{
+          reject(false)
+            console.log("catch block", err)
+        })
+       } catch (e) {
+        console.log("Error in API Call ", e)
+        return resolve(false)
+       }
+})
+}
+
 export function UpdateUserPassWord(userPayload){
   return new Promise((resolve,reject)=>{
     try{
@@ -355,4 +388,64 @@ export function DeleteTransFunction(id){
         return reject(false)
        }
 })
+}
+
+export function UpdateUserPlanAmount(userDetail){
+  return new Promise((resolve,reject) => {
+      try{
+          instance({
+            url:"o/admin/addPlanAmount",
+            method: "POST",
+            data :userDetail
+          }).then((res) => {
+            if (res.status == 200 || res.statusText == "OK"){
+              // console.log("Set data to", processData)
+              // setCoinData(processData)
+              return resolve(res.data)
+            }else{
+              return reject(res.data)
+            }             
+          }).catch(err =>{
+              return reject(false)
+          })
+         } catch (e) {
+          console.log("Error in API Call ", e)
+          return reject(false)
+         }
+  })
+}
+
+
+export function GetTotalMoney(){
+  return new Promise((resolve,reject) => {
+      try{
+          instance({
+            url:"o/admin/gettotalmoney",
+            method: "GET"
+          }).then((res) => {
+             
+            console.log("res.status",res.status)
+            if (res.status == 200 || res.statusText == "OK"){
+                
+              if (res.data == "User Not Found"){
+                  return reject(res.data)
+              }
+              // console.log("Set data to", processData)
+              // setCoinData(processData)
+              return resolve(res.data)
+            } else if(res.status == 417) {
+              return reject(res.data)
+            }else{
+              return reject(res.data)
+            }
+            // console.log("responce From API ",res)
+           
+          }).catch(err =>{
+              console.log("catch block", err)
+          })
+         } catch (e) {
+          console.log("Error in API Call ", e)
+          return resolve(false)
+         }
+  })
 }

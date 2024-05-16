@@ -10,7 +10,7 @@ import PlanTelegram from '../../component/Modal/ActivePopup';
 import AddWallet from '../../component/Modal/ActivePopup';
 import SupportTelegram from '../../component/Modal/ActivePopup';
 import UpgratePlan from '../../component/Modal/ActivePopup';
-import { GetUserDetailsByPhoneNo ,GetCoinCurrentValue,AddCoinToUserAccount, UpdateTelegramLink, GetTelegramLink} from '../../AdminFunction/ApiCalls';
+import { GetUserDetailsByPhoneNo ,GetCoinCurrentValue,AddCoinToUserAccount, UpdateTelegramLink, GetTelegramLink, UpdateUserPlanAmount, UpdatePlanDetails} from '../../AdminFunction/ApiCalls';
 
 const AdminUserWalletPage = () => {
     // Toggle Class In Aside Bar
@@ -46,6 +46,20 @@ const AdminUserWalletPage = () => {
       }
       ];
   
+      const updatePlanField = [
+        {type:'select' , placeholder:"Select Plan", label:"Select Plan",
+        options: [{value:"plan1",label:"Plan 1"}, {value:"plan2",label:"Plan 2"}, {value:"plan3",label:"Plan 3"}],
+        key:"planNo" },
+        {type:'select' , placeholder:"Select Duration", label:"Select Duration",
+        options: [{value:"Weekly",label:"Weekly"}, {value:"Monthly",label:"Monthly"}, {value:"Yearly",label:"Yearly"}],
+        key:"duration" },
+        {type:"text", placeholder:"Enter Amount with sign (Ex. $100 , 100 INR)", label:"Amount", key:"amount",value:""},
+        {type:"text",placeholder:"Enter Offer text Ex (save $100)", label:"Enter Offer", key:"offer",value:""},
+        {type:"text", placeholder:"offer Line 1", label:"Line 1", key:"Line1", value:""},
+        {type:"text", placeholder:"offer Line 2", label:"Line 2", key:"Line2", value:""},
+        {type:"text", placeholder:"offer Line 3", label:"Line 3", key:"Line3", value:""},
+        {type:"text", placeholder:"offer Line 4", label:"Line 4", key:"Line4", value:""}
+      ]
   
       // Fields for the "Change User Password" tab
       const changePasswordFields = [
@@ -59,8 +73,11 @@ const AdminUserWalletPage = () => {
 
       // Fields for the "Delete User Account" tab
       const upgratePlan = [
-        { type: 'tel', placeholder: 'Enter phone number', label: 'Phone Number' },
-        { type: 'text', placeholder: 'Upgrate total amount', label: 'Upgrate Plan Amount' },
+        {type:'select' , placeholder:"Select Plan", label:"Select Plan",
+        options: [{value:"plan1",label:"Plan 1"}, {value:"plan2",label:"Plan 2"}, {value:"plan3",label:"Plan 3"}],
+        key:"planNo" },
+        { type: 'tel', placeholder: 'Enter phone number', label: 'Phone Number', key:"phoneNo", value:"" },
+        { type: 'number', placeholder: 'Upgrate total amount', label: 'Upgrate Plan Amount', key :"amount", value:0 }
       ];
   
       // Modals
@@ -117,6 +134,28 @@ const AdminUserWalletPage = () => {
   
 
     };
+    const handelUpdatePlan = (data) => {
+      console.log("Plan details",data)
+
+      var obj = {
+        planNo: data[0].value,
+        duration: data[1].value,
+        amount: data[2].value,
+        offerText: data[3].value,
+        line1: data[4].value,
+        line2: data[5].value,
+        line3: data[6].value,
+        line4: data[7].value,
+      }
+      UpdatePlanDetails(obj).then(res => {
+        console.log("UpdatePlanDetails updated",res)
+        alert("Plan updated Successfully")
+      }).catch(err=>{
+        console.log("error in call",err)
+        alert("Error In updation", err)
+      })
+       
+    }
     const handleShowSupportTelegram = (data) =>{
       var obj = {
         key: data[0].key,
@@ -141,7 +180,22 @@ const AdminUserWalletPage = () => {
       })
       setShowPlanTelegram(true);
     }
-    const handleShowUpgratePlan = () => setShowUpgratePlan(true);
+    const handleShowUpgratePlan = (data) =>{
+      console.log("KKKKKKKKKKKKKKKKKKKKKKKKKKKK",data)
+       var obj = {
+        phoneNo : data[1].value,
+        amount :Number(data[2].value),
+        planNo : data[0].value
+       }
+       UpdateUserPlanAmount(obj).then(res=>{
+        if (res===true){
+          setShowUpgratePlan(true);
+        }else{
+          alert("error "+ res)
+        }
+       })
+      
+    }
 
     //validation functions
 
@@ -242,6 +296,12 @@ const AdminUserWalletPage = () => {
                                         Upgrate Plan
                                       </Nav.Link>
                                     </Nav.Item>
+                                    <Nav.Item>
+                                      <Nav.Link eventKey="five">
+                                        <i className="fas fa-wallet"></i> Add
+                                        Add Plans
+                                      </Nav.Link>
+                                    </Nav.Item>
                                   </Nav>
                                 </div>
                               </Col>
@@ -282,6 +342,14 @@ const AdminUserWalletPage = () => {
                                       btnColorClass="btn-theme2"
                                       onClickOpenModal={handleShowUpgratePlan}
                                       fields={upgratePlan}
+                                    />
+                                  </Tab.Pane>
+                                  <Tab.Pane eventKey="five">
+                                    <FormUser
+                                      tabHeading="Upgrate User Plans"
+                                      btnColorClass="btn-theme2"
+                                      onClickOpenModal={handelUpdatePlan}
+                                      fields={updatePlanField}
                                     />
                                   </Tab.Pane>
                                 </Tab.Content>
@@ -388,6 +456,7 @@ const AdminUserWalletPage = () => {
           show={showUpgratePlan}
           modalMessageDiscription="Role Users will be payment. Do you confirm that?"
           handleClose={handleClose}
+          submitFunctio={handleClose}
         />
       )}
     </>

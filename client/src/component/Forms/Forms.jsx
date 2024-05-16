@@ -17,7 +17,7 @@ function Forms() {
     useEffect(()=>{
       if (id){
         ValidateId(id).then((res)=>{
-          console.log("hhh",res)
+          // console.log("hhh",res)
            setIsLinkValid(res)
         
     
@@ -66,7 +66,7 @@ function Forms() {
       if (isLoggedIn){
         // Navigate({"to":"/index"})
         navigate("/index");
-        console.log("navigate to othe r location")
+        // console.log("navigate to othe r location")
       }
   
     },[isLoggedIn])

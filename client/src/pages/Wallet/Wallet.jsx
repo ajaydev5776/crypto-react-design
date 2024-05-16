@@ -5,16 +5,19 @@ import Pnlimg from '../../assets/img/pnlimg.svg'
 import ArrowIMg from '../../assets/img/right-arrow.svg'
 import ManageBalanceCard from '../../component/ManageBalanceCard/ManageBalanceCard';
 import Withdraw from '../../assets/img/withdraw.png'
-import { GetAllTransitionOfUser } from '../../BackendApiCalls/ApiCall';
+import { GetAllTransitionOfUser, WithdrawMoney } from '../../BackendApiCalls/ApiCall';
+import LoderImg from '../../assets/img/loaderGif.svg'
+import { useNavigate } from "react-router-dom";
 const Wallet = () => {
-
+const [isLoader,setIsLoader] = useState(false)
     const columns = ["Coin Name", "INR Amount", "Date", "Time", "Transection"];
-    const data = [
-        ["Dogy", "100", "2024-03-26", "11:38:28", "INR Deposited"],
-        ["Dogy1", "200", "2024-03-27", "11:38:28", "INR Withdrawn"],
-        ["Dogy2", "300", "2024-03-28", "11:38:28", "INR Deposited"],
-    ];
+    // const data = [
+    //     ["Dogy", "100", "2024-03-26", "11:38:28", "INR Deposited"],
+    //     ["Dogy1", "200", "2024-03-27", "11:38:28", "INR Withdrawn"],
+    //     ["Dogy2", "300", "2024-03-28", "11:38:28", "INR Deposited"],
+    // ];
     const [tranData , setTranData] = useState([])
+    const navigate = useNavigate()
     const [totalinvestedAmt, settotalinvestedAmt] = useState(0)
     var loginStaus = JSON.parse(localStorage.getItem('isLoggedIn'))
     useEffect(()=>{
@@ -53,6 +56,37 @@ const Wallet = () => {
    
         })
        },[])
+
+       function onWithdraw(){
+        var Amount = document.getElementById('amount').value
+        var phoneNo = loginStaus.phoneNo
+        if (Amount > 0 && Amount < totalinvestedAmt){
+            setIsLoader(true)
+            var obj = {
+                phoneNo: phoneNo,
+                amount : Number(Amount)
+            }
+            setTimeout(()=>{
+                var storeObj = loginStaus
+                if (!storeObj.isPlanBuy){
+                    
+                    navigate("/plans")
+                }else{
+             WithdrawMoney(obj).then(res=>{
+                // console.log("reeeeeeeeeeeeeee",res)
+                if (res){
+                    
+                    storeObj['accountStatus'] = "freeze"
+                    localStorage.setItem('isLoggedIn',JSON.stringify(storeObj))
+                    window.location.reload()
+                }
+             })
+            }
+            },5000)
+        }else{
+            alert("Enter Valid Amount ! it Should be less equal to Invested Amount "+ totalinvestedAmt)
+        }
+       }
     function WalletCardItems({ data }) {
         return (
             <div className="row gx-0 row-gap-3">
@@ -138,10 +172,26 @@ const Wallet = () => {
                                         <div className="withdrawimg"><img src={Withdraw} className='w-auto ' alt="withdraw" /></div>
                                     </div>
                                     <div className="col-sm-6 loginmodal">
-                                        <form>
+                                    <div class="row row-gap-4">
+       
+            <div class="col-12">
+            {/* <form > */}
+         {isLoader && <img className='d-flex align-items-center rotateImg ms-5' src={LoderImg} style={{width:"100px"}} alt="" />}<br/>
+                <label for="number" class="form-label fs-16">Enter Amount</label>
+                <input type="text" class="form-control shadow-none  p-3 fs-16"    id="amount"   placeholder="Enter amount in INR"/>
+                <input
+                        className="btn btn-theme1 w-100 p-3 mt-5 fs-16 d-flex align-items-center justify-content-center"
+                        type="submit"
+                        value="Withdraw"
+                        onClick={onWithdraw}
+                      />
+                {/* </form> */}
+            </div>
+            </div>
+                                        
                                             {/* <Forms username="Withdraw Amount" inputtype ="tel" inputplasholder="Enter Withdraw Amount" isActive = {false}/> */}
-                                            <Forms username="Withdraw Amount" inputtype ="tel" inputplasholder="Enter Withdraw Amount" getOtpBtn = "Submit"/>
-                                        </form>
+                                            {/* <Forms username="Withdraw Amount" inputtype ="tel" inputplasholder="Enter Withdraw Amount" getOtpBtn = "Submit"/> */}
+                                        
                                     </div>
                                 </div>
                             </div>

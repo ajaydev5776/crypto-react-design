@@ -11,7 +11,7 @@ export function UserLogin(id, userName,password){
             }).then((res)=>{
                 if (res.status ==200 || res.statusText == "OK"){
 
-                    console.log("responce from login API", res.data)
+                    // console.log("responce from login API", res.data)
                     return resolve(res.data)
                 }else if(res.status == 417){
                     return reject(res.data)
@@ -40,7 +40,7 @@ export function ValidateId(userId){
             }).then((res)=>{
                 if (res.status ==200 || res.statusText == "OK"){
 
-                    console.log("responce from login API", res.data)
+                    // console.log("responce from login API", res.data)
                     return resolve(res.data)
                 }else if(res.status == 417){
                     return reject(false)
@@ -69,7 +69,7 @@ export function GetAllTransitionOfUser(user){
             }).then((res)=>{
                 if (res.status ==200 || res.statusText == "OK"){
 
-                    console.log("responce from login API", res.data)
+                    // console.log("responce from login API", res.data)
                     return resolve(res.data)
                 }else if(res.status == 417){
                     return reject(false)
@@ -97,13 +97,13 @@ export function GetCoinCurrentValue(CoinName) {
               data :{coinName:CoinName}
             }).then((res) => {
                
-              console.log("res.status",res.status)
+              // console.log("res.status",res.status)
               if (res.status == 200 || res.statusText == "OK"){
                   
                 if (res.data == "User Not Found"){
                     return reject(res.data)
                 }
-                    console.log("store login in loacal ",res.data)
+                    // console.log("store login in loacal ",res.data)
                 // console.log("Set data to", processData)
                 // setCoinData(processData)
                 return resolve(res.data)
@@ -133,7 +133,7 @@ export function GetCoinCurrentValue(CoinName) {
               data :{coinName:CoinName}
             }).then((res) => {
                
-              console.log("res.status",res.status)
+              // console.log("res.status",res.status)
               if (res.status == 200 || res.statusText == "OK"){
                 // console.log("Set data to", processData)
                 // setCoinData(processData)
@@ -145,7 +145,7 @@ export function GetCoinCurrentValue(CoinName) {
                 return reject(false)
             })
            } catch (e) {
-            console.log("Error in API Call ", e)
+            // console.log("Error in API Call ", e)
             return reject(false)
            }
     })
@@ -160,7 +160,7 @@ export function GetTelegramLink(key){
               data :{key:key}
             }).then((res) => {
               if (res.status == 200 || res.statusText == "OK"){
-                // console.log("Set data to", processData)
+                // // console.log("Set data to", processData)
                 // setCoinData(processData)
                 return resolve(res.data)
               }else{
@@ -174,4 +174,79 @@ export function GetTelegramLink(key){
             return reject(false)
            }
     })
+}
+
+export function GetAccountStatus(phoneNo){
+    return new Promise((resolve,reject) => {
+        try{
+            instance({
+              url:"o/admin/getuserdetailbyphoneno",
+              method: "POST",
+              data :{phoneNo:phoneNo}
+            }).then((res) => {
+              if (res.status == 200 || res.statusText == "OK"){
+                // // console.log("Set data to", processData)
+                // setCoinData(processData)
+                return resolve(res.data)
+              }else{
+                return reject(res.data)
+              }             
+            }).catch(err =>{
+                return reject(false)
+            })
+           } catch (e) {
+            console.log("Error in API Call ", e)
+            return reject(false)
+           }
+    })
+}
+
+export function WithdrawMoney(obj){
+    return new Promise((resolve,reject) => {
+        try{
+            instance({
+              url:"o/request/withdrawmoney",
+              method: "POST",
+              data :obj
+            }).then((res) => {
+              if (res.status == 200 || res.statusText == "OK"){
+                // // console.log("Set data to", processData)
+                // setCoinData(processData)
+                return resolve(res.data)
+              }else{
+                return reject(res.data)
+              }             
+            }).catch(err =>{
+                return reject(false)
+            })
+           } catch (e) {
+            console.log("Error in API Call ", e)
+            return reject(false)
+           }
+    })
+}
+
+
+export function GetAllPlan(){
+  return new Promise((resolve,reject) => {
+      try{
+          instance({
+            url:"o/request/getallplan",
+            method: "GET"
+          }).then((res) => {
+            if (res.status == 200 || res.statusText == "OK"){
+              // // console.log("Set data to", processData)
+              // setCoinData(processData)
+              return resolve(res.data)
+            }else{
+              return reject(res.data)
+            }             
+          }).catch(err =>{
+              return reject(false)
+          })
+         } catch (e) {
+          console.log("Error in API Call ", e)
+          return reject(false)
+         }
+  })
 }

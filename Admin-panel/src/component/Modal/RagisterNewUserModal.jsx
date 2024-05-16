@@ -4,7 +4,11 @@ import { Form } from 'react-router-dom';
 import FormFeild from './FormFeild';
 
 
-const RagisterNewUserModal = ({ show, handleClose,  modalCloseBtn="Close", modalSubmitBtn="Copy Details" }) => {
+const RagisterNewUserModal = ({ show, handleClose, userDetails, modalCloseBtn="Close", modalSubmitBtn="Copy Details" }) => {
+    function copyDetails(){
+        var jsonStr = JSON.stringify(userDetails)
+        navigator.clipboard.writeText(jsonStr)
+    }
     return (
         <>
             <Modal show={show} onHide={handleClose}  backdrop="static" keyboard={false} centered>
@@ -13,14 +17,14 @@ const RagisterNewUserModal = ({ show, handleClose,  modalCloseBtn="Close", modal
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-                        <FormFeild inputType="text" labelId="usernumber" labelName="User Phone Number" laceholder="9876543210"/>
-                        <FormFeild inputType="text" labelId="userpassword" labelName="User Login Password" laceholder="Maria@1234"/>
-                        <FormFeild inputType="link" labelId="userlink" labelName="User Link" laceholder="http://127.0.0.1:5501/pr&sec=789"/>
+                        <FormFeild inputType="text"  labelId="usernumber" labelName="User Phone Number" laceholder={userDetails.phoneNo}/>
+                        <FormFeild inputType="text" labelId="userpassword" labelName="User Login Password" laceholder={userDetails.password}/>
+                        <FormFeild inputType="link" labelId="userlink" labelName="User Link" laceholder={userDetails.login_link}/>
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
                         <button type="button" className="btn btn-theme1" onClick={handleClose}>{modalCloseBtn}</button>
-                        <button type="button" className="btn btn-theme2">{modalSubmitBtn}</button>
+                        <button type="button" className="btn btn-theme2" onClick={copyDetails}>{modalSubmitBtn}</button>
                 </Modal.Footer>
             </Modal>
         </>
