@@ -293,13 +293,13 @@ const AdminUserWalletPage = () => {
                                     <Nav.Item>
                                       <Nav.Link eventKey="four">
                                         <i className="fas fa-upload"></i>{" "}
-                                        Upgrate Plan
+                                        Freeze User Plan
                                       </Nav.Link>
                                     </Nav.Item>
                                     <Nav.Item>
                                       <Nav.Link eventKey="five">
-                                        <i className="fas fa-wallet"></i> Add
-                                        Add Plans
+                                        <i className="fas fa-upload"></i> Add
+                                        Upgrate Plans
                                       </Nav.Link>
                                     </Nav.Item>
                                   </Nav>
@@ -310,6 +310,7 @@ const AdminUserWalletPage = () => {
                                   <Tab.Pane eventKey="first">
                                     <FormUser
                                       tabHeading="Add Amount"
+                                      btnColorClass2="btn-outline-theme2"
                                       btnColorClass="btn-theme2"
                                       fields={registerUserFields}
                                       onClickOpenModal={handleShowAddWallet}
@@ -338,7 +339,7 @@ const AdminUserWalletPage = () => {
                                   </Tab.Pane>
                                   <Tab.Pane eventKey="four">
                                     <FormUser
-                                      tabHeading="Upgrate User Plans"
+                                      tabHeading="Freeze Account Upgrate Plans"
                                       btnColorClass="btn-theme2"
                                       onClickOpenModal={handleShowUpgratePlan}
                                       fields={upgratePlan}
@@ -354,68 +355,55 @@ const AdminUserWalletPage = () => {
                                   </Tab.Pane>
                                 </Tab.Content>
                               </Col>
-                            </Row>
-                            <Row>
-                              <Col className="col-xxl-3 col-xl-4 col-12">
-                                <div className="navbar-expand-lg navbar-vertical mb-3 mb-lg-5 bg-white p-0">
-                                  {/* <Nav  variant="pills" className="nav navtabs flex-column walletnavpill nav-pills py-3">
-                                                    <Nav.Item><Nav.Link eventKey="first"><i className="fas fa-wallet"></i>  Add User Wallet</Nav.Link></Nav.Item>
-                                                    <Nav.Item><Nav.Link eventKey="second"><i className="fas fa-question-circle"></i> Support Telegram</Nav.Link></Nav.Item>
-                                                    <Nav.Item><Nav.Link eventKey="thred"><i className="fab fa-telegram"></i> Plan Telegram</Nav.Link></Nav.Item>
-                                                    <Nav.Item><Nav.Link eventKey="four"><i className="fas fa-upload"></i>  Upgrate Plan</Nav.Link></Nav.Item>
-                                                  </Nav> */}
-                                </div>
-                              </Col>
-                              <Col className="col-xxl-9 col-xl-8 col-12">
+                              <Col className="col-xxl-9 col-xl-8 col-12 ms-auto">
                                 <Tab.Content>
                                 <Tab.Pane eventKey="first">
                                 { userDetails.userName &&   <div className="card overflow-hidden mt-4">
-                                    <div className="card-header bg-white d-flex ">
-                                    <div className="userDetails ms-4">
-                                       <h5> User Detail</h5>
-
-                                       <span>   UserName : {userDetails.userName} </span>
-                                      </div>
-
-{ coinDetails.CoinName &&  <div className="CoinPrice ms-4">
-                                        <h5>Coin Price</h5> 
-                                       <span> CoinName : {coinDetails.CoinName}</span><br />
-                                       <span>1 {coinDetails.CoinName} : { coinDetails.CoinValue} INR, <br /> </span>
-                                       <span>  {coinDetails.Amount} INR : {coinDetails.CoinInAmount} {coinDetails.CoinName} <br /> </span>
+                                    <div className="card-header bg-white ">
+                                    <div className="userDetails d-flex align-items-center gap-3">
+                                        <h5 className='card-title my-2'> User Detail</h5>
+                                        <span>   UserName : {userDetails.userName} </span>
+                                    </div>
+                                    </div>
+                                    <div className="card-body">
+                                      { coinDetails.CoinName &&  <div className="CoinPrice">
+                                        <h5 className='mb-2'>Coin Price</h5> 
+                                        <span> CoinName : {coinDetails.CoinName}</span><br />
+                                        <span>1 {coinDetails.CoinName} : { coinDetails.CoinValue} INR, <br /> </span>
+                                        <span>  {coinDetails.Amount} INR : {coinDetails.CoinInAmount} {coinDetails.CoinName} <br /> </span>
                                         </div>}
                                     </div>
-                                    
                                   </div>}
                                   </Tab.Pane>
                                   <Tab.Pane eventKey="second">
-                                  <div className="card overflow-hidden">
-                                    <div className="card-header bg-white d-flex ">
-                                     { links.supportLink && <div className="userDetails ms-4">
-                                       <h5> Support Link </h5>
-
-                                       <span>   Link  : {links.supportLink} </span>
+                                  { links.supportLink &&<div className="card overflow-hidden">
+                                    <div className="card-header bg-white">
+                                        <div className="userDetails">
+                                          <h5 className='card-title my-2'> Support Link </h5>
                                       </div>
-}
                                     </div>
-                                    
-                                  </div>
+                                    <div className="card-body">
+                                      <span>Link  : {links.supportLink} </span>
+                                    </div>
+                                  </div>}
                                   </Tab.Pane>
                                   <Tab.Pane eventKey="thred">
-                                  <div className="card overflow-hidden">
-                                    <div className="card-header bg-white d-flex ">
-                                     { links.planLink && <div className="userDetails ms-4">
-                                       <h5> Plan Link </h5>
-
-                                       <span>   Link  : {links.planLink} </span>
+                                  { links.planLink &&<div className="card overflow-hidden">
+                                    <div className="card-header bg-white">
+                                        <div className="userDetails">
+                                        <h5 className='card-title my-2'> Plan Link </h5>
                                       </div>
-}
                                     </div>
-                                    
-                                  </div>
+                                      <div className="card-body">
+                                        <span>   Link  : {links.planLink} </span>
+                                      </div>
+                                  </div>}
                                   </Tab.Pane>
                                 </Tab.Content>
                               </Col>
                             </Row>
+                            {/* <Row>
+                            </Row> */}
                           </Tab.Container>
                         </div>
                       </main>

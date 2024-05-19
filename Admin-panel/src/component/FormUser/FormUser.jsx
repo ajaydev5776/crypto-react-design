@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const FormUser = ({ fields, tabHeading, onClickOpenModal, btnColorClass,validateFunction, formBtnName="Submit" }) => {
+const FormUser = ({ fields, tabHeading, onClickOpenModal, btnColorClass,btnColorClass2,validateFunction, formBtnName="Submit" }) => {
     console.log("fileds",fields)
     const[formData,setFormData] = useState(fields)
 
@@ -79,7 +79,7 @@ const FormUser = ({ fields, tabHeading, onClickOpenModal, btnColorClass,validate
                 <div className="d-flex p-2">
                 <button
                   type="button"
-                  className={`btn ${btnColorClass}`}
+                  className={`btn  ${btnColorClass2}`}
                   onClick={HandelSupportFunction}
                 >
                   Validate Details

@@ -38,7 +38,7 @@ GetAllTransitionDetails().then(res=>{
 })
     },[])
     
-    const usersHeaders = ['Tran Id','User Mob. No.', 'Date', 'Time','Coin Name', 'Plan Amount'];
+    const usersHeaders = ['Transection Id','User Mob. No.', 'Date', 'Time','Coin Name', 'Plan Amount'];
     const usersData = [
         tranData
     ];
@@ -84,7 +84,7 @@ GetAllTransitionDetails().then(res=>{
                                                     </div>
                                                 </div>
                                                 <div className="table-responsive datatable-custom">
-                                                    <AdminTable headers={usersHeaders} data={tranData} Actionname="Remove" action={DeleteTrans} />
+                                                    <AdminTable headers={usersHeaders} data={tranData} Actionname="Remove" removebtnclass="btn-outline-danger" action={DeleteTrans} />
                                                 </div>
                                                     <Pagination/>
                                                 </div>

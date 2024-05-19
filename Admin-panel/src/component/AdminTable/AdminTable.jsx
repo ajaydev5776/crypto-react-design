@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const AdminTable = ({ headers, data,updateSelectedUserArray ,Actionname,action}) => {
+const AdminTable = ({ headers, data,updateSelectedUserArray ,Actionname,action, removebtnclass}) => {
     
 
     return (
@@ -34,7 +34,7 @@ const AdminTable = ({ headers, data,updateSelectedUserArray ,Actionname,action})
                             {row.map((cell, cellIndex) => (
                                 <td key={cellIndex}>{cell}</td>
                             ))}
-                            {action && <td> <button onClick={(e)=>{action(row[0])}}>{Actionname}</button> </td>}
+                            {action && <td> <button className={`btn btn-sm ${removebtnclass}`} onClick={(e)=>{action(row[0])}}>{Actionname}</button> </td>}
                         </tr>
                     ))}
                 </tbody>
