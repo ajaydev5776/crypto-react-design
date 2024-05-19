@@ -263,13 +263,24 @@ let status
                                               </div>
                                             </section>
                                         </main>
+                                        <h4 className="card-header-title mt-4">Total Users</h4>
                                         <div className="card my-3  my-lg-4">
                                             <div className="card-header bg-white border-0 py-md-3 py-3">
-                                              <div className="row justify-content-between align-items-center flex-grow-1">
-                                                <div className="col-lg4 col-md2 col">
-                                                  <div className="d-flex justify-content-between align-items-center">
+                                              <div className="row justify-content-between align-items-center row-gap-3">
+                                                <div className="col-md-3 col-auto">
+                                                    <div className="border-bottom border-2">
+                                                            <form>
+                                                                <div className="input-group input-group-merge input-group-flush">
+                                                                    <div className="input-group-prepend input-group-text bg-transparent border-0">
+                                                                        <i className="fas fa-search"></i>
+                                                                    </div>
+                                                                    <input id="datatableSearch" type="search" className="form-control bg-transparent border-0" placeholder="Search" aria-label="Search users"/>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                  {/* <div className="d-flex justify-content-between align-items-center">
                                                     <h4 className="card-header-title">Total Users</h4>
-                                                  </div>
+                                                  </div> */}
                                                 </div>
                                                 <div className="col-auto">
                                                   <div className="row gx-2">
