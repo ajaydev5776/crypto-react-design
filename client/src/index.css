@@ -44,13 +44,24 @@
     display: flex;
     padding: 0px 10px;
 }
+.loginpage .loginmodal .form-check label{
+cursor: pointer;
+}
 .loginpage .loginmodal .modal-content {
     margin: auto;
-}
+}   
 
 .loginpage.freeze{
     background: linear-gradient(rgba(0, 0, 0, 0.61), rgba(0, 0, 0, 0.63)), url(./assets/img/freeze.webp) no-repeat center;
     position: relative;
+    background-size: cover;
+    height: calc(100vh - 75px) !important;
+}
+.freezeplan{
+    background: linear-gradient(rgba(0, 0, 0, 0.61), rgba(0, 0, 0, 0.63)), url(./assets/img/freeze.webp) no-repeat center;
+    position: relative;
+    background-size: cover;
+    height: calc(100vh - 75px) !important;
 }
 .loginpage.freeze .modal-content{
     border: 1px solid rgba(255, 255, 255, 0.35);
@@ -74,6 +85,20 @@
       transform: rotate(359deg);
     }
   }
+
+.loader{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    background-color: #4e4e4e75;
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+}
 
 @media screen and (max-width: 768px) {
     .carditemparent>div>div:nth-last-child(3) .carditem  .leftside {

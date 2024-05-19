@@ -35,7 +35,7 @@ const FormUser = ({ fields, tabHeading, onClickOpenModal, btnColorClass,btnColor
                     {field.label}
                   </label>
                   <div className="col-xxl-9 col-lg-8 col-md-9 col-sm-8">
-                  {field.type !== "select" && (  <div className="mb-3">
+                  {field.type !== "select" && (  <div className="mb-md-3">
                       <input
                         type={field.type}
                         className="form-control"

@@ -39,7 +39,7 @@ const AdminUserWalletPage = () => {
       // Fields for the "Register New User" tab
       const registerUserFields = [
         { type: 'tel', placeholder: 'Enter phone number', label: 'Phone Number',key:"phoneNo", value:0 },
-        { type: 'number', placeholder: 'Total amount', label: 'Total Amount', key:"amount" , value:0},
+        { type: 'tel', placeholder: 'Total amount', label: 'Total Amount', key:"amount" , value:0},
         {type:'select', value:'', label: "Select Coin",
          options: [{value:"BTC",label:"BTC"}, {value:"USDT",label:"USDT"}],
          key:"selectedCoin"

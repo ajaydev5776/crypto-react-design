@@ -29,14 +29,40 @@ const FreezePlan = () => {
     ];
     return (
         <>
-        <div className="modal show loginpage freeze" style={{ display: 'block', position: 'initial' }}>
-                <Modal.Dialog className='form loginmodal'>
-                    <Modal.Header className='px-4'>
+        <div className="freezeplan overflow-hidden">
+            <div className="innerefluid h-100 overflow-y-auto d-flex align-items-center">
+            <div className="container">
+                <div className="row row-gap-4 pb-4">
+                    <div className="col-12"><div class="sectionHeading fs-3">Please buy this plan and activate your account.</div></div>
+                    <div className="col-12">
+                    <div class="row justify-content-center plancard">
+                                    {investmentPlans.map((plan, index) => (
+                                    <InvestmentPlan 
+                                        key={index} 
+                                        plantime={plan.plantime} 
+                                        plan_prich={amountToShow} 
+                                        totleplantime={plan.totleplantime} 
+                                        saveprice={plan.saveprice} 
+                                        planfeature={plan.planfeature} 
+                                        buyplanlink={planLink}
+                                        buyplan={plan.buyplan} 
+                                        isActive={plan.isActive} 
+                                    />
+                                ))}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        {/* <div className="modal show loginpage freeze freezeplan" style={{ display: 'block', position: 'initial' }}>
+                <Modal.Dialog className='form loginmodal px-3 h-100 pb-4'>
+                    <Modal.Header className='px-sm-4'>
                         <Modal.Title className='fs-4 text-center w-100'>Please buy this plan and activate your account. </Modal.Title>
                     </Modal.Header>
 
-                    <Modal.Body className='px-4'>
-                    <div class="row  justify-content-center plancard">
+                    <Modal.Body className='p-sm-4'>
+                    <div class="row justify-content-center plancard">
                             {investmentPlans.map((plan, index) => (
                             <InvestmentPlan 
                                 key={index} 
@@ -53,7 +79,7 @@ const FreezePlan = () => {
                             </div>
                     </Modal.Body>
                 </Modal.Dialog>
-            </div>
+            </div> */}
         </>
     )
 }

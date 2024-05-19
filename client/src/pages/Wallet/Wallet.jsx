@@ -134,7 +134,7 @@ const [isLoader,setIsLoader] = useState(false)
                                                     Your Tax P&L statement is available. Kindly click to download.
                                                 </div>
                                             </div>
-                                            <div className="col-sm-auto">
+                                            {/* <div className="col-sm-auto">
                                                 <div className="mainCArd position-relative">
                                                     <a href="javascript:;" className="stretched-link"></a>
                                                     <div className="row align-items-center gx-2">
@@ -155,7 +155,7 @@ const [isLoader,setIsLoader] = useState(false)
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
@@ -173,22 +173,22 @@ const [isLoader,setIsLoader] = useState(false)
                                     </div>
                                     <div className="col-sm-6 loginmodal">
                                     <div class="row row-gap-4">
-       
-            <div class="col-12">
-            {/* <form > */}
-         {isLoader && <img className='d-flex align-items-center rotateImg ms-5' src={LoderImg} style={{width:"100px"}} alt="" />}<br/>
-                <label for="number" class="form-label fs-16">Enter Amount</label>
-                <input type="text" class="form-control shadow-none  p-3 fs-16"    id="amount"   placeholder="Enter amount in INR"/>
-                <input
-                        className="btn btn-theme1 w-100 p-3 mt-5 fs-16 d-flex align-items-center justify-content-center"
-                        type="submit"
-                        value="Withdraw"
-                        onClick={onWithdraw}
-                      />
-                {/* </form> */}
-            </div>
-            </div>
-                                        
+                                    <div class="col-12">
+                                    {/* <form > */}
+                                    
+                                        {isLoader && <div className="loader"><img className='d-flex align-items-center rotateImg' src={LoderImg} style={{width:"100px"}} alt="loder"/></div>}
+                                        <label for="number" class="form-label fs-16">Enter Amount</label>
+                                        <input type="text" class="form-control shadow-none  p-3 fs-16"    id="amount"   placeholder="Enter amount in INR"/>
+                                        <input
+                                                className="btn btn-theme1 w-100 p-3 mt-5 fs-16 d-flex align-items-center justify-content-center"
+                                                type="submit"
+                                                value="Withdraw"
+                                                onClick={onWithdraw}
+                                            />
+                                        {/* </form> */}
+                                    </div>
+                                    </div>
+                                                                
                                             {/* <Forms username="Withdraw Amount" inputtype ="tel" inputplasholder="Enter Withdraw Amount" isActive = {false}/> */}
                                             {/* <Forms username="Withdraw Amount" inputtype ="tel" inputplasholder="Enter Withdraw Amount" getOtpBtn = "Submit"/> */}
                                         

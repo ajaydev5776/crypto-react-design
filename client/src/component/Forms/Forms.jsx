@@ -85,9 +85,9 @@ function Forms() {
                 <input type="password" class="form-control shadow-none  p-3 fs-16" id="password" value={state.password}  onChange={e => setState({password: e.target.value})} placeholder="Enter your password"/>
             </div>
             <div className="col-12">
-                      <div className="form-check">
+                      <div className="form-check p-0 d-flex align-items-center gap-2">
                         <input
-                          className="form-check-input"
+                          className="form-check-input shadow-none rounded-1 m-0"
                           type="checkbox"
                           name="remember"
                           value={state.remember}
