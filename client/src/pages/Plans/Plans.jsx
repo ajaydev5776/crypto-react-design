@@ -7,13 +7,17 @@ import { useState } from 'react';
 const Plans = () => {
     const[planLink,setPlanLink]= useState("")
     const[insPlanconst,setInsPlanconst] =useState([])
+    const[selectedPlan,setSelectedPlan] =useState("")
     useEffect(()=>{
+        var loginStaus = JSON.parse(localStorage.getItem('isLoggedIn'))
+        setSelectedPlan(loginStaus.isPlanBuy)
     GetTelegramLink("planLink").then(link=>{
         setPlanLink(link.link)
     })
     GetAllPlan().then(res=>{
         var insPlans = []
         res.forEach(ele => {
+
             var obj = {
                 plantime: ele.duration,
                 plan_prich: ele.amount,
@@ -21,6 +25,9 @@ const Plans = () => {
                 saveprice: ele.offerText,
                 planfeature: [ele.line1, ele.line2, ele.line3, ele.line4],
                 isActive: ele.isActive
+            }
+            if (selectedPlan === ele.planNo){
+                obj["isSelected"] = true
             }
             insPlans.push(obj)
         });
@@ -78,6 +85,7 @@ const Plans = () => {
                                 buyplan={plan.buyplan}
                                 buyplanlink={planLink} 
                                 isActive={plan.isActive} 
+                                isSelected={plan.isSelected}
                             />
                         ))}
                             </div>
