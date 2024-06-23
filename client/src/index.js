@@ -16,7 +16,7 @@ import Refer from './pages/Refer/Refer';
 import Wallet from './pages/Wallet/Wallet';
 import OrderList from './pages/OrderList/OrderList';
 import Plans from './pages/Plans/Plans';
-import First from './pages/First/index';
+// import First from './pages/First/First';
 import { ContextProvider } from './context/Auth.context.js';
 import LoginForm from './pages/Login/index.jsx';
 import FreezeAccount from './pages/FreezeAccount/FreezeAccount';
@@ -25,7 +25,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
   
     <Route  path='/' element={<Layout/>} >
-      <Route path='/indexx' element={<First/>}/>
+      {/* <Route path='/first' element={<First/>}/> */}
       <Route path='' element={<Home/>}/>
       <Route path='/orderlist' element={<OrderList/>}/>
       <Route path='/wallet' element={<Wallet/>}/>
