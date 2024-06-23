@@ -23,7 +23,7 @@ const OrderList = () => {
            for (var i=0;i<res.length;i++){
                var inDate = res[i].investedDate.slice(0,10)
                var inTime = res[i].investedDate.slice(12,19)
-               var data = [res[i].coinName, inDate, inTime, "₹"+res[i].investedAmount, res[i].coinAvailable,"Done","Buy"]
+               var data = [res[i].coinName, inDate, inTime, "₹"+res[i].investedAmount, res[i].coinAvailable,"Done", res[i].investedAmount< 0 ? "Sell":"Buy"]
             //    totalInvested +=Number( res[i].investedAmount)
    
             //    var invesValue = res[i].coinAvailable * res[i].buyAtValue

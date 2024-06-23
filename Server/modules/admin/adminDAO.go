@@ -272,6 +272,9 @@ func UpdatePlanDetailsDAO(planDetails PlanDetails) (bool, error) {
 	if planDetails.Line3 != "" {
 		update["line3"] = planDetails.Line3
 	}
+	if planDetails.Line4 != "" {
+		update["line4"] = planDetails.Line4
+	}
 	updateB := bson.M{"$set": update}
 	opts := options.Update().SetUpsert(true)
 	_, err = collection.UpdateOne(ctx, filter, updateB, opts)

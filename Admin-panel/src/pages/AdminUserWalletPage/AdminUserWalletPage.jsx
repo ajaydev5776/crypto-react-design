@@ -210,10 +210,10 @@ const AdminUserWalletPage = () => {
       GetUserDetailsByPhoneNo(PhoneNo).then(res =>{
         setUserDetails(res)
         console.log("data by Phone no",res)
-        if(data[1].value<=0){
-          alert("Amount Should be grater then 0")
-          return
-        }
+        // if(data[1].value<=0){
+        //   alert("Amount Should be grater then 0")
+        //   return
+        // }
         if(!CoinName){
           alert("Please Select Coin")
           return
