@@ -8,7 +8,7 @@ const FreezeAccount = () => {
         <div className="modal show loginpage freeze" z style={{ display: 'block', position: 'initial' }}>
                 <Modal.Dialog className='form loginmodal' size="lg">
                     <Modal.Header className='px-4'>
-                        <Modal.Title className='fs-4 text-center w-100'>Oops!! Your PFW Account is <span className='fw-bold border-bottom'>Freeze</span> </Modal.Title>
+                        <Modal.Title className='fs-4 text-center w-100'>Oops!! Your Global Web Crypto Account is <span className='fw-bold border-bottom'>Freeze</span> </Modal.Title>
                     </Modal.Header>
 
                     <Modal.Body className='px-4'>

@@ -7,7 +7,7 @@ function Ragister({ show, handleClose, handleLoginModalOpen, handleOtpModalOpen 
     return (
         <ModalForm show={show} onHide={handleClose} backdrop="static" keyboard={false} 
             handleChangeModal={handleLoginModalOpen} handleClose={handleClose}
-            modalHeading="Ragister Modal" modalCloseBtn="Login" modalSubmitBtn="GET OTP" modalChangeHeading="Have a PFW account?"
+            modalHeading="Ragister Modal" modalCloseBtn="Login" modalSubmitBtn="GET OTP" modalChangeHeading="Have a Global Web Crypto Account?"
         centered
         modalBodyPart={<Formgroup username="Enter Your Mobile Number" inputtype="tel" getOtpBtn="GET OTP" handleChange={handleOtpModalOpen} inputplasholder="Enter Your Mobile Number"/>}
         />
